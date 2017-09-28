@@ -397,7 +397,7 @@ def my_songs():
     #     headers=resp.headers
     # )
     r = requests.get("http://localhost:5000/getSongs")
-    # print r.content
+    print r.content
     data = json.loads(r.content)
     return jsonify(data)
 
