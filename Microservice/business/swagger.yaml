@@ -1,0 +1,26 @@
+swagger: '2.0'
+info:
+  title: Spotify
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /getSongs:
+    get:
+      tags: [GetSongs]
+      operationId: Business.get_all_songs
+      summary: Get all songs
+      responses:
+        200:
+          description: OK
+
+parameters:
+  js_page_name:
+    name: js_page_name
+    description: The js page name
+    in: path
+    type: string
+    pattern: "^[a-zA-Z0-9-]*.js$"
+    required: true
