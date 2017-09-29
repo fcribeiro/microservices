@@ -149,7 +149,7 @@ def read_song(id):
 
 def read_all_songs():
     logging.debug('{CRUD} BEGIN function read_all_songs()')
-    query = session.query(Song).filter_by(is_deleted=False)
+    query = session.query(Song).filter_by(is_deleted=0)
     logging.debug('{CRUD} Songs found: %s', query.count())
     songs = []
     for song in query:

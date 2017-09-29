@@ -237,6 +237,10 @@ def get_user_songs():
     logging.info('{Business} Songs retrieved')
     return [p.dump() for p in songs]
 
+    # r = requests.get("http://localhost:5000/getSongs")
+    # print r.content
+    # return r.json()
+
 
 @login_required
 def get_songs_criteria():
@@ -389,17 +393,14 @@ def register():
 
 
 def my_songs():
-    # resp = application.send_static_file('listMySongs.html')
-    # return ResponseContainer(
-    #     mimetype=resp.mimetype,
-    #     data=resp.response,
-    #     status_code=200,
-    #     headers=resp.headers
-    # )
-    r = requests.get("http://localhost:5000/getSongs")
-    print r.content
-    data = json.loads(r.content)
-    return jsonify(data)
+    resp = application.send_static_file('listMySongs.html')
+    return ResponseContainer(
+        mimetype=resp.mimetype,
+        data=resp.response,
+        status_code=200,
+        headers=resp.headers
+    )
+
 
 @login_required
 def my_playlists():

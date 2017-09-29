@@ -38,10 +38,12 @@ def create_tables():
 
 def read_all_songs():
     logging.debug('{CRUD} BEGIN function read_all_songs()')
-    query = session.query(Song).filter_by(is_deleted=False)
+    connect_database()
+    query = session.query(Song).filter_by(is_deleted=0)
     logging.debug('{CRUD} Songs found: %s', query.count())
     songs = []
     for song in query:
+        print song
         songs.append(song)
     logging.debug('{CRUD} END function read_all_songs()')
     logging.info('{CRUD} Song(s) retrieved')

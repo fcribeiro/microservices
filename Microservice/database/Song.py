@@ -35,7 +35,7 @@ class Song(Base):
         return {'id': self.id, 'title': self.title, 'artist': self.artist, 'album': self.album, 'release_year': self.release_year}
 
     def __repr__(self):
-        return "<Song('%s', '%s', '%s', '%s', '%s') - User->'%s'>" % (self.title, self.artist, self.album, self.release_year, self.path, self.user.name)
+        return "<Song('%s', '%s', '%s', '%s', '%s')>" % (self.title, self.artist, self.album, self.release_year, self.path)
 
 
 User.songs = relationship("Song", order_by=Song.id, back_populates="user")
