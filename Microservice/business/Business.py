@@ -11,10 +11,13 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 
-def get_all_songs():
-    logging.debug('{Business} BEGIN function get_all_songs()')
-    songs = CRUD.read_all_songs()
-    logging.debug('{Business} END function get_playlist_songs()')
+def get_user_songs(userID):
+    logging.debug('{Business} BEGIN function get_user_songs()')
+    songs = CRUD.read_user_songs(userID)
+    # print 'OLAAA'
+    # print userID
+    # print 'DONE'
+    logging.debug('{Business} END function get_user_songs()')
     logging.info('{Business} Songs retrieved')
     return [p.dump() for p in songs]
 

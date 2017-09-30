@@ -10,17 +10,12 @@ paths:
   /getSongs:
     get:
       tags: [GetSongs]
-      operationId: Business.get_all_songs
-      summary: Get all songs
+      operationId: Business.get_user_songs
+      parameters:
+        - name: userID
+          in: query
+          type: integer
+          description: The number of items to skip before starting to collect the result set.
       responses:
         200:
           description: OK
-
-parameters:
-  js_page_name:
-    name: js_page_name
-    description: The js page name
-    in: path
-    type: string
-    pattern: "^[a-zA-Z0-9-]*.js$"
-    required: true

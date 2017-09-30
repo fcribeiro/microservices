@@ -228,18 +228,23 @@ def get_playlist_songs():
 
 @login_required
 def get_user_songs():
-    logging.debug('{Business} BEGIN function get_user_songs()')
-    songs = current_user.songs
-    for i in songs:
-        if i.is_deleted == 1:
-            songs.remove(i)
-    logging.debug('{Business} END function get_user_songs()')
-    logging.info('{Business} Songs retrieved')
-    return [p.dump() for p in songs]
+    # logging.debug('{Business} BEGIN function get_user_songs()')
+    # songs = current_user.songs
+    # for i in songs:
+    #     if i.is_deleted == 1:
+    #         songs.remove(i)
+    # logging.debug('{Business} END function get_user_songs()')
+    # logging.info('{Business} Songs retrieved')
+    # return [p.dump() for p in songs]
+
+    payload = {'userID': current_user.get_id()}
+    r = requests.get("http://localhost:5000/getSongs", params=payload)
+    print 'AQUI VAI: *********************'
+    print current_user.get_id()
 
     # r = requests.get("http://localhost:5000/getSongs")
     # print r.content
-    # return r.json()
+    return r.json()
 
 
 @login_required
