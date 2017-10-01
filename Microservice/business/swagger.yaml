@@ -19,3 +19,56 @@ paths:
       responses:
         200:
           description: OK
+
+  /createSong:
+    post:
+      summary: Create Song
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.post_song
+      parameters:
+        - in: formData
+          name: title
+          type: string
+          description: Title of the song.
+        - in: formData
+          name: artist
+          type: string
+          description: Artist name.
+        - in: formData
+          name: album
+          type: string
+          description: Album name.
+        - in: formData
+          name: release_year
+          type: integer
+          description: Year of the song release.
+        - in: formData
+          name: path_song
+          type: string
+          description: Path for the song file.
+        - in: formData
+          name: user_id
+          type: integer
+          description: User ID.
+      responses:
+        200:
+          description: OK
+  /test:
+    post:
+      summary: A sample survey.
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.post_test
+      parameters:
+        - in: formData
+          name: key1
+          type: string
+          description: A person's name.
+        - in: formData
+          name: key2
+          type: string
+          description: A person's favorite number.
+      responses:
+        200:
+          description: OK

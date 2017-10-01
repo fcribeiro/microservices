@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
 import hashlib
+import requests
 from Base import Base
 from User import User
 from Song import Song
@@ -70,13 +71,14 @@ def create_playlist(user, name):
     logging.info('{CRUD} Playlist created')
 
 
-def create_song(user, title, artist, album, release_year, path_song):
+def create_song(title, artist, album, release_year, path_song, user_id):
     logging.debug('{CRUD} BEGIN function create_song()')
-    song = Song(title, artist, album, release_year, path_song)
-    song.user = user
-    logging.debug('{CRUD} Creating song: %s by user: %s', song, user)
-    session.add(song)
-    session.commit()
+
+    payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': path_song, 'user_id': user_id}
+
+    r = requests.post("http://localhost:5000/createSong", data=payload)
+
+    logging.debug('{CRUD} Creating song: %s by user: %s', title, user_id)
     logging.debug('{CRUD} END function create_song()')
     logging.info('{CRUD} Song uploaded')
 

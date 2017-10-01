@@ -50,10 +50,10 @@ def post_song():
     album = connexion.request.form['album']
     release_year = connexion.request.form['releaseYear']
     logging.debug('{Business} BEGIN function post_song()')
-    logging.debug('{Business} Parameters: %s, %, %, %', title, artist, album, release_year)
-    CRUD.create_song(current_user, title, artist, album, release_year, "/path")
-    logging.debug('{Business} END function post_song()')
+    logging.debug('{Business} Parameters: %s, %s, %s, %s', title, artist, album, release_year)
+    CRUD.create_song(title, artist, album, release_year, "/path", current_user.get_id())
     logging.info('{Business} Song added')
+    logging.debug('{Business} END function post_song()')
     return redirect(url_for('post_song'))
 
 
@@ -151,6 +151,10 @@ def put_song():
         release_year = None
     logging.debug('{Business} BEGIN function put_song()')
     logging.debug('{Business} Parameters: %s, %s, %s, %s, %s', song_id, title, artist, album, release_year)
+
+
+
+
     song = CRUD.read_song(song_id)
     logging.debug('{Business} Song: %s', song)
     CRUD.update_song(song, title, artist, album, release_year, None)
@@ -237,14 +241,39 @@ def get_user_songs():
     # logging.info('{Business} Songs retrieved')
     # return [p.dump() for p in songs]
 
-    payload = {'userID': current_user.get_id()}
-    r = requests.get("http://localhost:5000/getSongs", params=payload)
-    print 'AQUI VAI: *********************'
-    print current_user.get_id()
 
+
+
+
+
+
+    # payload = {'userID': current_user.get_id()}
+    # r = requests.get("http://localhost:5000/getSongs", params=payload)********************
+
+
+
+
+
+
+
+    # print 'AQUI VAI: *********************'
+    # print current_user.get_id()
     # r = requests.get("http://localhost:5000/getSongs")
     # print r.content
-    return r.json()
+
+    # payload = {'title': 'title1', 'artist': 'artist1', 'album': 'album1', 'release_year': 2000, 'path_song': '/path', 'user_id': 1}
+    #
+    # r = requests.post("http://localhost:5000/createSong", data=payload)
+
+    # payload = {'key1': 'value1', 'key2': 'value2'}
+    #
+    # r = requests.post("http://localhost:5000/test", data=payload)
+
+
+
+
+
+    return ""
 
 
 @login_required

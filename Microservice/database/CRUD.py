@@ -1,11 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
-import hashlib
 from Base import Base
-from User import User
 from Song import Song
-from Playlist import Playlist
 
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
@@ -49,3 +46,16 @@ def read_user_songs(userID):
     logging.info('{CRUD} Song(s) retrieved')
     return songs
 
+
+def create_song(title, artist, album, release_year, path_song, user_id):
+    logging.debug('{CRUD} BEGIN function create_song()')
+    connect_database()
+
+    song = Song(title, artist, album, release_year, path_song, user_id)
+    # song.user = user
+    logging.debug('{CRUD} Creating song: %s by user: %s', title, user_id)
+    session.add(song)
+    session.commit()
+
+    logging.debug('{CRUD} END function create_song()')
+    logging.info('{CRUD} Song created')

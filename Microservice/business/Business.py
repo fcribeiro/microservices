@@ -23,6 +23,27 @@ def get_user_songs(userID):
 
 
 
+
+def post_test(key1, key2):
+    logging.debug('{Business} BEGIN function post_test()')
+    print key1
+    print key2
+    logging.debug('{Business} END function post_test()')
+
+
+def post_song(title, artist, album, release_year, path_song, user_id):
+    logging.debug('{Business} BEGIN function post_song()')
+    CRUD.create_song(title, artist, album, release_year, path_song, user_id)
+    logging.debug('{Business} END function post_song()')
+
+
+
+
+
+
+
+
+
 # starting connexion
 app = connexion.App(__name__)
 app.add_api('swagger.yaml')
