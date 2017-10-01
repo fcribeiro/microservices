@@ -17,6 +17,7 @@ path = 'mysql+pymysql://root:ribeiro@localhost:3306/spotify'
 session = None
 
 
+
 def connect_database():
     logging.debug('{CRUD} BEGIN function connect_database()')
     engine = create_engine(path)
@@ -71,16 +72,16 @@ def create_playlist(user, name):
     logging.info('{CRUD} Playlist created')
 
 
-def create_song(title, artist, album, release_year, path_song, user_id):
-    logging.debug('{CRUD} BEGIN function create_song()')
-
-    payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': path_song, 'user_id': user_id}
-
-    r = requests.post("http://localhost:5000/createSong", data=payload)
-
-    logging.debug('{CRUD} Creating song: %s by user: %s', title, user_id)
-    logging.debug('{CRUD} END function create_song()')
-    logging.info('{CRUD} Song uploaded')
+# def create_song(title, artist, album, release_year, path_song, user_id):
+#     logging.debug('{CRUD} BEGIN function create_song()')
+#
+#     payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': path_song, 'user_id': user_id}
+#
+#     r = requests.post(songs_mservice+"/createSong", data=payload)
+#
+#     logging.debug('{CRUD} Creating song: %s by user: %s', title, user_id)
+#     logging.debug('{CRUD} END function create_song()')
+#     logging.info('{CRUD} Song uploaded')
 
 
 # READ
@@ -134,31 +135,31 @@ def read_playlist(id):
     return None
 
 
-def read_song(id):
-    logging.debug('{CRUD} BEGIN function read_song()')
-    logging.debug('{CRUD} Searching for id: %s', id)
-    query = session.query(Song).filter_by(id=id)
-    logging.debug('{CRUD} Found: %s', query.count())
-    if query.count() != 0:
-        logging.debug('{CRUD} Song found: %s', query[0])
-        logging.debug('{CRUD} END function read_song()')
-        logging.info('{CRUD} Song retrieved')
-        return query[0]
-    logging.debug('{CRUD} END function read_song()')
-    logging.info('{CRUD} No song found')
-    return None
+# def read_song(id):
+#     logging.debug('{CRUD} BEGIN function read_song()')
+#     logging.debug('{CRUD} Searching for id: %s', id)
+#     query = session.query(Song).filter_by(id=id)
+#     logging.debug('{CRUD} Found: %s', query.count())
+#     if query.count() != 0:
+#         logging.debug('{CRUD} Song found: %s', query[0])
+#         logging.debug('{CRUD} END function read_song()')
+#         logging.info('{CRUD} Song retrieved')
+#         return query[0]
+#     logging.debug('{CRUD} END function read_song()')
+#     logging.info('{CRUD} No song found')
+#     return None
 
 
-def read_all_songs():
-    logging.debug('{CRUD} BEGIN function read_all_songs()')
-    query = session.query(Song).filter_by(is_deleted=0)
-    logging.debug('{CRUD} Songs found: %s', query.count())
-    songs = []
-    for song in query:
-        songs.append(song)
-    logging.debug('{CRUD} END function read_all_songs()')
-    logging.info('{CRUD} Song(s) retrieved')
-    return songs
+# def read_all_songs():
+#     logging.debug('{CRUD} BEGIN function read_all_songs()')
+#     query = session.query(Song).filter_by(is_deleted=0)
+#     logging.debug('{CRUD} Songs found: %s', query.count())
+#     songs = []
+#     for song in query:
+#         songs.append(song)
+#     logging.debug('{CRUD} END function read_all_songs()')
+#     logging.info('{CRUD} Song(s) retrieved')
+#     return songs
 
 
 def read_songs_criteria(title=None, artist=None):
@@ -254,10 +255,10 @@ def delete_something(stuff):
     logging.info('{CRUD} %s deleted', stuff.__class__.__name__)
 
 
-def delete_song(song):
-    logging.debug('{CRUD} BEGIN function delete_song()')
-    logging.debug('{CRUD} Deleting %s', song)
-    song.is_deleted = True
-    session.commit()
-    logging.debug('{CRUD} END function delete_song()')
-    logging.info('{CRUD} Song deleted')
+# def delete_song(song):
+#     logging.debug('{CRUD} BEGIN function delete_song()')
+#     logging.debug('{CRUD} Deleting %s', song)
+#     song.is_deleted = True
+#     session.commit()
+#     logging.debug('{CRUD} END function delete_song()')
+#     logging.info('{CRUD} Song deleted')

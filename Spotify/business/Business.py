@@ -12,6 +12,8 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
+songs_mservice = "http://localhost:5000"
+
 
 # POST Methods
 def post_user():
@@ -51,7 +53,12 @@ def post_song():
     release_year = connexion.request.form['releaseYear']
     logging.debug('{Business} BEGIN function post_song()')
     logging.debug('{Business} Parameters: %s, %s, %s, %s', title, artist, album, release_year)
-    CRUD.create_song(title, artist, album, release_year, "/path", current_user.get_id())
+
+    payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': '/path',
+               'user_id': current_user.get_id()}
+
+    r = requests.post(songs_mservice + "/createSong", data=payload)
+
     logging.info('{Business} Song added')
     logging.debug('{Business} END function post_song()')
     return redirect(url_for('post_song'))
@@ -152,12 +159,13 @@ def put_song():
     logging.debug('{Business} BEGIN function put_song()')
     logging.debug('{Business} Parameters: %s, %s, %s, %s, %s', song_id, title, artist, album, release_year)
 
+    payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': '/path',
+               'user_id': current_user.get_id(), 'song_id': song_id}
 
+    r = requests.put(songs_mservice + "/putSong", data=payload)
 
+    # print json.loads(r.content)
 
-    song = CRUD.read_song(song_id)
-    logging.debug('{Business} Song: %s', song)
-    CRUD.update_song(song, title, artist, album, release_year, None)
     logging.debug('{Business} END function put_song()')
     logging.info('{Business} Song updated')
     return redirect(url_for('post_song'))
@@ -209,12 +217,13 @@ def get_playlist():
 @login_required
 def get_song():
     logging.debug('{Business} BEGIN function get_song()')
-    songID = session['songID']
-    logging.debug('{Business} Parameters: %s', songID)
-    song = CRUD.read_song(songID)
+    song_id = session['songID']
+    logging.debug('{Business} Parameters: %s', song_id)
+    payload = {'song_id': song_id}
+    r = requests.get(songs_mservice + "/getSong", params=payload)
     logging.debug('{Business} END function get_song()')
     logging.info('{Business} Song retrieved')
-    return song.dump()
+    return json.loads(r.content)
 
 
 @login_required
@@ -232,48 +241,15 @@ def get_playlist_songs():
 
 @login_required
 def get_user_songs():
-    # logging.debug('{Business} BEGIN function get_user_songs()')
-    # songs = current_user.songs
-    # for i in songs:
-    #     if i.is_deleted == 1:
-    #         songs.remove(i)
-    # logging.debug('{Business} END function get_user_songs()')
-    # logging.info('{Business} Songs retrieved')
-    # return [p.dump() for p in songs]
 
-
-
-
-
-
-
-    # payload = {'userID': current_user.get_id()}
-    # r = requests.get("http://localhost:5000/getSongs", params=payload)********************
-
-
-
-
-
-
-
-    # print 'AQUI VAI: *********************'
-    # print current_user.get_id()
-    # r = requests.get("http://localhost:5000/getSongs")
-    # print r.content
-
-    # payload = {'title': 'title1', 'artist': 'artist1', 'album': 'album1', 'release_year': 2000, 'path_song': '/path', 'user_id': 1}
-    #
-    # r = requests.post("http://localhost:5000/createSong", data=payload)
+    payload = {'user_id': current_user.get_id()}
+    r = requests.get(songs_mservice+"/getSongs", params=payload)
 
     # payload = {'key1': 'value1', 'key2': 'value2'}
     #
     # r = requests.post("http://localhost:5000/test", data=payload)
 
-
-
-
-
-    return ""
+    return json.loads(r.content)
 
 
 @login_required
@@ -317,9 +293,11 @@ def delete_song():
     logging.debug('{Business} BEGIN function delete_song()')
     song_id = connexion.request.args["id"]
     logging.debug('{Business} Parameters: %s', song_id)
-    song = CRUD.read_song(song_id)
-    logging.debug('{Business} Deleting song: %s', song)
-    CRUD.delete_song(song)
+
+    payload = {'song_id': song_id}
+
+    r = requests.post(songs_mservice + "/delSong", data=payload)
+
     logging.debug('{Business} END function delete_song()')
     logging.info('{Business} Song deleted')
     return redirect(url_for('post_song'))

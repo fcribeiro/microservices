@@ -12,14 +12,59 @@ paths:
       tags: [GetSongs]
       operationId: Business.get_user_songs
       parameters:
-        - name: userID
+        - name: user_id
           in: query
           type: integer
-          description: The number of items to skip before starting to collect the result set.
+          description: Get all the user songs.
       responses:
         200:
           description: OK
-
+  /getSong:
+    get:
+      tags: [GetSongs]
+      operationId: Business.get_song
+      parameters:
+        - name: song_id
+          in: query
+          type: integer
+          description: Get information about a specific song.
+      responses:
+        200:
+          description: OK
+  /putSong:
+    put:
+      tags: [GetSongs]
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.put_song
+      parameters:
+        - in: formData
+          name: title
+          type: string
+          description: Title of the song.
+        - in: formData
+          name: artist
+          type: string
+          description: Artist name.
+        - in: formData
+          name: album
+          type: string
+          description: Album name.
+        - in: formData
+          name: release_year
+          type: integer
+          description: Year of the song release.
+        - in: formData
+          name: path_song
+          type: string
+          description: Path for the song file.
+        - in: formData
+          name: song_id
+          type: integer
+          description: Song ID.
+      responses:
+        200:
+          description: OK
   /createSong:
     post:
       summary: Create Song
@@ -51,6 +96,20 @@ paths:
           name: user_id
           type: integer
           description: User ID.
+      responses:
+        200:
+          description: OK
+  /delSong:
+    post:
+      summary: Delete Song
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.del_song
+      parameters:
+        - in: formData
+          name: song_id
+          type: integer
+          description: ID of the song.
       responses:
         200:
           description: OK
