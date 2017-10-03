@@ -49,6 +49,7 @@ def read_user_songs(user_id):
 
 def read_song(song_id):
     logging.debug('{CRUD} BEGIN function read_song()')
+    connect_database()
     logging.debug('{CRUD} Searching for id: %s', song_id)
     query = session.query(Song).filter_by(id=song_id)
     logging.debug('{CRUD} Found: %s', query.count())
@@ -61,19 +62,36 @@ def read_song(song_id):
     logging.info('{CRUD} No song found')
     return None
 
-#
-# def read_song(song_id):
-#     logging.debug('{CRUD} BEGIN function read_song()')
-#     connect_database()
-#     query = session.query(Song).filter_by(is_deleted=0).filter_by(id=song_id)
-#     logging.debug('{CRUD} Song found')
-#     logging.debug('{CRUD} END function read_song()')
-#     logging.info('{CRUD} Song retrieved')
-#     return query[0]
+
+def read_songs_criteria(title=None, artist=None):
+    logging.debug('{CRUD} BEGIN function read_songs_criteria()')
+    connect_database()
+    query = None
+    if title is not None and artist is not None:
+        logging.debug('{CRUD} Searching for title and artist: %s, %s', title, artist)
+        query = session.query(Song).filter_by(title=title).filter_by(artist=artist).filter_by(is_deleted=False)
+    elif title is None and artist is None:
+        logging.debug('{CRUD} Searching for all songs!!')
+        query = session.query(Song).filter_by(is_deleted=False)
+    else:
+        if title is not None:
+            logging.debug('{CRUD} Searching for title: %s', title)
+            query = session.query(Song).filter_by(title=title).filter_by(is_deleted=False)
+        if artist is not None:
+            logging.debug('{CRUD} Searching for artist: %s', artist)
+            query = session.query(Song).filter_by(artist=artist).filter_by(is_deleted=False)
+    logging.debug('{CRUD} Songs found: %s', query.count())
+    songs = []
+    for song in query:
+        songs.append(song)
+    logging.debug('{CRUD} END function read_songs_criteria()')
+    logging.info('{CRUD} Song(s) retrieved')
+    return songs
 
 
 def update_song(song, title=None, artist=None, album=None, release_year=None, path=None):
     logging.debug('{CRUD} BEGIN function update_song()')
+    # connect_database()
     logging.debug('{CRUD} Before %s', song)
     if title is not None:
         logging.debug('{CRUD} Changing title: %s', title)

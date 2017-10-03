@@ -5,7 +5,7 @@ import logging
 import connexion
 import json
 from connexion.decorators.decorator import ResponseContainer
-from flask import redirect, url_for, session, jsonify
+from flask import redirect, url_for, session
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 
 
@@ -262,10 +262,13 @@ def get_songs_criteria():
         title = None
     if artist == "":
         artist = None
-    songs = CRUD.read_songs_criteria(title, artist)
+
+    payload = {'title': title, 'artist': artist}
+    r = requests.get(songs_mservice + "/getSongsCriteria", params=payload)
+
     logging.debug('{Business} END function get_songs_criteria()')
     logging.info('{Business} Songs retrieved')
-    return [p.dump() for p in songs]
+    return json.loads(r.content)
 
 
 # DELETE Methods
@@ -401,7 +404,6 @@ def register():
         status_code=200,
         headers=resp.headers
     )
-
 
 
 def my_songs():

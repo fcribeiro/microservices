@@ -1,10 +1,6 @@
 from database import *
-import hashlib
 import logging
 import connexion
-from connexion.decorators.decorator import ResponseContainer
-from flask import redirect, url_for, session
-from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 
 
 # Logging configuration
@@ -25,6 +21,19 @@ def get_song(song_id):
     logging.debug('{Business} END function get_song()')
     logging.info('{Business} Song retrieved')
     return song.dump()
+
+
+def get_songs_criteria(title=None, artist=None):
+    logging.debug('{Business} BEGIN function get_songs_criteria()')
+    logging.debug('{Business} Parameters: %s, %s', title, artist)
+    if title == "":
+        title = None
+    if artist == "":
+        artist = None
+    songs = CRUD.read_songs_criteria(title, artist)
+    logging.debug('{Business} END function get_songs_criteria()')
+    logging.info('{Business} Songs retrieved')
+    return [p.dump() for p in songs]
 
 
 def put_song(title=None, artist=None, album=None, release_year=None, path_song=None, song_id=None):
@@ -49,13 +58,6 @@ def put_song(title=None, artist=None, album=None, release_year=None, path_song=N
     return song.dump()
 
 
-def post_test(key1, key2):
-    logging.debug('{Business} BEGIN function post_test()')
-    print key1
-    print key2
-    logging.debug('{Business} END function post_test()')
-
-
 def post_song(title, artist, album, release_year, path_song, user_id):
     logging.debug('{Business} BEGIN function post_song()')
     CRUD.create_song(title, artist, album, release_year, path_song, user_id)
@@ -67,11 +69,6 @@ def del_song(song_id):
     song = CRUD.read_song(song_id)
     CRUD.delete_song(song)
     logging.debug('{Business} END function del_song()')
-
-
-
-
-
 
 
 # starting connexion
@@ -87,8 +84,8 @@ CRUD.connect_database()
 
 # config
 application.config.update(
-    DEBUG = True,
-    SECRET_KEY = 'secret_xxx'
+    DEBUG=True,
+    SECRET_KEY='secret_xxx'
 )
 
 # #flask-login
@@ -101,14 +98,8 @@ application.config.update(
 # @login_manager.user_loader
 # def load_user(userid):
 #     return CRUD.read_user(id=userid)
-#
-#
-# application.add_url_rule('/mySongs', view_func=post_song)
-# application.add_url_rule('/myPlayLists', view_func=post_playlist)
-# application.add_url_rule('/login', view_func=login)
-# application.add_url_rule('/register', view_func=register)
-# application.add_url_rule('/', view_func=home)
 
+# application.add_url_rule('/', view_func=home)
 
 
 if __name__ == '__main__':

@@ -17,7 +17,6 @@ path = 'mysql+pymysql://root:ribeiro@localhost:3306/spotify'
 session = None
 
 
-
 def connect_database():
     logging.debug('{CRUD} BEGIN function connect_database()')
     engine = create_engine(path)
@@ -162,29 +161,29 @@ def read_playlist(id):
 #     return songs
 
 
-def read_songs_criteria(title=None, artist=None):
-    logging.debug('{CRUD} BEGIN function read_songs_criteria()')
-    query = None
-    if title is not None and artist is not None:
-        logging.debug('{CRUD} Searching for title and artist: %s, %s', title, artist)
-        query = session.query(Song).filter_by(title=title).filter_by(artist=artist).filter_by(is_deleted=False)
-    elif title is None and artist is None:
-        logging.debug('{CRUD} Searching for all songs!!')
-        query = session.query(Song).filter_by(is_deleted=False)
-    else:
-        if title is not None:
-            logging.debug('{CRUD} Searching for title: %s', title)
-            query = session.query(Song).filter_by(title=title).filter_by(is_deleted=False)
-        if artist is not None:
-            logging.debug('{CRUD} Searching for artist: %s', artist)
-            query = session.query(Song).filter_by(artist=artist).filter_by(is_deleted=False)
-    logging.debug('{CRUD} Songs found: %s', query.count())
-    songs = []
-    for song in query:
-        songs.append(song)
-    logging.debug('{CRUD} END function read_songs_criteria()')
-    logging.info('{CRUD} Song(s) retrieved')
-    return songs
+# def read_songs_criteria(title=None, artist=None):
+#     logging.debug('{CRUD} BEGIN function read_songs_criteria()')
+#     query = None
+#     if title is not None and artist is not None:
+#         logging.debug('{CRUD} Searching for title and artist: %s, %s', title, artist)
+#         query = session.query(Song).filter_by(title=title).filter_by(artist=artist).filter_by(is_deleted=False)
+#     elif title is None and artist is None:
+#         logging.debug('{CRUD} Searching for all songs!!')
+#         query = session.query(Song).filter_by(is_deleted=False)
+#     else:
+#         if title is not None:
+#             logging.debug('{CRUD} Searching for title: %s', title)
+#             query = session.query(Song).filter_by(title=title).filter_by(is_deleted=False)
+#         if artist is not None:
+#             logging.debug('{CRUD} Searching for artist: %s', artist)
+#             query = session.query(Song).filter_by(artist=artist).filter_by(is_deleted=False)
+#     logging.debug('{CRUD} Songs found: %s', query.count())
+#     songs = []
+#     for song in query:
+#         songs.append(song)
+#     logging.debug('{CRUD} END function read_songs_criteria()')
+#     logging.info('{CRUD} Song(s) retrieved')
+#     return songs
 
 
 # UPDATE
@@ -221,28 +220,28 @@ def update_playlist(playlist, name=None, size=None):
     logging.info('{CRUD} Playlist changed')
 
 
-def update_song(song, title=None, artist=None, album=None, release_year=None, path=None):
-    logging.debug('{CRUD} BEGIN function update_song()')
-    logging.debug('{CRUD} Before %s', song)
-    if title is not None:
-        logging.debug('{CRUD} Changing title: %s', title)
-        song.title = title
-    if artist is not None:
-        logging.debug('{CRUD} Changing artist: %s', artist)
-        song.artist = artist
-    if album is not None:
-        logging.debug('{CRUD} Changing album: %s', album)
-        song.album = album
-    if release_year is not None:
-        logging.debug('{CRUD} Changing release year: %s', release_year)
-        song.release_year = release_year
-    if path is not None:
-        logging.debug('{CRUD} Changing path: %s', path)
-        song.path = path
-    session.commit()
-    logging.debug('{CRUD} After %s', song)
-    logging.debug('{CRUD} END function update_song()')
-    logging.info('{CRUD} Song changed')
+# def update_song(song, title=None, artist=None, album=None, release_year=None, path=None):
+#     logging.debug('{CRUD} BEGIN function update_song()')
+#     logging.debug('{CRUD} Before %s', song)
+#     if title is not None:
+#         logging.debug('{CRUD} Changing title: %s', title)
+#         song.title = title
+#     if artist is not None:
+#         logging.debug('{CRUD} Changing artist: %s', artist)
+#         song.artist = artist
+#     if album is not None:
+#         logging.debug('{CRUD} Changing album: %s', album)
+#         song.album = album
+#     if release_year is not None:
+#         logging.debug('{CRUD} Changing release year: %s', release_year)
+#         song.release_year = release_year
+#     if path is not None:
+#         logging.debug('{CRUD} Changing path: %s', path)
+#         song.path = path
+#     session.commit()
+#     logging.debug('{CRUD} After %s', song)
+#     logging.debug('{CRUD} END function update_song()')
+#     logging.info('{CRUD} Song changed')
 
 
 # DELETE
