@@ -2,15 +2,97 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="416325b7-7a64-43bc-8723-9e09e6512c2a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/User.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/Business.py" afterPath="$PROJECT_DIR$/business/Business.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/swagger.yaml" afterPath="$PROJECT_DIR$/business/swagger.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/CRUD.py" afterPath="$PROJECT_DIR$/database/CRUD.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/__init__.py" afterPath="$PROJECT_DIR$/database/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/../Users_MS/.idea/.name" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/Songs_MS.iml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/Users_MS.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/misc.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/modules.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/vcs.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/business/Business.py" afterPath="$PROJECT_DIR$/../Users_MS/business/Business.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/business/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/business/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/business/swagger.yaml" afterPath="$PROJECT_DIR$/../Users_MS/business/swagger.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/__main__.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/__main__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/api.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/api.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/app.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/app.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/cli.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/cli.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/decorator.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/decorator.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/metrics.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/metrics.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/parameter.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/parameter.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/produces.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/produces.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/response.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/response.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/security.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/security.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/decorators/validation.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/validation.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/exceptions.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/exceptions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/handlers.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/handlers.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/mock.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/mock.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/operation.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/operation.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/problem.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/problem.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/resolver.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/resolver.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/utils.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/css/print.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/print.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/css/reset.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/reset.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/css/screen.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/screen.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/css/style.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/css/typography.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/typography.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/fonts/DroidSans-Bold.ttf" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/fonts/DroidSans-Bold.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/fonts/DroidSans.ttf" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/fonts/DroidSans.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/collapse.gif" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/collapse.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/expand.gif" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/expand.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/explorer_icons.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/explorer_icons.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/favicon-16x16.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/favicon-16x16.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/favicon-32x32.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/favicon-32x32.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/favicon.ico" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/favicon.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/logo_small.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/logo_small.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/pet_store_api.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/pet_store_api.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/throbber.gif" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/throbber.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/images/wordnik_api.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/wordnik_api.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/index.html" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/index.html.patch" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/index.html.patch" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/ca.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ca.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/en.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/en.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/es.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/es.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/fr.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/fr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/geo.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/geo.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/it.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/it.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/ja.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ja.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/ko-kr.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ko-kr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/pl.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/pl.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/pt.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/pt.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/ru.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ru.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/tr.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/tr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/translator.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/translator.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lang/zh-cn.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/zh-cn.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/backbone-min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/backbone-min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/es5-shim.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/es5-shim.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/handlebars-4.0.5.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/handlebars-4.0.5.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack_extended.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack_extended.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/jquery-1.8.0.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery-1.8.0.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/jquery.ba-bbq.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery.ba-bbq.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/jquery.slideto.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery.slideto.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/jquery.wiggle.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery.wiggle.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/js-yaml.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/js-yaml.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/jsoneditor.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jsoneditor.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/lodash.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/lodash.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/marked.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/marked.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/object-assign-pollyfill.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/object-assign-pollyfill.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/sanitize-html.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/sanitize-html.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/lib/swagger-oauth.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/swagger-oauth.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/o2c.html" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/o2c.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/swagger-ui.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/swagger-ui.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/swagger-ui.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/swagger-ui.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/connexion/vendor/swagger-ui/update.sh" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/update.sh" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/database/Base.py" afterPath="$PROJECT_DIR$/../Users_MS/database/Base.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/database/CRUD.py" afterPath="$PROJECT_DIR$/../Users_MS/database/CRUD.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/database/Song.py" afterPath="$PROJECT_DIR$/../Users_MS/database/Song.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/database/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/database/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Spotify/.idea/Spotify.iml" afterPath="$PROJECT_DIR$/../Spotify/.idea/Spotify.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Spotify/.idea/misc.xml" afterPath="$PROJECT_DIR$/../Spotify/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Spotify/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Spotify/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Spotify/business/Business.py" afterPath="$PROJECT_DIR$/../Spotify/business/Business.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Spotify/database/CRUD.py" afterPath="$PROJECT_DIR$/../Spotify/database/CRUD.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,18 +108,18 @@
     <SUITE FILE_PATH="coverage/Spotify$Playlist.coverage" NAME="Playlist Coverage Results" MODIFIED="1490560776902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
     <SUITE FILE_PATH="coverage/Spotify$teste.coverage" NAME="teste Coverage Results" MODIFIED="1491150803957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
     <SUITE FILE_PATH="coverage/Spotify$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1506465853104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
-    <SUITE FILE_PATH="coverage/Songs_MS$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1507064319178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
+    <SUITE FILE_PATH="coverage/Songs_MS$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1507066815700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Business.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Business.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/business/Business.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+            <state relative-caret-position="468">
+              <caret line="26" column="58" lean-forward="false" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -58,8 +140,8 @@
       <file leaf-file-name="CRUD.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/CRUD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="76" column="29" lean-forward="true" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
+            <state relative-caret-position="1368">
+              <caret line="76" column="29" lean-forward="false" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -67,11 +149,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="swagger.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="swagger.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="130" column="25" lean-forward="false" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="25" />
+            <state relative-caret-position="198">
+              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -80,7 +162,7 @@
       <file leaf-file-name="Song.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/Song.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
+            <state relative-caret-position="504">
               <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
@@ -218,8 +300,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,6 +321,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -424,47 +506,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="py.test">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Spotify" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="testToRun" value="" />
-      <option name="keywords" value="" />
-      <option name="params" value="" />
-      <option name="USE_PARAM" value="false" />
-      <option name="USE_KEYWORD" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Nosetests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Microservice" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="_new_regexPattern" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -628,6 +669,47 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Spotify" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Microservice" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <configuration name="test.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Spotify/static/test.html" />
     <configuration name="teste (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -707,19 +789,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="948" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16822916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16822916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26417372" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2774427" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2783726" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39927623" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -805,7 +887,7 @@
     <entry file="file://$PROJECT_DIR$/database/Playlist.py" />
     <entry file="file://$PROJECT_DIR$/database/Song.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
+        <state relative-caret-position="504">
           <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
@@ -813,19 +895,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/database/User.py" />
     <entry file="file://$PROJECT_DIR$/business/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -841,35 +915,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/CRUD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="76" column="29" lean-forward="true" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
+        <state relative-caret-position="1368">
+          <caret line="76" column="29" lean-forward="false" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="130" column="25" lean-forward="false" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/business/Business.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+        <state relative-caret-position="468">
+          <caret line="26" column="58" lean-forward="false" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

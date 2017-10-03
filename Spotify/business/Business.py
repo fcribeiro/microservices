@@ -479,15 +479,11 @@ def search_songs_post():
 
 @login_required
 def my_playlist_songs():
-    print "PRIMEIRO"
     session.pop('playSongID', None)
-    print "SEGUNDO"
     session['playSongID'] = connexion.request.args['id']
-    print "TERCEIRO"
     print session['playSongID']
     logging.debug('{Business} BEGIN function my_playlist_songs')
     logging.debug('{Business} BEGIN function my_playlist_songs*******************************')
-    print "OLA"
     resp = application.send_static_file('listPlayListSongs.html')
     return ResponseContainer(
         mimetype=resp.mimetype,

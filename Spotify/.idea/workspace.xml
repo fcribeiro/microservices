@@ -2,15 +2,97 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="416325b7-7a64-43bc-8723-9e09e6512c2a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Songs_MS/database/User.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Songs_MS/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/business/Business.py" afterPath="$PROJECT_DIR$/../Songs_MS/business/Business.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/business/swagger.yaml" afterPath="$PROJECT_DIR$/../Songs_MS/business/swagger.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/database/CRUD.py" afterPath="$PROJECT_DIR$/../Songs_MS/database/CRUD.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/database/__init__.py" afterPath="$PROJECT_DIR$/../Songs_MS/database/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/.name" afterPath="$PROJECT_DIR$/../Users_MS/.idea/.name" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/Songs_MS.iml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/Users_MS.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/misc.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/misc.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/modules.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/modules.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/vcs.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/business/Business.py" afterPath="$PROJECT_DIR$/../Users_MS/business/Business.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/business/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/business/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/business/swagger.yaml" afterPath="$PROJECT_DIR$/../Users_MS/business/swagger.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/__main__.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/__main__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/api.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/api.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/app.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/app.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/cli.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/cli.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/decorator.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/decorator.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/metrics.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/metrics.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/parameter.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/parameter.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/produces.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/produces.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/response.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/response.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/security.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/security.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/decorators/validation.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/decorators/validation.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/exceptions.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/exceptions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/handlers.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/handlers.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/mock.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/mock.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/operation.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/operation.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/problem.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/problem.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/resolver.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/resolver.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/utils.py" afterPath="$PROJECT_DIR$/../Users_MS/connexion/utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/css/print.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/print.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/css/reset.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/reset.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/css/screen.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/screen.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/css/style.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/css/typography.css" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/css/typography.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/fonts/DroidSans-Bold.ttf" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/fonts/DroidSans-Bold.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/fonts/DroidSans.ttf" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/fonts/DroidSans.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/collapse.gif" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/collapse.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/expand.gif" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/expand.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/explorer_icons.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/explorer_icons.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/favicon-16x16.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/favicon-16x16.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/favicon-32x32.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/favicon-32x32.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/favicon.ico" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/favicon.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/logo_small.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/logo_small.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/pet_store_api.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/pet_store_api.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/throbber.gif" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/throbber.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/images/wordnik_api.png" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/images/wordnik_api.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/index.html" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/index.html.patch" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/index.html.patch" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/ca.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ca.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/en.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/en.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/es.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/es.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/fr.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/fr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/geo.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/geo.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/it.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/it.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/ja.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ja.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/ko-kr.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ko-kr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/pl.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/pl.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/pt.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/pt.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/ru.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/ru.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/tr.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/tr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/translator.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/translator.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lang/zh-cn.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lang/zh-cn.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/backbone-min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/backbone-min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/es5-shim.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/es5-shim.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/handlebars-4.0.5.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/handlebars-4.0.5.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack_extended.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack_extended.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/jquery-1.8.0.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery-1.8.0.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/jquery.ba-bbq.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery.ba-bbq.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/jquery.slideto.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery.slideto.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/jquery.wiggle.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jquery.wiggle.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/js-yaml.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/js-yaml.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/jsoneditor.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/jsoneditor.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/lodash.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/lodash.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/marked.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/marked.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/object-assign-pollyfill.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/object-assign-pollyfill.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/sanitize-html.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/sanitize-html.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/lib/swagger-oauth.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/lib/swagger-oauth.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/o2c.html" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/o2c.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/swagger-ui.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/swagger-ui.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/swagger-ui.min.js" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/swagger-ui.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/connexion/vendor/swagger-ui/update.sh" afterPath="$PROJECT_DIR$/../Users_MS/connexion/vendor/swagger-ui/update.sh" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/database/Base.py" afterPath="$PROJECT_DIR$/../Users_MS/database/Base.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/database/CRUD.py" afterPath="$PROJECT_DIR$/../Users_MS/database/CRUD.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/database/Song.py" afterPath="$PROJECT_DIR$/../Users_MS/database/Song.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Songs_MS/database/__init__.py" afterPath="$PROJECT_DIR$/../Users_MS/database/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Spotify.iml" afterPath="$PROJECT_DIR$/.idea/Spotify.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/Business.py" afterPath="$PROJECT_DIR$/business/Business.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/CRUD.py" afterPath="$PROJECT_DIR$/database/CRUD.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,18 +106,18 @@
     <SUITE FILE_PATH="coverage/Spotify$teste__1_.coverage" NAME="teste (1) Coverage Results" MODIFIED="1491151017758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Spotify$Playlist.coverage" NAME="Playlist Coverage Results" MODIFIED="1490560776902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
     <SUITE FILE_PATH="coverage/Spotify$teste.coverage" NAME="teste Coverage Results" MODIFIED="1491150803957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
-    <SUITE FILE_PATH="coverage/Spotify$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1507064290964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
+    <SUITE FILE_PATH="coverage/Spotify$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1507068210722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Business.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Business.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/business/Business.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="469" column="26" lean-forward="true" selection-start-line="469" selection-start-column="26" selection-end-line="469" selection-end-column="26" />
+            <state relative-caret-position="8388">
+              <caret line="474" column="24" lean-forward="false" selection-start-line="474" selection-start-column="24" selection-end-line="474" selection-end-column="24" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -43,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CRUD.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CRUD.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/CRUD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+            <state relative-caret-position="953">
+              <caret line="139" column="50" lean-forward="false" selection-start-line="139" selection-start-column="50" selection-end-line="139" selection-end-column="50" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -58,8 +140,8 @@
       <file leaf-file-name="swagger.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="59" column="14" lean-forward="false" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="14" />
+            <state relative-caret-position="468">
+              <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -194,7 +276,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -229,11 +310,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Songs_MS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Users_MS" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
@@ -586,7 +668,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="171" y="123" width="1920" height="948" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1578125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -595,7 +677,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32119915" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32086852" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -860,7 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="56" lean-forward="false" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,7 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="59">
           <caret line="48" column="27" lean-forward="true" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,7 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -884,7 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-589">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,7 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13">
           <caret line="7" column="77" lean-forward="false" selection-start-line="7" selection-start-column="77" selection-end-line="7" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,36 +984,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="22" column="46" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/Business.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8388">
+          <caret line="474" column="24" lean-forward="false" selection-start-line="474" selection-start-column="24" selection-end-line="474" selection-end-column="24" />
           <folding>
-            <element signature="e#0#77#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="59" column="14" lean-forward="false" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="14" />
+        <state relative-caret-position="468">
+          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/CRUD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+        <state relative-caret-position="953">
+          <caret line="139" column="50" lean-forward="false" selection-start-line="139" selection-start-column="50" selection-end-line="139" selection-end-column="50" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/Business.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="469" column="26" lean-forward="true" selection-start-line="469" selection-start-column="26" selection-end-line="469" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
