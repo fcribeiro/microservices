@@ -13,6 +13,8 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 songs_mservice = "http://localhost:5000"
+users_mservice = "http://localhost:5001"
+play_lists_mservice = "http://localhost:5002"
 
 
 # POST Methods
@@ -22,15 +24,21 @@ def post_user():
     email = connexion.request.form['email']
     password = connexion.request.form['passwordForm']
     logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
-    if user_exists(email):
-        logging.debug('{Business} END function post_user()')
-        logging.info('{Business} Cant add user!!')
-        return redirect(url_for('register'))
+
     sha = hashlib.sha1()
     sha.update(password)
-    CRUD.create_user(name, email, sha.hexdigest())
+
+    payload = {'name': name, 'email': email, 'password': sha.hexdigest()}
+    r = requests.post(users_mservice + "/createUser", data=payload)
+    response = json.loads(r.content).get('response')
+    logging.info('{Business} User already exists: %s', response)
+
+    if response == 'True':
+        logging.info('{Business} Cant add user!!')
+    else:
+        logging.info('{Business} User added')
+
     logging.debug('{Business} END function post_user()')
-    logging.info('{Business} User added')
     return redirect(url_for('login'))
 
 
@@ -119,7 +127,11 @@ def put_user():
         email = None
     if password == "":
         password = None
-    CRUD.update_user(current_user, name, email, password)
+
+    payload = {'user_id': current_user.get_id(), 'name': name, 'email': email, 'password': password}
+
+    r = requests.put(users_mservice + "/putUser", data=payload)
+
     logging.debug('{Business} END function put_user()')
     logging.info('{Business} User updated')
     return redirect(url_for('home'))
@@ -175,9 +187,14 @@ def put_song():
 @login_required
 def get_user():
     logging.debug('{Business} BEGIN function get_user()')
-    logging.debug('{Business} User: %s', current_user)
+    logging.debug('{Business} User ID: %s', current_user.get_id())
+
+    payload = {'user_id': current_user.get_id()}
+
+    r = requests.get(users_mservice + "/getUser", params=payload)
+
     logging.debug('{Business} END function get_user()')
-    return current_user.dump()
+    return json.loads(r.content)
 
 
 @login_required
@@ -320,16 +337,16 @@ def delete_playlist():
 
 
 # OTHER Methods
-def user_exists(email):
-    logging.debug('{Business} BEGIN function user_exists()')
-    logging.debug('{Business} Checking email: %s', email)
-    user = CRUD.read_user(email=email)
-    logging.debug('{Business} END function user_exists()')
-    if user is None:
-        logging.info('{Business} No users found with the same email!!')
-        return False
-    logging.info('{Business} Email already in use!!')
-    return True
+# def user_exists(email):
+#     logging.debug('{Business} BEGIN function user_exists()')
+#     logging.debug('{Business} Checking email: %s', email)
+#     user = CRUD.read_user(email=email)
+#     logging.debug('{Business} END function user_exists()')
+#     if user is None:
+#         logging.info('{Business} No users found with the same email!!')
+#         return False
+#     logging.info('{Business} Email already in use!!')
+#     return True
 
 
 def check_login():

@@ -7,125 +7,63 @@ consumes:
 produces:
   - application/json
 paths:
-  /getSongs:
+  /createUser:
+    post:
+      summary: Create User
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.post_user
+      parameters:
+        - in: formData
+          name: name
+          type: string
+          description: User Name.
+        - in: formData
+          name: email
+          type: string
+          description: User Email.
+        - in: formData
+          name: password
+          type: string
+          description: User Password.
+      responses:
+        200:
+          description: OK
+  /getUser:
     get:
-      tags: [GetSongs]
-      operationId: Business.get_user_songs
+      tags: [GetUser]
+      operationId: Business.get_user
       parameters:
         - name: user_id
           in: query
           type: integer
-          description: Get all the user songs.
+          description: Get information about a specific User.
       responses:
         200:
           description: OK
-  /getSong:
-    get:
-      tags: [GetSongs]
-      operationId: Business.get_song
-      parameters:
-        - name: song_id
-          in: query
-          type: integer
-          description: Get information about a specific song.
-      responses:
-        200:
-          description: OK
-  /getSongsCriteria:
-    get:
-      tags: [GetSongsCriteria]
-      operationId: Business.get_songs_criteria
-      parameters:
-        - name: title
-          in: query
-          type: string
-          description: Song title.
-        - name: artist
-          in: query
-          type: string
-          description: Song artist.
-      responses:
-        200:
-          description: OK
-  /putSong:
+  /putUser:
     put:
       tags: [GetSongs]
       consumes:
         - application/x-www-form-urlencoded
-      operationId: Business.put_song
+      operationId: Business.put_user
       parameters:
-        - in: formData
-          name: title
-          type: string
-          description: Title of the song.
-        - in: formData
-          name: artist
-          type: string
-          description: Artist name.
-        - in: formData
-          name: album
-          type: string
-          description: Album name.
-        - in: formData
-          name: release_year
-          type: integer
-          description: Year of the song release.
-        - in: formData
-          name: path_song
-          type: string
-          description: Path for the song file.
-        - in: formData
-          name: song_id
-          type: integer
-          description: Song ID.
-      responses:
-        200:
-          description: OK
-  /createSong:
-    post:
-      summary: Create Song
-      consumes:
-        - application/x-www-form-urlencoded
-      operationId: Business.post_song
-      parameters:
-        - in: formData
-          name: title
-          type: string
-          description: Title of the song.
-        - in: formData
-          name: artist
-          type: string
-          description: Artist name.
-        - in: formData
-          name: album
-          type: string
-          description: Album name.
-        - in: formData
-          name: release_year
-          type: integer
-          description: Year of the song release.
-        - in: formData
-          name: path_song
-          type: string
-          description: Path for the song file.
         - in: formData
           name: user_id
           type: integer
-          description: User ID.
-      responses:
-        200:
-          description: OK
-  /delSong:
-    post:
-      summary: Delete Song
-      consumes:
-        - application/x-www-form-urlencoded
-      operationId: Business.del_song
-      parameters:
+          description: User's ID.
         - in: formData
-          name: song_id
-          type: integer
-          description: ID of the song.
+          name: name
+          type: string
+          description: User's name.
+        - in: formData
+          name: email
+          type: string
+          description: User's Email.
+        - in: formData
+          name: password
+          type: string
+          description: User's Password.
       responses:
         200:
           description: OK

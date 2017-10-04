@@ -2,7 +2,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
 import hashlib
-import requests
 from Base import Base
 from User import User
 from Song import Song
@@ -24,14 +23,6 @@ def connect_database():
     Session = sessionmaker(bind=engine)
     global session
     session = Session()
-    logging.debug('{CRUD} Checking for admin..')
-    user = read_user(email='admin')
-    if user is None:
-        logging.debug('{CRUD} Admin not found!!')
-        sha = hashlib.sha1()
-        sha.update('admin')
-        create_user('admin', 'admin', sha.hexdigest())
-        logging.debug('{CRUD} Admin created')
     logging.debug('{CRUD} END function connect_database()')
     logging.info('{CRUD} Connected to database')
 
@@ -70,19 +61,7 @@ def create_playlist(user, name):
     logging.debug('{CRUD} END function create_playlist()')
     logging.info('{CRUD} Playlist created')
 
-
-# def create_song(title, artist, album, release_year, path_song, user_id):
-#     logging.debug('{CRUD} BEGIN function create_song()')
 #
-#     payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': path_song, 'user_id': user_id}
-#
-#     r = requests.post(songs_mservice+"/createSong", data=payload)
-#
-#     logging.debug('{CRUD} Creating song: %s by user: %s', title, user_id)
-#     logging.debug('{CRUD} END function create_song()')
-#     logging.info('{CRUD} Song uploaded')
-
-
 # READ
 def read_user(email=None, id=None, password=None):
     logging.debug('{CRUD} BEGIN function read_user()')
@@ -134,58 +113,6 @@ def read_playlist(id):
     return None
 
 
-# def read_song(id):
-#     logging.debug('{CRUD} BEGIN function read_song()')
-#     logging.debug('{CRUD} Searching for id: %s', id)
-#     query = session.query(Song).filter_by(id=id)
-#     logging.debug('{CRUD} Found: %s', query.count())
-#     if query.count() != 0:
-#         logging.debug('{CRUD} Song found: %s', query[0])
-#         logging.debug('{CRUD} END function read_song()')
-#         logging.info('{CRUD} Song retrieved')
-#         return query[0]
-#     logging.debug('{CRUD} END function read_song()')
-#     logging.info('{CRUD} No song found')
-#     return None
-
-
-# def read_all_songs():
-#     logging.debug('{CRUD} BEGIN function read_all_songs()')
-#     query = session.query(Song).filter_by(is_deleted=0)
-#     logging.debug('{CRUD} Songs found: %s', query.count())
-#     songs = []
-#     for song in query:
-#         songs.append(song)
-#     logging.debug('{CRUD} END function read_all_songs()')
-#     logging.info('{CRUD} Song(s) retrieved')
-#     return songs
-
-
-# def read_songs_criteria(title=None, artist=None):
-#     logging.debug('{CRUD} BEGIN function read_songs_criteria()')
-#     query = None
-#     if title is not None and artist is not None:
-#         logging.debug('{CRUD} Searching for title and artist: %s, %s', title, artist)
-#         query = session.query(Song).filter_by(title=title).filter_by(artist=artist).filter_by(is_deleted=False)
-#     elif title is None and artist is None:
-#         logging.debug('{CRUD} Searching for all songs!!')
-#         query = session.query(Song).filter_by(is_deleted=False)
-#     else:
-#         if title is not None:
-#             logging.debug('{CRUD} Searching for title: %s', title)
-#             query = session.query(Song).filter_by(title=title).filter_by(is_deleted=False)
-#         if artist is not None:
-#             logging.debug('{CRUD} Searching for artist: %s', artist)
-#             query = session.query(Song).filter_by(artist=artist).filter_by(is_deleted=False)
-#     logging.debug('{CRUD} Songs found: %s', query.count())
-#     songs = []
-#     for song in query:
-#         songs.append(song)
-#     logging.debug('{CRUD} END function read_songs_criteria()')
-#     logging.info('{CRUD} Song(s) retrieved')
-#     return songs
-
-
 # UPDATE
 def update_user(user, name=None, email=None, password=None):
     logging.debug('{CRUD} BEGIN function update_user()')
@@ -220,30 +147,6 @@ def update_playlist(playlist, name=None, size=None):
     logging.info('{CRUD} Playlist changed')
 
 
-# def update_song(song, title=None, artist=None, album=None, release_year=None, path=None):
-#     logging.debug('{CRUD} BEGIN function update_song()')
-#     logging.debug('{CRUD} Before %s', song)
-#     if title is not None:
-#         logging.debug('{CRUD} Changing title: %s', title)
-#         song.title = title
-#     if artist is not None:
-#         logging.debug('{CRUD} Changing artist: %s', artist)
-#         song.artist = artist
-#     if album is not None:
-#         logging.debug('{CRUD} Changing album: %s', album)
-#         song.album = album
-#     if release_year is not None:
-#         logging.debug('{CRUD} Changing release year: %s', release_year)
-#         song.release_year = release_year
-#     if path is not None:
-#         logging.debug('{CRUD} Changing path: %s', path)
-#         song.path = path
-#     session.commit()
-#     logging.debug('{CRUD} After %s', song)
-#     logging.debug('{CRUD} END function update_song()')
-#     logging.info('{CRUD} Song changed')
-
-
 # DELETE
 def delete_something(stuff):
     logging.debug('{CRUD} BEGIN function delete_something()')
@@ -253,11 +156,3 @@ def delete_something(stuff):
     logging.debug('{CRUD} END function delete_something()')
     logging.info('{CRUD} %s deleted', stuff.__class__.__name__)
 
-
-# def delete_song(song):
-#     logging.debug('{CRUD} BEGIN function delete_song()')
-#     logging.debug('{CRUD} Deleting %s', song)
-#     song.is_deleted = True
-#     session.commit()
-#     logging.debug('{CRUD} END function delete_song()')
-#     logging.info('{CRUD} Song deleted')
