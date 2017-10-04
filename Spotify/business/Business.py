@@ -262,10 +262,6 @@ def get_user_songs():
     payload = {'user_id': current_user.get_id()}
     r = requests.get(songs_mservice+"/getSongs", params=payload)
 
-    # payload = {'key1': 'value1', 'key2': 'value2'}
-    #
-    # r = requests.post("http://localhost:5000/test", data=payload)
-
     return json.loads(r.content)
 
 
@@ -334,19 +330,6 @@ def delete_playlist():
     logging.debug('{Business} END function delete_playlist()')
     logging.info('{Business} Playlist deleted')
     return redirect(url_for('post_playlist'))
-
-
-# OTHER Methods
-# def user_exists(email):
-#     logging.debug('{Business} BEGIN function user_exists()')
-#     logging.debug('{Business} Checking email: %s', email)
-#     user = CRUD.read_user(email=email)
-#     logging.debug('{Business} END function user_exists()')
-#     if user is None:
-#         logging.info('{Business} No users found with the same email!!')
-#         return False
-#     logging.info('{Business} Email already in use!!')
-#     return True
 
 
 def check_login():
@@ -580,6 +563,10 @@ login_manager.login_view = "login"
 # callback to reload the user object
 @login_manager.user_loader
 def load_user(userid):
+    # a = CRUD.read_user(id=userid)
+    # print a
+    # print a
+    # print type(a)
     return CRUD.read_user(id=userid)
 
 

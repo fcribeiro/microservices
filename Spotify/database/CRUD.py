@@ -61,7 +61,7 @@ def create_playlist(user, name):
     logging.debug('{CRUD} END function create_playlist()')
     logging.info('{CRUD} Playlist created')
 
-#
+
 # READ
 def read_user(email=None, id=None, password=None):
     logging.debug('{CRUD} BEGIN function read_user()')
