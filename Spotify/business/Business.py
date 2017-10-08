@@ -365,7 +365,7 @@ def logout():
 
 @login_required
 def home():
-    print current_user
+    # print current_user
     resp = application.send_static_file('home.html')
     return ResponseContainer(
         mimetype=resp.mimetype,

@@ -14,3 +14,10 @@ paths:
       responses:
         200:
           description: OK
+  /protected:
+    get:
+      tags: [GetUser]
+      operationId: Business.protected
+      responses:
+        200:
+          description: OK

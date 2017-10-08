@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
-import hashlib
 from Base import Base
 from User import User
 

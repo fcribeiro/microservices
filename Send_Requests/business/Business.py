@@ -1,3 +1,4 @@
+import hashlib
 import logging
 import connexion
 import requests
@@ -10,11 +11,25 @@ logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(
 
 
 def login():
-    payload = {"username": "user1", "password": "abcxyz"}
+    username = 'admin'
+    password = 'admin'
 
-    r = requests.post("http://localhost:5000/auth", data=json.dumps(payload), headers={'Content-Type': 'application/json'})
+    sha = hashlib.sha1()
+    sha.update(password)
+
+    payload = {"username": username, "password": sha.hexdigest()}
+    # payload = {"username": 'user1', "password": 'abcxyz'}
+    r = requests.post("http://localhost:5001/auth", data=json.dumps(payload), headers={'Content-Type': 'application/json'})
+    # r = requests.post("http://localhost:5001/auth", data=json.dumps(payload),
+    #                   headers={'Authorization': 'token'})
     return r.content
 
+
+def protected():
+    r = requests.get("http://localhost:5001/protected",
+                      headers={'Authorization': 'jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6MSwiaWF0IjoxNTA3NDc4MzE0LCJuYmYiOjE1MDc0NzgzMTQsImV4cCI6MTUwNzQ3ODYxNH0.MKk1_yZbZuX0hqazwODsk-s08z8RqzCWMSDWMLnTx-U'})
+
+    return r.content
 
 # starting connexion
 app = connexion.App(__name__)

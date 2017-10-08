@@ -1,7 +1,6 @@
 from database import *
 import logging
 import connexion
-import requests
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
 
@@ -65,20 +64,22 @@ def login(username, password):
 
 
 def authenticate(username, password):
-    print 'ola'
+    logging.debug('{Business} BEGIN function authenticate()')
     user = CRUD.read_user(email=username)
-
     if user and safe_str_cmp(user.password.encode('utf-8'), password.encode('utf-8')):
+        logging.debug('{Business} END function authenticate()')
         return user
 
 
 def identity(payload):
     user_id = payload['identity']
-    return user_id
+    user = CRUD.read_user(id=user_id)
+    return user
 
 
 @jwt_required()
 def protected():
+    print current_identity.get_id()
     return '%s' % current_identity
 
 
@@ -87,6 +88,10 @@ app = connexion.App(__name__)
 app.add_api('swagger.yaml')
 application = app.app
 
+application.config['SECRET_KEY'] = 'super-secret'
+app.debug = True
+
+
 jwt = JWT(application, authenticate, identity)
 
 # starting database
@@ -94,11 +99,11 @@ CRUD.create_tables()
 CRUD.connect_database()
 
 
-# config
-application.config.update(
-    DEBUG=True,
-    SECRET_KEY='secret_xxx'
-)
+# # config
+# application.config.update(
+#     DEBUG=True,
+#     SECRET_KEY='secret_xxx'
+# )
 
 
 if __name__ == '__main__':

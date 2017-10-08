@@ -20,7 +20,7 @@ class User(Base, UserMixin):
         return {'id': self.id, 'name': self.name, 'email': self.email}
 
     def __repr__(self):
-        return "<User('%s', '%s', '%s')>" % (self.name, self.email, self.password)
+        return "<User('%s', '%s', '%s')>" % (self.name, self.email, self.id)
 
 
 
