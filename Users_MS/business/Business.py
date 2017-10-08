@@ -1,6 +1,9 @@
 from database import *
 import logging
 import connexion
+import requests
+from flask_jwt import JWT, jwt_required, current_identity
+from werkzeug.security import safe_str_cmp
 
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
@@ -56,11 +59,35 @@ def put_user(user_id, name=None, email=None, password=None):
     logging.info('{Business} User updated')
 
 
+def login(username, password):
+    print username
+    print password
+
+
+def authenticate(username, password):
+    print 'ola'
+    user = CRUD.read_user(email=username)
+
+    if user and safe_str_cmp(user.password.encode('utf-8'), password.encode('utf-8')):
+        return user
+
+
+def identity(payload):
+    user_id = payload['identity']
+    return user_id
+
+
+@jwt_required()
+def protected():
+    return '%s' % current_identity
+
+
 # starting connexion
 app = connexion.App(__name__)
 app.add_api('swagger.yaml')
 application = app.app
 
+jwt = JWT(application, authenticate, identity)
 
 # starting database
 CRUD.create_tables()
