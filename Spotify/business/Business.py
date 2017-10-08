@@ -6,7 +6,7 @@ import connexion
 import json
 from connexion.decorators.decorator import ResponseContainer
 from flask import redirect, url_for, session
-from flask_login import LoginManager, login_required, login_user, logout_user, current_user
+from flask_login import current_user
 
 
 # Logging configuration
@@ -29,31 +29,32 @@ def post_user():
     sha.update(password)
 
     payload = {'name': name, 'email': email, 'password': sha.hexdigest()}
-    r = requests.post(users_mservice + "/createUser", data=payload)
-    response = json.loads(r.content).get('response')
-    logging.info('{Business} User already exists: %s', response)
 
-    if response == 'True':
-        logging.info('{Business} Cant add user!!')
+    r = requests.post(users_mservice + "/createUser", data=payload)
+
+    if r.status_code == requests.codes.ok:
+        response = json.loads(r.content).get('response')
+        if response == 'True':
+            logging.info('{Business} Cant add user!!')
+        else:
+            logging.info('{Business} User added')
     else:
-        logging.info('{Business} User added')
+        logging.info('{Business} Cant add user!!')
 
     logging.debug('{Business} END function post_user()')
     return redirect(url_for('login'))
 
 
-@login_required
 def post_playlist():
     name = connexion.request.form['name']
     logging.debug('{Business} BEGIN function post_playlist()')
     logging.debug('{Business} Parameters: %s', name)
-    CRUD.create_playlist(current_user, name)
+    # CRUD.create_playlist(current_user, name)
     logging.debug('{Business} END function post_playlist()')
     logging.info('{Business} Playlist added')
     return redirect(url_for('post_playlist'))
 
 
-@login_required
 def post_song():
     title = connexion.request.form['title']
     artist = connexion.request.form['artist']
@@ -72,7 +73,6 @@ def post_song():
     return redirect(url_for('post_song'))
 
 
-@login_required
 def post_add_song_into_playlist():
     logging.debug('{Business} BEGIN function post_add_song_into_playlist()')
     playlist_id = connexion.request.args['id']
@@ -93,7 +93,6 @@ def post_add_song_into_playlist():
     return redirect(url_for('post_playlist'))
 
 
-@login_required
 def post_remove_song_from_playlist():
     logging.debug('{Business} BEGIN function post_remove_song_from_playlist()')
     playlist_id = session['playSongID']
@@ -113,14 +112,13 @@ def post_remove_song_from_playlist():
 
 
 # PUT Methods
-@login_required
+
 def put_user():
     logging.debug('{Business} BEGIN function put_user()')
     name = connexion.request.form['name']
     email = connexion.request.form['email']
     password = connexion.request.form['passwordForm']
     logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
-    logging.debug('{Business} User: %s', current_user)
     if name == "":
         name = None
     if email == "":
@@ -128,16 +126,15 @@ def put_user():
     if password == "":
         password = None
 
-    payload = {'user_id': current_user.get_id(), 'name': name, 'email': email, 'password': password}
+    payload = {'name': name, 'email': email, 'password': password}
 
-    r = requests.put(users_mservice + "/putUser", data=payload)
+    r = requests.put(users_mservice + "/putUser", data=payload, headers={'Authorization': 'JWT '+session['token']})
 
     logging.debug('{Business} END function put_user()')
     logging.info('{Business} User updated')
     return redirect(url_for('home'))
 
 
-@login_required
 def put_playlist():
     playlist_id = session['playID']
     name = connexion.request.form['name']
@@ -153,7 +150,6 @@ def put_playlist():
     return redirect(url_for('post_playlist'))
 
 
-@login_required
 def put_song():
     song_id = session['songID']
     title = connexion.request.form['title']
@@ -184,20 +180,16 @@ def put_song():
 
 
 # GET Methods
-@login_required
+
 def get_user():
     logging.debug('{Business} BEGIN function get_user()')
-    logging.debug('{Business} User ID: %s', current_user.get_id())
 
-    payload = {'user_id': current_user.get_id()}
-
-    r = requests.get(users_mservice + "/getUser", params=payload)
+    r = requests.get(users_mservice + "/getUser", headers={'Authorization': 'JWT ' + session['token']})
 
     logging.debug('{Business} END function get_user()')
     return json.loads(r.content)
 
 
-@login_required
 def get_user_playlists():
     logging.debug('{Business} BEGIN function get_user_playlists()')
     playlists = current_user.playlists
@@ -220,7 +212,6 @@ def get_user_playlists():
     return [p.dump() for p in playlists]
 
 
-@login_required
 def get_playlist():
     logging.debug('{Business} BEGIN function get_playlist()')
     playID = session['playID']
@@ -231,7 +222,6 @@ def get_playlist():
     return playlist.dump()
 
 
-@login_required
 def get_song():
     logging.debug('{Business} BEGIN function get_song()')
     song_id = session['songID']
@@ -243,7 +233,6 @@ def get_song():
     return json.loads(r.content)
 
 
-@login_required
 def get_playlist_songs():
     logging.debug('{Business} BEGIN function get_playlist_songs()')
     playlist_id = session["playSongID"]
@@ -256,16 +245,12 @@ def get_playlist_songs():
     return [p.dump() for p in songs]
 
 
-@login_required
 def get_user_songs():
-
-    payload = {'user_id': current_user.get_id()}
-    r = requests.get(songs_mservice+"/getSongs", params=payload)
+    r = requests.get(songs_mservice + "/getSongs", headers={'Authorization': 'JWT ' + session['token']})
 
     return json.loads(r.content)
 
 
-@login_required
 def get_songs_criteria():
     logging.debug('{Business} BEGIN function get_songs_criteria()')
     title = session['title']
@@ -285,7 +270,7 @@ def get_songs_criteria():
 
 
 # DELETE Methods
-@login_required
+
 def delete_user():
     logging.debug('{Business} BEGIN function delete_user()')
     logging.debug('{Business} User: %s', current_user)
@@ -304,7 +289,6 @@ def delete_user():
     return redirect(url_for('login'))
 
 
-@login_required
 def delete_song():
     logging.debug('{Business} BEGIN function delete_song()')
     song_id = connexion.request.args["id"]
@@ -319,7 +303,6 @@ def delete_song():
     return redirect(url_for('post_song'))
 
 
-@login_required
 def delete_playlist():
     logging.debug('{Business} BEGIN function delete_playlist()')
     playlist_id = connexion.request.args['id']
@@ -339,33 +322,33 @@ def check_login():
     logging.debug('{Business} Parameters: %s, %s', email, password)
     sha = hashlib.sha1()
     sha.update(password)
-    user = CRUD.read_user(email=email, password=sha.hexdigest())
-    logging.debug('{Business} END function check_login()')
-    if user is None:
-        logging.info('{Business} Login failed!!')
-        return redirect(url_for('login'))
-    else:
-        login_user(user)
+
+    payload = {"username": email, "password": sha.hexdigest()}
+    r = requests.post(users_mservice + "/auth", data=json.dumps(payload),
+                      headers={'Content-Type': 'application/json'})
+    if r.status_code == requests.codes.ok:
+        session['token'] = json.loads(r.content)['access_token']
         logging.info('{Business} Login successful!!')
+        logging.debug('{Business} END function check_login()')
         return redirect(url_for('home'))
+    logging.info('{Business} Login failed!!')
+    return redirect(url_for('login'))
 
 
-@login_required
 def logout():
     session.pop('title', None)
     session.pop('artist', None)
     session.pop('playID', None)
     session.pop('songID', None)
-    logout_user()
+    session.pop('token', None)
+    # logout_user()
     return redirect(url_for('login'))
 
 #____________________--------------________________________----------------
 #==========================================================================
 
 
-@login_required
 def home():
-    # print current_user
     resp = application.send_static_file('home.html')
     return ResponseContainer(
         mimetype=resp.mimetype,
@@ -385,7 +368,6 @@ def login():
     )
 
 
-@login_required
 def edit_account_view():
     resp = application.send_static_file('editAccount.html')
     return ResponseContainer(
@@ -416,7 +398,6 @@ def my_songs():
     )
 
 
-@login_required
 def my_playlists():
     resp = application.send_static_file('listPlayLists.html')
     return ResponseContainer(
@@ -427,7 +408,6 @@ def my_playlists():
     )
 
 
-@login_required
 def my_playlist_edit():
     session['playID'] = connexion.request.args['pID']
     print session['playID']
@@ -440,7 +420,6 @@ def my_playlist_edit():
     )
 
 
-@login_required
 def my_song_edit():
     session['songID'] = connexion.request.args['sID']
     print session['songID']
@@ -453,7 +432,6 @@ def my_song_edit():
     )
 
 
-@login_required
 def search_songs():
     resp = application.send_static_file('searchSongs.html')
     return ResponseContainer(
@@ -464,7 +442,6 @@ def search_songs():
     )
 
 
-@login_required
 def search_songs_post():
     session['title'] = connexion.request.form['title']
     session['artist'] = connexion.request.form['artist']
@@ -477,7 +454,6 @@ def search_songs_post():
     )
 
 
-@login_required
 def my_playlist_songs():
     session.pop('playSongID', None)
     session['playSongID'] = connexion.request.args['id']
@@ -493,7 +469,6 @@ def my_playlist_songs():
     )
 
 
-@login_required
 def add_song_playlist():
     session['addSongID'] = connexion.request.args['sID']
     resp = application.send_static_file('listPlayListsToAdd.html')
@@ -505,7 +480,6 @@ def add_song_playlist():
     )
 
 
-@login_required
 def create_song_view():
     resp = application.send_static_file('uploadSong.html')
     return ResponseContainer(
@@ -516,7 +490,6 @@ def create_song_view():
     )
 
 
-@login_required
 def create_playlist_view():
     resp = application.send_static_file('createPlayList.html')
     return ResponseContainer(
@@ -542,32 +515,12 @@ app = connexion.App(__name__)
 app.add_api('swagger.yaml')
 application = app.app
 
+application.config['SECRET_KEY'] = 'super-secret'
+app.debug = True
 
 # starting database
 CRUD.create_tables()
 CRUD.connect_database()
-
-
-# config
-application.config.update(
-    DEBUG = True,
-    SECRET_KEY = 'secret_xxx'
-)
-
-#flask-login
-login_manager = LoginManager()
-login_manager.init_app(application)
-login_manager.login_view = "login"
-
-
-# callback to reload the user object
-@login_manager.user_loader
-def load_user(userid):
-    # a = CRUD.read_user(id=userid)
-    # print a
-    # print a
-    # print type(a)
-    return CRUD.read_user(id=userid)
 
 
 application.add_url_rule('/mySongs', view_func=post_song)
@@ -575,7 +528,6 @@ application.add_url_rule('/myPlayLists', view_func=post_playlist)
 application.add_url_rule('/login', view_func=login)
 application.add_url_rule('/register', view_func=register)
 application.add_url_rule('/', view_func=home)
-
 
 
 if __name__ == '__main__':

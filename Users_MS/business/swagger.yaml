@@ -33,11 +33,6 @@ paths:
     get:
       tags: [GetUser]
       operationId: Business.get_user
-      parameters:
-        - name: user_id
-          in: query
-          type: integer
-          description: Get information about a specific User.
       responses:
         200:
           description: OK
@@ -48,10 +43,6 @@ paths:
         - application/x-www-form-urlencoded
       operationId: Business.put_user
       parameters:
-        - in: formData
-          name: user_id
-          type: integer
-          description: User's ID.
         - in: formData
           name: name
           type: string
@@ -67,26 +58,6 @@ paths:
       responses:
         200:
           description: OK
-  /login:
-    post:
-      tags: [Login]
-      operationId: Business.login
-      consumes:
-        - application/x-www-form-urlencoded
-      parameters:
-        - in: formData
-          name: username
-          type: string
-          description: Username.
-        - in: formData
-          name: password
-          type: string
-          description: Password.
-      responses:
-        200:
-          description: OK
-        401:
-          description: Unauthorized
   /protected:
     get:
       tags: [Login]

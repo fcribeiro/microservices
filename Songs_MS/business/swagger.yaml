@@ -11,11 +11,6 @@ paths:
     get:
       tags: [GetSongs]
       operationId: Business.get_user_songs
-      parameters:
-        - name: user_id
-          in: query
-          type: integer
-          description: Get all the user songs.
       responses:
         200:
           description: OK

@@ -1,4 +1,6 @@
-
+import jwt
+from flask import request
+from flask_jwt import jwt_required, current_identity
 from database import *
 import logging
 import connexion
@@ -8,9 +10,11 @@ import connexion
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 
-def get_user_songs(user_id):
+# @jwt_required()
+def get_user_songs():
+    print request.headers.get('Authorization')
     logging.debug('{Business} BEGIN function get_user_songs()')
-    songs = CRUD.read_user_songs(user_id)
+    songs = CRUD.read_user_songs(1)
     logging.debug('{Business} END function get_user_songs()')
     logging.info('{Business} Songs retrieved')
     return [p.dump() for p in songs]
@@ -77,30 +81,13 @@ app = connexion.App(__name__)
 app.add_api('swagger.yaml')
 application = app.app
 
+application.config['SECRET_KEY'] = 'super-secret'
+app.debug = True
+
 
 # starting database
 CRUD.create_tables()
 CRUD.connect_database()
-
-
-# config
-application.config.update(
-    DEBUG=True,
-    SECRET_KEY='secret_xxx'
-)
-
-# #flask-login
-# login_manager = LoginManager()
-# login_manager.init_app(application)
-# login_manager.login_view = "login"
-#
-#
-# # callback to reload the user object
-# @login_manager.user_loader
-# def load_user(userid):
-#     return CRUD.read_user(id=userid)
-
-# application.add_url_rule('/', view_func=home)
 
 
 if __name__ == '__main__':

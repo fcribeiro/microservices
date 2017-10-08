@@ -21,9 +21,10 @@ def post_user(name, email, password):
     return {'response': 'False'}
 
 
-def get_user(email=None, user_id=None, password=None):
+@jwt_required()
+def get_user(email=None, password=None):
     logging.debug('{Business} BEGIN function get_user()')
-    user = CRUD.read_user(email=email, id=user_id, password=password)
+    user = CRUD.read_user(email=email, id=current_identity.get_id(), password=password)
     logging.debug('{Business} END function get_user()')
     logging.info('{Business} User retrieved')
     return user.dump()
@@ -41,7 +42,8 @@ def user_exists(email):
     return True
 
 
-def put_user(user_id, name=None, email=None, password=None):
+@jwt_required()
+def put_user(name=None, email=None, password=None):
     logging.debug('{Business} BEGIN function put_user()')
     logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
     if name == "":
@@ -51,16 +53,10 @@ def put_user(user_id, name=None, email=None, password=None):
     if password == "":
         password = None
 
-    user = CRUD.read_user(id=user_id)
+    user = CRUD.read_user(id=current_identity.get_id())
     CRUD.update_user(user, name, email, password)
-
     logging.debug('{Business} END function put_user()')
     logging.info('{Business} User updated')
-
-
-def login(username, password):
-    print username
-    print password
 
 
 def authenticate(username, password):
@@ -79,7 +75,8 @@ def identity(payload):
 
 @jwt_required()
 def protected():
-    print current_identity.get_id()
+
+    # print current_identity.get_id()
     return '%s' % current_identity
 
 
@@ -97,13 +94,6 @@ jwt = JWT(application, authenticate, identity)
 # starting database
 CRUD.create_tables()
 CRUD.connect_database()
-
-
-# # config
-# application.config.update(
-#     DEBUG=True,
-#     SECRET_KEY='secret_xxx'
-# )
 
 
 if __name__ == '__main__':

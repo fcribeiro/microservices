@@ -8,6 +8,7 @@ import json
 
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
+token = ''
 
 
 def login():
@@ -22,12 +23,16 @@ def login():
     r = requests.post("http://localhost:5001/auth", data=json.dumps(payload), headers={'Content-Type': 'application/json'})
     # r = requests.post("http://localhost:5001/auth", data=json.dumps(payload),
     #                   headers={'Authorization': 'token'})
-    return r.content
+    global token
+    token = json.loads(r.content)['access_token']
+    print token
+    return json.loads(r.content)['access_token']
 
 
 def protected():
+    global token
     r = requests.get("http://localhost:5001/protected",
-                      headers={'Authorization': 'jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6MSwiaWF0IjoxNTA3NDc4MzE0LCJuYmYiOjE1MDc0NzgzMTQsImV4cCI6MTUwNzQ3ODYxNH0.MKk1_yZbZuX0hqazwODsk-s08z8RqzCWMSDWMLnTx-U'})
+                      headers={'Authorization': 'JWT '+token})
 
     return r.content
 
