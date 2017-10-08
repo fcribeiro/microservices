@@ -10,7 +10,7 @@ logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(
 
 
 def login():
-    payload = {"username": "admin", "password": "admin"}
+    payload = {"username": "user1", "password": "abcxyz"}
 
     r = requests.post("http://localhost:5000/auth", data=json.dumps(payload), headers={'Content-Type': 'application/json'})
     return r.content
