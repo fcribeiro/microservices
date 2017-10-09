@@ -247,7 +247,8 @@ def get_playlist_songs():
 
 def get_user_songs():
     r = requests.get(songs_mservice + "/getSongs", headers={'Authorization': 'JWT ' + session['token']})
-
+    if r.status_code == 401:
+        return redirect(url_for('login')) # ********* TODO
     return json.loads(r.content)
 
 

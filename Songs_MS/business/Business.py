@@ -1,6 +1,5 @@
 import jwt
 from flask import request
-from flask_jwt import jwt_required, current_identity
 from database import *
 import logging
 import connexion
@@ -9,12 +8,37 @@ import connexion
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
+secret = 'super-secret'
+algorithm = 'HS256'
 
-# @jwt_required()
+
+def decode():
+    options = {
+        'verify_signature': True,
+        'verify_exp': True,
+        'verify_nbf': True,
+        'verify_iat': True,
+        'verify_aud': True,
+        'require_exp': False,
+        'require_iat': False,
+        'require_nbf': False
+    }
+
+    encoded = request.headers.get('Authorization').split(' ')[0]
+    payload = jwt.decode(encoded, secret, algorithms=algorithm, options=options)
+
+    return payload
+
+
 def get_user_songs():
-    print request.headers.get('Authorization')
     logging.debug('{Business} BEGIN function get_user_songs()')
-    songs = CRUD.read_user_songs(1)
+
+    try:
+        payload = decode()
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
+    songs = CRUD.read_user_songs(payload['identity'])
     logging.debug('{Business} END function get_user_songs()')
     logging.info('{Business} Songs retrieved')
     return [p.dump() for p in songs]
@@ -83,7 +107,6 @@ application = app.app
 
 application.config['SECRET_KEY'] = 'super-secret'
 app.debug = True
-
 
 # starting database
 CRUD.create_tables()
