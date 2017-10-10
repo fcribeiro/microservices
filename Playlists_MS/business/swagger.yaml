@@ -1,0 +1,35 @@
+swagger: '2.0'
+info:
+  title: Songs_MS
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /createPlaylist:
+    post:
+      summary: Create Playlist
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.post_playlist
+      parameters:
+        - in: formData
+          name: name
+          type: string
+          description: Name of the playlist.
+      responses:
+        200:
+          description: OK
+  /getPlaylists:
+    get:
+      tags: [GetPlaylists]
+      operationId: Business.get_user_playlists
+      parameters:
+        - in: query
+          name: asc
+          type: integer
+          description: Asc.
+      responses:
+        200:
+          description: OK

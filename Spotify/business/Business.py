@@ -12,9 +12,9 @@ from flask_login import current_user
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
-songs_mservice = "http://localhost:5000"
+songs_mservice = "http://localhost:5005"
 users_mservice = "http://localhost:5001"
-play_lists_mservice = "http://localhost:5002"
+playlists_mservice = "http://localhost:5005"
 
 
 # POST Methods
@@ -50,6 +50,13 @@ def post_playlist():
     logging.debug('{Business} BEGIN function post_playlist()')
     logging.debug('{Business} Parameters: %s', name)
     # CRUD.create_playlist(current_user, name)
+
+    payload = {'name': name}
+    r = requests.post(playlists_mservice + "/createPlaylist", headers={'Authorization': 'JWT ' + session['token']}, data=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
     logging.debug('{Business} END function post_playlist()')
     logging.info('{Business} Playlist added')
     return redirect(url_for('post_playlist'))
@@ -200,24 +207,24 @@ def get_user():
 
 def get_user_playlists():
     logging.debug('{Business} BEGIN function get_user_playlists()')
-    playlists = current_user.playlists
     asc = connexion.request.args['asc']
     logging.debug('{Business} Asc: %s', asc)
-    if asc == "1":
-        playlists.sort(key=lambda x: x.name, reverse=False)
-    if asc == "2":
-        playlists.sort(key=lambda x: x.name, reverse=True)
-    if asc == "3":
-        playlists.sort(key=lambda x: x.size, reverse=False)
-    if asc == "4":
-        playlists.sort(key=lambda x: x.size, reverse=True)
-    if asc == "5":
-        playlists.sort(key=lambda x: x.creation_date, reverse=False)
-    if asc == "6":
-        playlists.sort(key=lambda x: x.creation_date, reverse=True)
+
+    payload = {'asc': asc}
+    r = requests.get(playlists_mservice + "/getPlaylists", headers={'Authorization': 'JWT ' + session['token']}, params=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        print r.content
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    playlists = json.loads(r.content)
+
+    # asc = connexion.request.args['asc']
+    # logging.debug('{Business} Asc: %s', asc)
+
     logging.debug('{Business} END function get_user_playlists()')
     logging.info('{Business} Playlists retrieved')
-    return [p.dump() for p in playlists]
+    return playlists
 
 
 def get_playlist():
