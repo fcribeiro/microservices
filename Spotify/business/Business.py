@@ -63,10 +63,12 @@ def post_song():
     logging.debug('{Business} BEGIN function post_song()')
     logging.debug('{Business} Parameters: %s, %s, %s, %s', title, artist, album, release_year)
 
-    payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': '/path',
-               'user_id': current_user.get_id()}
+    payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': '/path'}
 
-    r = requests.post(songs_mservice + "/createSong", data=payload)
+    r = requests.post(songs_mservice + "/createSong", headers={'Authorization': 'JWT ' + session['token']}, data=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
 
     logging.info('{Business} Song added')
     logging.debug('{Business} END function post_song()')
@@ -130,6 +132,9 @@ def put_user():
 
     r = requests.put(users_mservice + "/putUser", data=payload, headers={'Authorization': 'JWT '+session['token']})
 
+    if r.status_code != requests.codes.ok:    # ******************************************************* TODO
+        return redirect(url_for('login'))     # ******************************************************* TODO
+
     logging.debug('{Business} END function put_user()')
     logging.info('{Business} User updated')
     return redirect(url_for('home'))
@@ -168,9 +173,12 @@ def put_song():
     logging.debug('{Business} Parameters: %s, %s, %s, %s, %s', song_id, title, artist, album, release_year)
 
     payload = {'title': title, 'artist': artist, 'album': album, 'release_year': release_year, 'path_song': '/path',
-               'user_id': current_user.get_id(), 'song_id': song_id}
+               'song_id': song_id}
 
-    r = requests.put(songs_mservice + "/putSong", data=payload)
+    r = requests.put(songs_mservice + "/putSong", headers={'Authorization': 'JWT ' + session['token']}, data=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
 
     # print json.loads(r.content)
 
@@ -227,7 +235,12 @@ def get_song():
     song_id = session['songID']
     logging.debug('{Business} Parameters: %s', song_id)
     payload = {'song_id': song_id}
-    r = requests.get(songs_mservice + "/getSong", params=payload)
+
+    r = requests.get(songs_mservice + "/getSong", headers={'Authorization': 'JWT ' + session['token']}, params=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
     logging.debug('{Business} END function get_song()')
     logging.info('{Business} Song retrieved')
     return json.loads(r.content)
@@ -247,8 +260,10 @@ def get_playlist_songs():
 
 def get_user_songs():
     r = requests.get(songs_mservice + "/getSongs", headers={'Authorization': 'JWT ' + session['token']})
-    if r.status_code == 401:
-        return redirect(url_for('login')) # ********* TODO
+
+    if r.status_code != requests.codes.ok:    # ******************************************************* TODO
+        return redirect(url_for('login'))     # ******************************************************* TODO
+
     return json.loads(r.content)
 
 
@@ -263,7 +278,10 @@ def get_songs_criteria():
         artist = None
 
     payload = {'title': title, 'artist': artist}
-    r = requests.get(songs_mservice + "/getSongsCriteria", params=payload)
+    r = requests.get(songs_mservice + "/getSongsCriteria", headers={'Authorization': 'JWT ' + session['token']}, params=payload)
+
+    if r.status_code != requests.codes.ok:    # ******************************************************* TODO
+        return redirect(url_for('login'))     # ******************************************************* TODO
 
     logging.debug('{Business} END function get_songs_criteria()')
     logging.info('{Business} Songs retrieved')
@@ -296,8 +314,10 @@ def delete_song():
     logging.debug('{Business} Parameters: %s', song_id)
 
     payload = {'song_id': song_id}
+    r = requests.post(songs_mservice + "/delSong", headers={'Authorization': 'JWT ' + session['token']}, data=payload)
 
-    r = requests.post(songs_mservice + "/delSong", data=payload)
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
 
     logging.debug('{Business} END function delete_song()')
     logging.info('{Business} Song deleted')

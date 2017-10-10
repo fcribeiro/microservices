@@ -103,10 +103,6 @@ paths:
           name: path_song
           type: string
           description: Path for the song file.
-        - in: formData
-          name: user_id
-          type: integer
-          description: User ID.
       responses:
         200:
           description: OK

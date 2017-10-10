@@ -24,7 +24,7 @@ def decode():
         'require_nbf': False
     }
 
-    encoded = request.headers.get('Authorization').split(' ')[0]
+    encoded = request.headers.get('Authorization').split(' ')[1]
     payload = jwt.decode(encoded, secret, algorithms=algorithm, options=options)
 
     return payload
@@ -35,10 +35,12 @@ def get_user_songs():
 
     try:
         payload = decode()
+        print payload
     except jwt.InvalidTokenError:
         return 'ERROR', 401
 
     songs = CRUD.read_user_songs(payload['identity'])
+
     logging.debug('{Business} END function get_user_songs()')
     logging.info('{Business} Songs retrieved')
     return [p.dump() for p in songs]
@@ -46,6 +48,12 @@ def get_user_songs():
 
 def get_song(song_id):
     logging.debug('{Business} BEGIN function get_song()')
+
+    try:
+        decode()
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
     song = CRUD.read_song(song_id)
     logging.debug('{Business} END function get_song()')
     logging.info('{Business} Song retrieved')
@@ -54,6 +62,12 @@ def get_song(song_id):
 
 def get_songs_criteria(title=None, artist=None):
     logging.debug('{Business} BEGIN function get_songs_criteria()')
+
+    try:
+        decode()
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
     logging.debug('{Business} Parameters: %s, %s', title, artist)
     if title == "":
         title = None
@@ -67,6 +81,12 @@ def get_songs_criteria(title=None, artist=None):
 
 def put_song(title=None, artist=None, album=None, release_year=None, path_song=None, song_id=None):
     logging.debug('{Business} BEGIN function put_song()')
+
+    try:
+        decode()
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
     if title == "":
         title = None
     if artist == "":
@@ -87,14 +107,26 @@ def put_song(title=None, artist=None, album=None, release_year=None, path_song=N
     return song.dump()
 
 
-def post_song(title, artist, album, release_year, path_song, user_id):
+def post_song(title, artist, album, release_year, path_song):
     logging.debug('{Business} BEGIN function post_song()')
-    CRUD.create_song(title, artist, album, release_year, path_song, user_id)
+
+    try:
+        payload = decode()
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
+    CRUD.create_song(title, artist, album, release_year, path_song, payload['identity'])
     logging.debug('{Business} END function post_song()')
 
 
 def del_song(song_id):
     logging.debug('{Business} BEGIN function del_song()')
+
+    try:
+        decode()
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
     song = CRUD.read_song(song_id)
     CRUD.delete_song(song)
     logging.debug('{Business} END function del_song()')
