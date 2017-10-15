@@ -120,3 +120,17 @@ paths:
       responses:
         200:
           description: OK
+  /getPlaylistSongs:
+    get:
+      tags: [GetSongs]
+      operationId: Business.get_playlist_songs
+      parameters:
+        - name: songs
+          in: query
+          type: array
+          items:
+            type: string
+          description: Get information about a specific song.
+      responses:
+        200:
+          description: OK

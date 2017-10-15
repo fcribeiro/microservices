@@ -13,7 +13,7 @@ class Playlist(Base):
     creation_date = Column(String(90), nullable=False)  #CHANGE TO DATE
     size = Column(Integer, nullable=False)
     user_id = Column(Integer, nullable=False)
-    songs = relationship("PlaylistSongs")
+    # songs = relationship("PlaylistSongs")
 
     def __init__(self, name, user_id):
         self.name = name

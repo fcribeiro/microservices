@@ -8,7 +8,7 @@ from User import User
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 # database -> !!sensitive information!!
-path = 'mysql+pymysql://root:ribeiro@localhost:3306/spotify'
+path = 'mysql+pymysql://root:ribeiro@localhost:3306/Users_MS'
 
 session = None
 

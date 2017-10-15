@@ -29,11 +29,30 @@ def login():
 
 
 def protected():
-    global token
-    r = requests.get("http://localhost:5001/protected",
-                      headers={'Authorization': 'JWT '+token})
+    # payload = {'playlist_id': 2}
+    # r = requests.get("http://localhost:5002/getPlaylistSongs", params=payload)
+    #
+    # songs = []
+    # a = json.loads(r.content)
+    # for p in a:
+    #     songs.append(p)
+    #
+    # payload = {'songs': songs}
+    # r = requests.get("http://localhost:5001/getPlaylistSongs", params=payload)
 
-    return r.content
+    # ******************************************************************************************************
+    # ******************************************************************************************************
+
+    # payload = {'song_id': 1, 'playlist_id': 2}
+    # r = requests.post("http://localhost:5002/postSongPlaylist",
+    #                   data=payload)
+
+    payload = {'playlist_id': 2}
+    r = requests.post("http://localhost:5002/delPlaylist",
+                      data=payload)
+
+    return ''
+
 
 # starting connexion
 app = connexion.App(__name__)
@@ -49,4 +68,4 @@ application.config.update(
 
 
 if __name__ == '__main__':
-    app.run(port=5004)
+    app.run(port=5003)

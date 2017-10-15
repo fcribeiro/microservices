@@ -21,7 +21,25 @@ paths:
       responses:
         200:
           description: OK
-  /getPlaylists:
+  /postSongPlaylist:
+    post:
+      summary: Post Song To Playlist
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.post_song_playlist
+      parameters:
+        - in: formData
+          name: song_id
+          type: integer
+          description: Song ID.
+        - in: formData
+          name: playlist_id
+          type: integer
+          description: Playlist ID.
+      responses:
+        200:
+          description: OK
+  /getUserPlaylists:
     get:
       tags: [GetPlaylists]
       operationId: Business.get_user_playlists
@@ -30,6 +48,62 @@ paths:
           name: asc
           type: integer
           description: Asc.
+      responses:
+        200:
+          description: OK
+  /getPlaylistSongs:
+    get:
+      tags: [GetPlaylists]
+      operationId: Business.get_playlist_songs
+      parameters:
+        - in: query
+          name: playlist_id
+          type: integer
+          description: PlayList ID
+      responses:
+        200:
+          description: OK
+  /getPlaylist:
+    get:
+      tags: [GetPlaylists]
+      operationId: Business.get_playlist
+      parameters:
+        - in: query
+          name: playlist_id
+          type: integer
+          description: PlayList ID
+      responses:
+        200:
+          description: OK
+  /putPlaylist:
+    put:
+      tags: [PutPlaylist]
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.put_playlist
+      parameters:
+        - in: formData
+          name: playlist_id
+          type: integer
+          description: Playlist ID.
+        - in: formData
+          name: name
+          type: string
+          description: Playlist Name.
+      responses:
+        200:
+          description: OK
+  /delPlaylist:
+    post:
+      summary: Delete Playlist
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.del_playlist
+      parameters:
+        - in: formData
+          name: playlist_id
+          type: integer
+          description: ID of the Playlist.
       responses:
         200:
           description: OK

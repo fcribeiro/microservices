@@ -9,7 +9,7 @@ from Playlist_Song import PlaylistSongs
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 # database -> !!sensitive information!!
-path = 'mysql+pymysql://root:ribeiro@localhost:3306/spotify'
+path = 'mysql+pymysql://root:ribeiro@localhost:3306/Playlists_MS'
 
 session = None
 
@@ -40,11 +40,34 @@ def create_playlist(name, user_id):
     logging.debug('{CRUD} Creating playlist: %s by user: %s', playlist, user_id)
     session.add(playlist)
     session.commit()
-    playlistSong = PlaylistSongs(playlist.id, 1)
-    session.add(playlistSong)
-    session.commit()
     logging.debug('{CRUD} END function create_playlist()')
     logging.info('{CRUD} Playlist created')
+
+
+def add_song_playlist(song_id, playlist_id):
+    playlistSong = PlaylistSongs(playlist_id, song_id)
+    session.add(playlistSong)
+    session.commit()
+
+
+def read_playlist_songs(playlist_id):
+    logging.debug('{CRUD} BEGIN function read_playlist_songs()')
+    logging.debug('{CRUD} Searching for id: %s', playlist_id)
+    connect_database()
+    query = session.query(PlaylistSongs).filter_by(playlist_id=playlist_id)
+    logging.debug('{CRUD} Found: %s', query.count())
+    # if query.count() != 0:
+    #     logging.debug('{CRUD} Playlist Songs found: %s', query[0])
+    #     logging.debug('{CRUD} END function read_playlist_songs()')
+    #     logging.info('{CRUD} Playlist Songs retrieved')
+    #     print query
+    #     print query
+    songs = []
+    for song in query:
+        print song
+        songs.append(song)
+    logging.debug('{CRUD} END function read_playlist_songs()')
+    return songs
 
 
 def read_playlist(id):
@@ -70,7 +93,6 @@ def read_user_playlists(user_id):
     logging.debug('{CRUD} Found: %s', query.count())
     playlists = []
     for playlist in query:
-        print playlist
         playlists.append(playlist)
     if playlists:
         logging.debug('{CRUD} END function read_user_playlists()')
@@ -81,15 +103,17 @@ def read_user_playlists(user_id):
     return None
 
 
-def update_playlist(playlist, name=None, size=None):
+def update_playlist(playlist_id, name=None, size=None):
     logging.debug('{CRUD} BEGIN function update_playlist()')
-    logging.debug('{CRUD} Before %s', playlist)
-    if name is not None:
-        logging.debug('{CRUD} Changing name: %s', name)
-        playlist.name = name
-    if size is not None:
-        logging.debug('{CRUD} Changing size: %s', size)
-        playlist.size = size
+    logging.debug('{CRUD} ID %s', playlist_id)
+    playlist = read_playlist(playlist_id)
+    if playlist is not None:
+        if name is not None:
+            logging.debug('{CRUD} Changing name: %s', name)
+            playlist.name = name
+        if size is not None:
+            logging.debug('{CRUD} Changing size: %s', size)
+            playlist.size = size
     session.commit()
     logging.debug('{CRUD} After %s', playlist)
     logging.debug('{CRUD} END function update_playlist()')

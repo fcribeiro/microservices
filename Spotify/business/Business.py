@@ -12,9 +12,10 @@ from flask_login import current_user
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
-songs_mservice = "http://localhost:5005"
-users_mservice = "http://localhost:5001"
-playlists_mservice = "http://localhost:5005"
+
+users_mservice = "http://localhost:5000"
+songs_mservice = "http://localhost:5001"
+playlists_mservice = "http://localhost:5002"
 
 
 # POST Methods
@@ -148,15 +149,20 @@ def put_user():
 
 
 def put_playlist():
+    logging.debug('{Business} BEGIN function put_playlist()')
     playlist_id = session['playID']
     name = connexion.request.form['name']
-    logging.debug('{Business} BEGIN function put_playlist()')
     logging.debug('{Business} Parameters: %s, %s', playlist_id, name)
-    playlist = CRUD.read_playlist(playlist_id)
-    logging.debug('{Business} Playlist: %s', playlist)
     if name == "":
         name = None
-    CRUD.update_playlist(playlist, name=name)
+
+    payload = {'playlist_id': playlist_id, 'name': name}
+
+    r = requests.put(playlists_mservice + "/putPlaylist", data=payload, headers={'Authorization': 'JWT ' + session['token']})
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
     logging.debug('{Business} END function put_playlist()')
     logging.info('{Business} Playlist updated')
     return redirect(url_for('post_playlist'))
@@ -211,7 +217,7 @@ def get_user_playlists():
     logging.debug('{Business} Asc: %s', asc)
 
     payload = {'asc': asc}
-    r = requests.get(playlists_mservice + "/getPlaylists", headers={'Authorization': 'JWT ' + session['token']}, params=payload)
+    r = requests.get(playlists_mservice + "/getUserPlaylists", headers={'Authorization': 'JWT ' + session['token']}, params=payload)
 
     if r.status_code != requests.codes.ok:  # ******************************************************* TODO
         print r.content
@@ -229,12 +235,19 @@ def get_user_playlists():
 
 def get_playlist():
     logging.debug('{Business} BEGIN function get_playlist()')
-    playID = session['playID']
-    logging.debug('{Business} Parameters: %s', playID)
-    playlist = CRUD.read_playlist(playID)
+    playlist_id = session['playID']
+    logging.debug('{Business} Parameters: %s', playlist_id)
+
+    payload = {'playlist_id': playlist_id}
+
+    r = requests.get(playlists_mservice + "/getPlaylist", headers={'Authorization': 'JWT ' + session['token']}, params=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
     logging.debug('{Business} END function get_playlist()')
     logging.info('{Business} Playlist retrieved')
-    return playlist.dump()
+    return json.loads(r.content)
 
 
 def get_song():
@@ -257,12 +270,19 @@ def get_playlist_songs():
     logging.debug('{Business} BEGIN function get_playlist_songs()')
     playlist_id = session["playSongID"]
     logging.debug('{Business} Parameters: %s', playlist_id)
-    playlist = CRUD.read_playlist(playlist_id)
-    logging.debug('{Business} Playlist: %s', playlist)
-    songs = playlist.songs
+
+    payload = {'playlist_id': playlist_id}
+    r = requests.get(playlists_mservice + "/getPlaylistSongs", headers={'Authorization': 'JWT ' + session['token']}, params=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    print'SONGS ---->'
+    print json.loads(r.content)
+
     logging.debug('{Business} END function get_playlist_songs()')
     logging.info('{Business} Songs retrieved')
-    return [p.dump() for p in songs]
+    return json.loads(r.content)
 
 
 def get_user_songs():
@@ -335,9 +355,14 @@ def delete_playlist():
     logging.debug('{Business} BEGIN function delete_playlist()')
     playlist_id = connexion.request.args['id']
     logging.debug('{Business} Parameters: %s', playlist_id)
-    playlist = CRUD.read_playlist(playlist_id)
-    logging.debug('{Business} Deleting playlist: %s', playlist)
-    CRUD.delete_something(playlist)
+
+    payload = {'playlist_id': playlist_id}
+    r = requests.post(playlists_mservice + "/delPlaylist", headers={'Authorization': 'JWT ' + session['token']}, data=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    logging.debug('{Business} Deleting playlist: %s', playlist_id)
     logging.debug('{Business} END function delete_playlist()')
     logging.info('{Business} Playlist deleted')
     return redirect(url_for('post_playlist'))
@@ -437,6 +462,7 @@ def my_playlists():
 
 
 def my_playlist_edit():
+    print connexion.request.args['pID']
     session['playID'] = connexion.request.args['pID']
     print session['playID']
     resp = application.send_static_file('editPlayList.html')

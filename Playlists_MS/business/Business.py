@@ -39,7 +39,18 @@ def post_playlist(name):
         return 'ERROR', 401
 
     CRUD.create_playlist(name, payload['identity'])
+    CRUD.add_song_playlist(2, 1)
+    CRUD.add_song_playlist(2, 2)
+    CRUD.add_song_playlist(3, 2)
     logging.debug('{Business} END function post_playlist()')
+
+
+def post_song_playlist(song_id, playlist_id):
+    logging.debug('{Business} BEGIN function post_song_playlist()')
+
+    CRUD.add_song_playlist(song_id, playlist_id)
+
+    logging.debug('{Business} END function post_song_playlist()')
 
 
 def get_user_playlists(asc):
@@ -50,6 +61,9 @@ def get_user_playlists(asc):
         return 'ERROR', 401
 
     playlists = CRUD.read_user_playlists(payload['identity'])
+
+    if playlists == None:
+        return '', 400
 
     logging.debug('{Business} Asc: %s', asc)
     if asc == "1":
@@ -69,6 +83,54 @@ def get_user_playlists(asc):
     return [p.dump() for p in playlists]
 
 
+def get_playlist(playlist_id):
+    logging.debug('{Business} BEGIN function get_playlist()')
+    playlist = CRUD.read_playlist(playlist_id)
+    print playlist
+    logging.debug('{Business} END function get_playlist()')
+    return playlist.dump()
+
+
+def get_playlist_songs(playlist_id):
+    logging.debug('{Business} BEGIN function get_playlist()')
+
+    playlist_songs = CRUD.read_playlist_songs(playlist_id)
+
+    logging.debug('{Business} END function get_playlist()')
+
+    return [p.dump()['song_id'] for p in playlist_songs]
+
+
+def put_playlist(playlist_id, name):
+    logging.debug('{Business} BEGIN function put_playlist()')
+
+    CRUD.update_playlist(playlist_id=playlist_id, name=name)
+
+    logging.debug('{Business} END function put_playlist()')
+
+    return 'Success', 200
+
+
+def del_playlist(playlist_id):
+    logging.debug('{Business} BEGIN function put_playlist()')
+
+    playlist_songs = CRUD.read_playlist_songs(playlist_id)
+
+    for pSongs in playlist_songs:
+        print 'deleting song: %s', pSongs
+        CRUD.delete_something(pSongs)
+    playlist = CRUD.read_playlist(playlist_id)
+    print 'HEREEEEEEEEEEEEEEEE'
+
+    CRUD.delete_something(playlist)
+    print 'RIPPPPPPPPPPPPPPPPPPPPPPPPP'
+
+    logging.debug('{Business} END function put_playlist()')
+
+    return 'Success', 200
+
+
+
 # starting connexion
 app = connexion.App(__name__)
 app.add_api('swagger.yaml')
@@ -83,4 +145,4 @@ CRUD.connect_database()
 
 
 if __name__ == '__main__':
-    app.run(port=5005)
+    app.run(port=5002)

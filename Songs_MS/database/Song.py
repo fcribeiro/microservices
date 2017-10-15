@@ -15,13 +15,6 @@ class Song(Base):
     user_id = Column(Integer, nullable=False)
     is_deleted = Column(Boolean)
 
-    # one to many association User<->Song
-
-    # user = relationship("User", back_populates="songs")
-
-    # many to many association Playlist<->Song
-    # playlists = relationship("Playlist", secondary=playlist_song, back_populates="songs")
-
     def __init__(self, title, artist, album, release_year, path, userID):
         self.title = title
         self.artist = artist
@@ -36,6 +29,3 @@ class Song(Base):
 
     def __repr__(self):
         return "<Song('%s', '%s', '%s', '%s', '%s')>" % (self.title, self.artist, self.album, self.release_year, self.path)
-
-
-# User.songs = relationship("Song", order_by=Song.id, back_populates="user")

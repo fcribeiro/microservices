@@ -46,6 +46,10 @@ def get_user_songs():
     return [p.dump() for p in songs]
 
 
+def get_playlist_songs(songs):
+    print songs
+
+
 def get_song(song_id):
     logging.debug('{Business} BEGIN function get_song()')
 
@@ -146,4 +150,4 @@ CRUD.connect_database()
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=5001)
