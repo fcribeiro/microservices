@@ -1,4 +1,3 @@
-from database import *
 import hashlib
 import requests
 import logging
@@ -6,7 +5,6 @@ import connexion
 import json
 from connexion.decorators.decorator import ResponseContainer
 from flask import redirect, url_for, session
-from flask_login import current_user
 
 
 # Logging configuration
@@ -101,25 +99,25 @@ def post_add_song_into_playlist():
 
     logging.debug('{Business} END function post_add_song_into_playlist()')
     logging.info('{Business} Song added to playlist')
-    session.pop('addSongID', None)
+    # session.pop('addSongID', None)
     return redirect(url_for('post_playlist'))
 
 
 def post_remove_song_from_playlist():
-    logging.debug('{Business} BEGIN function post_remove_song_from_playlist()')
-    playlist_id = session['playSongID']
-    song_id = connexion.request.args['idSong']
-    logging.debug('{Business} Parameters: %s, %s', playlist_id, song_id)
-    playlist = CRUD.read_playlist(playlist_id)
-    logging.debug('{Business} Playlist: %s', playlist)
-    for song in playlist.songs:
-        if song_id == str(song.id):
-            playlist.songs.remove(song)
-    logging.debug('{Business} Changing playlist size to %s', playlist.size - 1)
-    CRUD.update_playlist(playlist, size=playlist.size - 1)
-    logging.debug('{Business} END function post_remove_song_from_playlist()')
-    logging.info('{Business} Song removed from playlist')
-    session.pop('playSongID', None)
+    # logging.debug('{Business} BEGIN function post_remove_song_from_playlist()')
+    # playlist_id = session['playSongID']
+    # song_id = connexion.request.args['idSong']
+    # logging.debug('{Business} Parameters: %s, %s', playlist_id, song_id)
+    # playlist = CRUD.read_playlist(playlist_id)
+    # logging.debug('{Business} Playlist: %s', playlist)
+    # for song in playlist.songs:
+    #     if song_id == str(song.id):
+    #         playlist.songs.remove(song)
+    # logging.debug('{Business} Changing playlist size to %s', playlist.size - 1)
+    # CRUD.update_playlist(playlist, size=playlist.size - 1)
+    # logging.debug('{Business} END function post_remove_song_from_playlist()')
+    # logging.info('{Business} Song removed from playlist')
+    # session.pop('playSongID', None)
     return redirect(url_for('post_playlist'))
 
 
@@ -320,20 +318,20 @@ def get_songs_criteria():
 # DELETE Methods
 
 def delete_user():
-    logging.debug('{Business} BEGIN function delete_user()')
-    logging.debug('{Business} User: %s', current_user)
-    for playlist in current_user.playlists:
-        logging.debug('{Business} Deleting playlist: %s', playlist)
-        CRUD.delete_something(playlist)
-    admin = CRUD.read_user(email='admin')
-    for song in current_user.songs:
-        logging.debug('{Business} Changing song user: %s', song)
-        song.user = admin
-        CRUD.update_song(song)
-    logging.debug('{Business} Deleting user: %s', current_user)
-    CRUD.delete_something(current_user)
-    logging.debug('{Business} END function delete_user()')
-    logging.info('{Business} User deleted')
+    # logging.debug('{Business} BEGIN function delete_user()')
+    # logging.debug('{Business} User: %s', current_user)
+    # for playlist in current_user.playlists:
+    #     logging.debug('{Business} Deleting playlist: %s', playlist)
+    #     CRUD.delete_something(playlist)
+    # admin = CRUD.read_user(email='admin')
+    # for song in current_user.songs:
+    #     logging.debug('{Business} Changing song user: %s', song)
+    #     song.user = admin
+    #     CRUD.update_song(song)
+    # logging.debug('{Business} Deleting user: %s', current_user)
+    # CRUD.delete_something(current_user)
+    # logging.debug('{Business} END function delete_user()')
+    # logging.info('{Business} User deleted')
     return redirect(url_for('login'))
 
 
@@ -573,10 +571,6 @@ application = app.app
 
 application.config['SECRET_KEY'] = 'super-secret'
 app.debug = True
-
-# starting database
-CRUD.create_tables()
-CRUD.connect_database()
 
 
 application.add_url_rule('/mySongs', view_func=post_song)

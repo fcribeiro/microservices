@@ -45,14 +45,12 @@ def create_playlist(name, user_id):
 
 
 def add_song_playlist(playlist_id, song_id):
-    if search_song_playlist(playlist_id, song_id):
-        playlistSong = PlaylistSongs(playlist_id, song_id)
-        session.add(playlistSong)
-        session.commit()
+    playlistSong = PlaylistSongs(playlist_id, song_id)
+    session.add(playlistSong)
+    session.commit()
 
 
 def search_song_playlist(playlist_id, song_id):
-    connect_database()
     query = session.query(PlaylistSongs).filter_by(playlist_id=playlist_id).filter_by(song_id=song_id)
     songs = []
     for song in query:

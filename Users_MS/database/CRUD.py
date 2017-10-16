@@ -54,7 +54,6 @@ def create_tables():
 
 def read_user(email=None, id=None, password=None):
     logging.debug('{CRUD} BEGIN function read_user()')
-    connect_database()
     query = None
     if password is not None:
         logging.debug('{CRUD} Searching for email: %s', email)
