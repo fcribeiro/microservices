@@ -44,16 +44,29 @@ def create_playlist(name, user_id):
     logging.info('{CRUD} Playlist created')
 
 
-def add_song_playlist(song_id, playlist_id):
-    playlistSong = PlaylistSongs(playlist_id, song_id)
-    session.add(playlistSong)
-    session.commit()
+def add_song_playlist(playlist_id, song_id):
+    if search_song_playlist(playlist_id, song_id):
+        playlistSong = PlaylistSongs(playlist_id, song_id)
+        session.add(playlistSong)
+        session.commit()
+
+
+def search_song_playlist(playlist_id, song_id):
+    connect_database()
+    query = session.query(PlaylistSongs).filter_by(playlist_id=playlist_id).filter_by(song_id=song_id)
+    songs = []
+    for song in query:
+        print song
+        songs.append(song)
+    if len(songs) == 0:
+        return True
+    else:
+        return False
 
 
 def read_playlist_songs(playlist_id):
     logging.debug('{CRUD} BEGIN function read_playlist_songs()')
     logging.debug('{CRUD} Searching for id: %s', playlist_id)
-    connect_database()
     query = session.query(PlaylistSongs).filter_by(playlist_id=playlist_id)
     logging.debug('{CRUD} Found: %s', query.count())
     # if query.count() != 0:
@@ -87,7 +100,6 @@ def read_playlist(id):
 
 def read_user_playlists(user_id):
     logging.debug('{CRUD} BEGIN function read_user_playlists()')
-    connect_database()
     logging.debug('{CRUD} Searching for id: %s', user_id)
     query = session.query(Playlist).filter_by(user_id=user_id)
     logging.debug('{CRUD} Found: %s', query.count())

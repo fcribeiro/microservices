@@ -39,9 +39,9 @@ def post_playlist(name):
         return 'ERROR', 401
 
     CRUD.create_playlist(name, payload['identity'])
-    CRUD.add_song_playlist(2, 1)
-    CRUD.add_song_playlist(2, 2)
-    CRUD.add_song_playlist(3, 2)
+    # CRUD.add_song_playlist(2, 1)
+    # CRUD.add_song_playlist(2, 2)
+    # CRUD.add_song_playlist(3, 2)
     logging.debug('{Business} END function post_playlist()')
 
 
