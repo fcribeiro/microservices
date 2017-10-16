@@ -90,13 +90,15 @@ def post_add_song_into_playlist():
     print playlist_id
     print song_id
     logging.debug('{Business} Parameters: %s, %s', playlist_id, song_id)
-    playlist = CRUD.read_playlist(playlist_id)
-    logging.debug('{Business} Playlist: %s', playlist)
-    song = CRUD.read_song(song_id)
-    logging.debug('{Business} Song: %s', song)
-    playlist.songs.append(song)
-    logging.debug('{Business} Changing playlist size to %s', playlist.size+1)
-    CRUD.update_playlist(playlist, size=playlist.size+1)
+
+    payload = {'playlist_id': playlist_id, 'song_id': song_id}
+
+    r = requests.post(playlists_mservice + "/postSongPlaylist", headers={'Authorization': 'JWT ' + session['token']},
+                      data=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
     logging.debug('{Business} END function post_add_song_into_playlist()')
     logging.info('{Business} Song added to playlist')
     session.pop('addSongID', None)

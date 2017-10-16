@@ -29,13 +29,13 @@ paths:
       operationId: Business.post_song_playlist
       parameters:
         - in: formData
-          name: song_id
-          type: integer
-          description: Song ID.
-        - in: formData
           name: playlist_id
           type: integer
           description: Playlist ID.
+        - in: formData
+          name: song_id
+          type: integer
+          description: Song ID.
       responses:
         200:
           description: OK

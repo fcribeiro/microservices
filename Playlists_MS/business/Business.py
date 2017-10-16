@@ -45,10 +45,18 @@ def post_playlist(name):
     logging.debug('{Business} END function post_playlist()')
 
 
-def post_song_playlist(song_id, playlist_id):
+def post_song_playlist(playlist_id, song_id):
     logging.debug('{Business} BEGIN function post_song_playlist()')
 
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
     CRUD.add_song_playlist(song_id, playlist_id)
+    playlist = CRUD.read_playlist(playlist_id)
+    CRUD.update_playlist(playlist_id=playlist_id, size=playlist.size+1)
 
     logging.debug('{Business} END function post_song_playlist()')
 
@@ -85,6 +93,12 @@ def get_user_playlists(asc):
 
 def get_playlist(playlist_id):
     logging.debug('{Business} BEGIN function get_playlist()')
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
     playlist = CRUD.read_playlist(playlist_id)
     print playlist
     logging.debug('{Business} END function get_playlist()')
@@ -93,6 +107,12 @@ def get_playlist(playlist_id):
 
 def get_playlist_songs(playlist_id):
     logging.debug('{Business} BEGIN function get_playlist()')
+
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
 
     playlist_songs = CRUD.read_playlist_songs(playlist_id)
 
@@ -103,6 +123,12 @@ def get_playlist_songs(playlist_id):
 
 def put_playlist(playlist_id, name):
     logging.debug('{Business} BEGIN function put_playlist()')
+
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
 
     CRUD.update_playlist(playlist_id=playlist_id, name=name)
 
@@ -128,7 +154,6 @@ def del_playlist(playlist_id):
     logging.debug('{Business} END function put_playlist()')
 
     return 'Success', 200
-
 
 
 # starting connexion
