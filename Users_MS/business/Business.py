@@ -30,6 +30,15 @@ def get_user(email=None, password=None):
     return user.dump()
 
 
+@jwt_required()
+def get_admin():
+    logging.debug('{Business} BEGIN function get_admin()')
+    user = CRUD.read_user(email='admin')
+    logging.debug('{Business} END function get_admin()')
+    logging.info('{Business} User retrieved')
+    return user.dump()['id']
+
+
 def user_exists(email):
     logging.debug('{Business} BEGIN function user_exists()')
     logging.debug('{Business} Checking email: %s', email)
@@ -57,6 +66,14 @@ def put_user(name=None, email=None, password=None):
     CRUD.update_user(user, name, email, password)
     logging.debug('{Business} END function put_user()')
     logging.info('{Business} User updated')
+
+
+@jwt_required()
+def del_user():
+    logging.debug('{Business} BEGIN function del_user()')
+    logging.debug('{Business} Deleting User: %s', current_identity)
+    CRUD.delete_something(current_identity)
+    logging.debug('{Business} END function del_user()')
 
 
 def authenticate(username, password):

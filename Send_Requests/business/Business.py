@@ -47,7 +47,7 @@ def protected():
     # r = requests.post("http://localhost:5002/postSongPlaylist",
     #                   data=payload)
 
-    payload = {'playlist_id': 2}
+    payload = {'playlist_id': 1}
     r = requests.post("http://localhost:5002/delPlaylist",
                       data=payload)
 

@@ -136,6 +136,21 @@ def del_song(song_id):
     logging.debug('{Business} END function del_song()')
 
 
+def del_user_songs(admin_id):
+    logging.debug('{Business} BEGIN function del_user_songs()')
+
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
+    songs = CRUD.read_user_songs(payload['identity'])
+    CRUD.update_song_owner(songs=songs, admin_id=admin_id)
+
+    logging.debug('{Business} END function del_user_songs()')
+
+
 # starting connexion
 app = connexion.App(__name__)
 app.add_api('swagger.yaml')

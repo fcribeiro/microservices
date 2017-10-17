@@ -1,3 +1,5 @@
+import hashlib
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
@@ -13,17 +15,6 @@ path = 'mysql+pymysql://root:ribeiro@localhost:3306/Users_MS'
 session = None
 
 
-def connect_database():
-    logging.debug('{CRUD} BEGIN function connect_database()')
-    engine = create_engine(path)
-    logging.debug('{CRUD} Connect to database on path: %s', path)
-    Session = sessionmaker(bind=engine)
-    global session
-    session = Session()
-    logging.debug('{CRUD} END function connect_database()')
-    logging.info('{CRUD} Connected to database')
-
-
 # def connect_database():
 #     logging.debug('{CRUD} BEGIN function connect_database()')
 #     engine = create_engine(path)
@@ -31,16 +22,27 @@ def connect_database():
 #     Session = sessionmaker(bind=engine)
 #     global session
 #     session = Session()
-#     logging.debug('{CRUD} Checking for admin..')
-#     user = read_user(email='admin')
-#     if user is None:
-#         logging.debug('{CRUD} Admin not found!!')
-#         sha = hashlib.sha1()
-#         sha.update('admin')
-#         create_user('admin', 'admin', sha.hexdigest())
-#         logging.debug('{CRUD} Admin created')
 #     logging.debug('{CRUD} END function connect_database()')
 #     logging.info('{CRUD} Connected to database')
+
+
+def connect_database():
+    logging.debug('{CRUD} BEGIN function connect_database()')
+    engine = create_engine(path)
+    logging.debug('{CRUD} Connect to database on path: %s', path)
+    Session = sessionmaker(bind=engine)
+    global session
+    session = Session()
+    logging.debug('{CRUD} Checking for admin..')
+    user = read_user(email='admin')
+    if user is None:
+        logging.debug('{CRUD} Admin not found!!')
+        sha = hashlib.sha1()
+        sha.update('admin')
+        create_user('admin', 'admin', sha.hexdigest())
+        logging.debug('{CRUD} Admin created')
+    logging.debug('{CRUD} END function connect_database()')
+    logging.info('{CRUD} Connected to database')
 
 
 def create_tables():
@@ -118,3 +120,13 @@ def update_user(user, name=None, email=None, password=None):
     logging.debug('{CRUD} After %s', user)
     logging.debug('{CRUD} END function update_user()')
     logging.info('{CRUD} User changed')
+
+
+# DELETE
+def delete_something(stuff):
+    logging.debug('{CRUD} BEGIN function delete_something()')
+    logging.debug('{CRUD} Deleting %s', stuff)
+    session.delete(stuff)
+    session.commit()
+    logging.debug('{CRUD} END function delete_something()')
+    logging.info('{CRUD} %s deleted', stuff.__class__.__name__)

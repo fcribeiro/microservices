@@ -106,6 +106,20 @@ paths:
       responses:
         200:
           description: OK
+  /getPlaylistSongs:
+    get:
+      tags: [GetSongs]
+      operationId: Business.get_playlist_songs
+      parameters:
+        - name: songs
+          in: query
+          type: array
+          items:
+            type: string
+          description: Get information about a specific song.
+      responses:
+        200:
+          description: OK
   /delSong:
     post:
       summary: Delete Song
@@ -120,17 +134,17 @@ paths:
       responses:
         200:
           description: OK
-  /getPlaylistSongs:
-    get:
-      tags: [GetSongs]
-      operationId: Business.get_playlist_songs
+  /delUserSongs:
+    post:
+      summary: Delete User Songs
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.del_user_songs
       parameters:
-        - name: songs
-          in: query
-          type: array
-          items:
-            type: string
-          description: Get information about a specific song.
+        - in: formData
+          name: admin_id
+          type: integer
+          description: ID of admin user.
       responses:
         200:
           description: OK

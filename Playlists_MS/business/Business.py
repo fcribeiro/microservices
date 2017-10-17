@@ -140,19 +140,46 @@ def put_playlist(playlist_id, name):
 def del_playlist(playlist_id):
     logging.debug('{Business} BEGIN function put_playlist()')
 
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
     playlist_songs = CRUD.read_playlist_songs(playlist_id)
 
     for pSongs in playlist_songs:
         print 'deleting song: %s', pSongs
         CRUD.delete_something(pSongs)
     playlist = CRUD.read_playlist(playlist_id)
-    print 'HEREEEEEEEEEEEEEEEE'
 
     CRUD.delete_something(playlist)
-    print 'RIPPPPPPPPPPPPPPPPPPPPPPPPP'
 
     logging.debug('{Business} END function put_playlist()')
 
+    return 'Success', 200
+
+
+def del_user_playlists():
+    logging.debug('{Business} BEGIN function put_playlist()')
+
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
+    user_playlists = CRUD.read_user_playlists(payload['identity'])
+
+    for p in user_playlists:
+        playlist_id = p.dump()['id']
+        playlist_songs = CRUD.read_playlist_songs(playlist_id)
+        for pSongs in playlist_songs:
+            print 'deleting song: %s', pSongs
+            CRUD.delete_something(pSongs)
+        CRUD.delete_something(p)
+
+    logging.debug('{Business} END function put_playlist()')
     return 'Success', 200
 
 

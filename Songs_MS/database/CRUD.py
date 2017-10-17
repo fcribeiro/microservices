@@ -115,6 +115,15 @@ def update_song(song, title=None, artist=None, album=None, release_year=None, pa
     return song
 
 
+def update_song_owner(songs, admin_id):
+    logging.debug('{CRUD} BEGIN function update_song_owner()')
+    for s in songs:
+        s.user_id = admin_id
+    session.commit()
+    logging.debug('{CRUD} END function update_song_owner()')
+    logging.info('{CRUD} Song changed')
+
+
 def create_song(title, artist, album, release_year, path_song, user_id):
     logging.debug('{CRUD} BEGIN function create_song()')
     connect_database()

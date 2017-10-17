@@ -107,3 +107,12 @@ paths:
       responses:
         200:
           description: OK
+  /delUserPlaylists:
+    post:
+      summary: Delete User Playlists
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.del_user_playlists
+      responses:
+        200:
+          description: OK

@@ -318,20 +318,28 @@ def get_songs_criteria():
 # DELETE Methods
 
 def delete_user():
-    # logging.debug('{Business} BEGIN function delete_user()')
-    # logging.debug('{Business} User: %s', current_user)
-    # for playlist in current_user.playlists:
-    #     logging.debug('{Business} Deleting playlist: %s', playlist)
-    #     CRUD.delete_something(playlist)
-    # admin = CRUD.read_user(email='admin')
-    # for song in current_user.songs:
-    #     logging.debug('{Business} Changing song user: %s', song)
-    #     song.user = admin
-    #     CRUD.update_song(song)
-    # logging.debug('{Business} Deleting user: %s', current_user)
-    # CRUD.delete_something(current_user)
-    # logging.debug('{Business} END function delete_user()')
-    # logging.info('{Business} User deleted')
+    logging.debug('{Business} BEGIN function delete_user()')
+
+    r = requests.post(playlists_mservice + "/delUserPlaylists", headers={'Authorization': 'JWT ' + session['token']})
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    r = requests.post(users_mservice + "/getAdmin", headers={'Authorization': 'JWT ' + session['token']})
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    payload = {'admin_id': json.loads(r.content)}
+
+    r = requests.post(songs_mservice + "/delUserSongs", headers={'Authorization': 'JWT ' + session['token']}, data=payload)
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    r = requests.post(users_mservice + "/delUser", headers={'Authorization': 'JWT ' + session['token']})
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    logging.debug('{Business} END function delete_user()')
+    logging.info('{Business} User deleted')
     return redirect(url_for('login'))
 
 

@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="416325b7-7a64-43bc-8723-9e09e6512c2a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/Base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/CRUD.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/Playlist.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/Playlist_Song.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/Song.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/User.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database/__init__.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Playlists_MS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Playlists_MS/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Playlists_MS/business/Business.py" afterPath="$PROJECT_DIR$/../Playlists_MS/business/Business.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Playlists_MS/business/swagger.yaml" afterPath="$PROJECT_DIR$/../Playlists_MS/business/swagger.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Playlists_MS/database/CRUD.py" afterPath="$PROJECT_DIR$/../Playlists_MS/database/CRUD.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Send_Requests/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Send_Requests/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Send_Requests/business/Business.py" afterPath="$PROJECT_DIR$/../Send_Requests/business/Business.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Songs_MS/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/business/Business.py" afterPath="$PROJECT_DIR$/../Songs_MS/business/Business.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/business/swagger.yaml" afterPath="$PROJECT_DIR$/../Songs_MS/business/swagger.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/database/CRUD.py" afterPath="$PROJECT_DIR$/../Songs_MS/database/CRUD.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/Business.py" afterPath="$PROJECT_DIR$/business/Business.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Users_MS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Users_MS/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Users_MS/business/Business.py" afterPath="$PROJECT_DIR$/../Users_MS/business/Business.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Users_MS/business/swagger.yaml" afterPath="$PROJECT_DIR$/../Users_MS/business/swagger.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Users_MS/database/CRUD.py" afterPath="$PROJECT_DIR$/../Users_MS/database/CRUD.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +31,7 @@
     <SUITE FILE_PATH="coverage/Spotify$teste__1_.coverage" NAME="teste (1) Coverage Results" MODIFIED="1491151017758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Spotify$Playlist.coverage" NAME="Playlist Coverage Results" MODIFIED="1490560776902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
     <SUITE FILE_PATH="coverage/Spotify$teste.coverage" NAME="teste Coverage Results" MODIFIED="1491150803957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
-    <SUITE FILE_PATH="coverage/Spotify$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1508195591133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
+    <SUITE FILE_PATH="coverage/Spotify$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1508199426740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -40,8 +41,8 @@
       <file leaf-file-name="Business.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/business/Business.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state relative-caret-position="179">
+              <caret line="330" column="49" lean-forward="false" selection-start-line="330" selection-start-column="49" selection-end-line="330" selection-end-column="49" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -132,8 +133,8 @@
       <file leaf-file-name="swagger.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2592">
-              <caret line="144" column="40" lean-forward="false" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="40" />
+            <state relative-caret-position="162">
+              <caret line="287" column="16" lean-forward="false" selection-start-line="287" selection-start-column="3" selection-end-line="287" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -152,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>user_loader</find>
       <find>read_user</find>
       <find>check_login</find>
       <find>read_playlist</find>
@@ -182,6 +182,7 @@
       <find>get_playlist</find>
       <find>/getSong</find>
       <find>addSongID</find>
+      <find>deleteAccount</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -664,7 +665,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3075995" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3075995" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -934,14 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2592">
-          <caret line="144" column="40" lean-forward="false" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/business/static/editPlayList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -998,10 +991,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/business/swagger.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="287" column="16" lean-forward="false" selection-start-line="287" selection-start-column="3" selection-end-line="287" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/business/Business.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        <state relative-caret-position="179">
+          <caret line="330" column="49" lean-forward="false" selection-start-line="330" selection-start-column="49" selection-end-line="330" selection-end-column="49" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

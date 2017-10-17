@@ -67,12 +67,6 @@ def read_playlist_songs(playlist_id):
     logging.debug('{CRUD} Searching for id: %s', playlist_id)
     query = session.query(PlaylistSongs).filter_by(playlist_id=playlist_id)
     logging.debug('{CRUD} Found: %s', query.count())
-    # if query.count() != 0:
-    #     logging.debug('{CRUD} Playlist Songs found: %s', query[0])
-    #     logging.debug('{CRUD} END function read_playlist_songs()')
-    #     logging.info('{CRUD} Playlist Songs retrieved')
-    #     print query
-    #     print query
     songs = []
     for song in query:
         print song
