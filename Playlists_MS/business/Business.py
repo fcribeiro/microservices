@@ -56,7 +56,7 @@ def post_song_playlist(playlist_id, song_id):
     except jwt.InvalidTokenError:
         return 'ERROR', 401
     if CRUD.search_song_playlist(playlist_id, song_id):
-        CRUD.add_song_playlist(song_id, playlist_id)
+        CRUD.add_song_playlist(playlist_id, song_id)
         playlist = CRUD.read_playlist(playlist_id)
         CRUD.update_playlist(playlist_id=playlist_id, size=playlist.size+1)
 

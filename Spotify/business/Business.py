@@ -278,8 +278,14 @@ def get_playlist_songs():
         return redirect(url_for('login'))  # ******************************************************* TODO
 
     print'SONGS ---->'
-    print json.loads(r.content)
 
+    requests.get('http://localhost:5005/getPlaylistSongs', data=r.content)
+
+
+    payload = {'songs': r.content}
+    requests.get(songs_mservice+'/getPlaylistSongs', params = payload)
+
+    print json.loads(r.content)
     logging.debug('{Business} END function get_playlist_songs()')
     logging.info('{Business} Songs retrieved')
     return json.loads(r.content)

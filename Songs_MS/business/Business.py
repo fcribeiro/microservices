@@ -50,6 +50,8 @@ def get_user_songs():
 
 def get_playlist_songs(songs):
     print songs
+    print songs[0]
+    print songs[1]
 
 
 def get_song(song_id):
@@ -168,7 +170,7 @@ while True:
         CRUD.connect_database()
     except exc.SQLAlchemyError:
         print 'DATABASE Exception'
-        time.sleep(10)
+        time.sleep(1)
         continue
     break
 

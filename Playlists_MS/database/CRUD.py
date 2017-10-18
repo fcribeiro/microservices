@@ -1,6 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
+
+from sqlalchemy_utils import database_exists, create_database
+
 from Base import Base
 from Playlist import Playlist
 from Playlist_Song import PlaylistSongs
@@ -28,6 +31,8 @@ def connect_database():
 def create_tables():
     logging.debug('{CRUD} BEGIN function create_tables()')
     engine = create_engine(path)
+    if not database_exists(engine.url):
+        create_database(engine.url)
     logging.debug('{CRUD} Connect to database on path: %s', path)
     Base.metadata.create_all(engine)
     logging.debug('{CRUD} END function create_tables()')
