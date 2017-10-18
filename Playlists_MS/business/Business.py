@@ -3,6 +3,8 @@ from flask import request
 from database import *
 import logging
 import connexion
+from sqlalchemy import exc
+import time
 
 
 # Logging configuration
@@ -192,8 +194,15 @@ application.config['SECRET_KEY'] = 'super-secret'
 app.debug = True
 
 # starting database
-CRUD.create_tables()
-CRUD.connect_database()
+while True:
+    try:
+        CRUD.create_tables()
+        CRUD.connect_database()
+    except exc.SQLAlchemyError:
+        print 'DATABASE Exception'
+        time.sleep(10)
+        continue
+    break
 
 
 if __name__ == '__main__':

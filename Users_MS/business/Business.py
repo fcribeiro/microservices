@@ -3,6 +3,9 @@ import logging
 import connexion
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
+from sqlalchemy import exc
+import time
+
 
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
@@ -109,8 +112,15 @@ app.debug = True
 jwt = JWT(application, authenticate, identity)
 
 # starting database
-CRUD.create_tables()
-CRUD.connect_database()
+while True:
+    try:
+        CRUD.create_tables()
+        CRUD.connect_database()
+    except exc.SQLAlchemyError:
+        print 'DATABASE Exception'
+        time.sleep(10)
+        continue
+    break
 
 
 if __name__ == '__main__':
