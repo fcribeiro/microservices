@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 import logging
+import os
 from Base import Base
 from Song import Song
 
@@ -9,7 +10,9 @@ from Song import Song
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 # database -> !!sensitive information!!
-path = 'mysql+pymysql://root:ribeiro@localhost:3306/Songs_MS'
+
+db_host = os.environ['DATABASEADDRESS']
+path = 'mysql+pymysql://root:ribeiro@'+db_host+'/Songs_MS'
 
 session = None
 

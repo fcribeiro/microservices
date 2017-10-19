@@ -1,3 +1,4 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
@@ -12,7 +13,8 @@ from Playlist_Song import PlaylistSongs
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 # database -> !!sensitive information!!
-path = 'mysql+pymysql://root:ribeiro@localhost:3306/Playlists_MS'
+db_host = os.environ['DATABASEADDRESS']
+path = 'mysql+pymysql://root:ribeiro@'+db_host+'/Playlists_MS'
 
 session = None
 

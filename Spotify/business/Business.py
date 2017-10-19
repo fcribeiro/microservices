@@ -1,4 +1,6 @@
 import hashlib
+
+import os
 import requests
 import logging
 import connexion
@@ -10,10 +12,9 @@ from flask import redirect, url_for, session
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
-
-users_mservice = "http://localhost:5000"
-songs_mservice = "http://localhost:5001"
-playlists_mservice = "http://localhost:5002"
+users_mservice = "http://" + os.environ['USERSADDRESS']
+songs_mservice = "http://" + os.environ['SONGSADDRESS']
+playlists_mservice = "http://" + os.environ['PLAYLISTSADDRESS']
 
 
 # POST Methods
@@ -279,8 +280,7 @@ def get_playlist_songs():
 
     print'SONGS ---->'
 
-    requests.get('http://localhost:5005/getPlaylistSongs', data=r.content)
-
+    requests.get(songs_mservice+'/getPlaylistSongs', data=r.content)
 
     payload = {'songs': r.content}
     requests.get(songs_mservice+'/getPlaylistSongs', params = payload)

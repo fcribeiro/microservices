@@ -1,5 +1,6 @@
 import hashlib
 
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import logging
@@ -13,7 +14,8 @@ from User import User
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
 # database -> !!sensitive information!!
-path = 'mysql+pymysql://root:ribeiro@localhost:3306/Users_MS'
+db_host = os.environ['DATABASEADDRESS']
+path = 'mysql+pymysql://root:ribeiro@'+db_host+'/Users_MS'
 
 session = None
 

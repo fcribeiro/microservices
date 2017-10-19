@@ -200,7 +200,7 @@ while True:
         CRUD.connect_database()
     except exc.SQLAlchemyError:
         print 'DATABASE Exception'
-        time.sleep(10)
+        time.sleep(3)
         continue
     break
 
