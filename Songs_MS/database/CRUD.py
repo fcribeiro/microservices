@@ -41,10 +41,14 @@ def create_tables():
     logging.info('{CRUD} Tables created')
 
 
-def read_user_songs(user_id):
+def read_user_songs(user_id, search_all):
     logging.debug('{CRUD} BEGIN function read_user_songs()')
     connect_database()
-    query = session.query(Song).filter_by(is_deleted=0).filter_by(user_id=user_id)
+    if search_all == 0:
+        query = session.query(Song).filter_by(is_deleted=0).filter_by(user_id=user_id)
+    else:
+        query = session.query(Song).filter_by(user_id=user_id)
+
     logging.debug('{CRUD} Songs found: %s', query.count())
     songs = []
     for song in query:

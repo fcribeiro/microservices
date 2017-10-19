@@ -41,17 +41,28 @@ def get_user_songs():
     except jwt.InvalidTokenError:
         return 'ERROR', 401
 
-    songs = CRUD.read_user_songs(payload['identity'])
+    songs = CRUD.read_user_songs(user_id=payload['identity'], search_all=0)
 
     logging.debug('{Business} END function get_user_songs()')
     logging.info('{Business} Songs retrieved')
     return [p.dump() for p in songs]
 
 
-def get_playlist_songs(songs):
-    print songs
-    print songs[0]
-    print songs[1]
+def get_playlist_songs():
+    logging.debug('{Business} BEGIN function get_playlist_songs()')
+    try:
+        decode()
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
+    songs = request.json
+    final_songs = []
+    for song_id in songs:
+        r = CRUD.read_song(song_id)
+        if r:
+            final_songs.append(r)
+    logging.debug('{Business} END function get_playlist_songs()')
+    return [p.dump() for p in final_songs]
 
 
 def get_song(song_id):
@@ -149,7 +160,12 @@ def del_user_songs(admin_id):
     except jwt.InvalidTokenError:
         return 'ERROR', 401
 
-    songs = CRUD.read_user_songs(payload['identity'])
+    print' ADMIN ID:'
+    print admin_id
+    print 'USER: '
+    print payload['identity']
+
+    songs = CRUD.read_user_songs(user_id=payload['identity'], search_all=1)
     CRUD.update_song_owner(songs=songs, admin_id=admin_id)
 
     logging.debug('{Business} END function del_user_songs()')

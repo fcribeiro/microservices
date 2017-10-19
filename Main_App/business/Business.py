@@ -105,20 +105,22 @@ def post_add_song_into_playlist():
 
 
 def post_remove_song_from_playlist():
-    # logging.debug('{Business} BEGIN function post_remove_song_from_playlist()')
-    # playlist_id = session['playSongID']
-    # song_id = connexion.request.args['idSong']
-    # logging.debug('{Business} Parameters: %s, %s', playlist_id, song_id)
-    # playlist = CRUD.read_playlist(playlist_id)
-    # logging.debug('{Business} Playlist: %s', playlist)
-    # for song in playlist.songs:
-    #     if song_id == str(song.id):
-    #         playlist.songs.remove(song)
-    # logging.debug('{Business} Changing playlist size to %s', playlist.size - 1)
-    # CRUD.update_playlist(playlist, size=playlist.size - 1)
-    # logging.debug('{Business} END function post_remove_song_from_playlist()')
-    # logging.info('{Business} Song removed from playlist')
-    # session.pop('playSongID', None)
+    logging.debug('{Business} BEGIN function post_remove_song_from_playlist()')
+    playlist_id = session['playSongID']
+    song_id = connexion.request.args['idSong']
+    logging.debug('{Business} Parameters: %s, %s', playlist_id, song_id)
+
+    payload = {'playlist_id': playlist_id, 'song_id': song_id}
+
+    r = requests.post(playlists_mservice + "/delPlaylistSong", headers={'Authorization': 'JWT ' + session['token']},
+                      data=payload)
+
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
+
+    logging.debug('{Business} END function post_remove_song_from_playlist()')
+    logging.info('{Business} Song removed from playlist')
+    session.pop('playSongID', None)
     return redirect(url_for('post_playlist'))
 
 
@@ -278,14 +280,11 @@ def get_playlist_songs():
     if r.status_code != requests.codes.ok:  # ******************************************************* TODO
         return redirect(url_for('login'))  # ******************************************************* TODO
 
-    print'SONGS ---->'
+    r = requests.get(songs_mservice+'/getPlaylistSongs', headers={'Authorization': 'JWT ' + session['token']}, json=json.loads(r.content))
 
-    requests.get(songs_mservice+'/getPlaylistSongs', data=r.content)
+    if r.status_code != requests.codes.ok:  # ******************************************************* TODO
+        return redirect(url_for('login'))  # ******************************************************* TODO
 
-    payload = {'songs': r.content}
-    requests.get(songs_mservice+'/getPlaylistSongs', params = payload)
-
-    print json.loads(r.content)
     logging.debug('{Business} END function get_playlist_songs()')
     logging.info('{Business} Songs retrieved')
     return json.loads(r.content)
@@ -330,11 +329,13 @@ def delete_user():
     if r.status_code != requests.codes.ok:  # ******************************************************* TODO
         return redirect(url_for('login'))  # ******************************************************* TODO
 
-    r = requests.post(users_mservice + "/getAdmin", headers={'Authorization': 'JWT ' + session['token']})
+    r = requests.get(users_mservice + "/getAdmin", headers={'Authorization': 'JWT ' + session['token']})
     if r.status_code != requests.codes.ok:  # ******************************************************* TODO
         return redirect(url_for('login'))  # ******************************************************* TODO
 
     payload = {'admin_id': json.loads(r.content)}
+    print 'ADMIN ID ---------> '
+    print payload['admin_id']
 
     r = requests.post(songs_mservice + "/delUserSongs", headers={'Authorization': 'JWT ' + session['token']}, data=payload)
     if r.status_code != requests.codes.ok:  # ******************************************************* TODO

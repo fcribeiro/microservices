@@ -116,3 +116,22 @@ paths:
       responses:
         200:
           description: OK
+  /delPlaylistSong:
+    post:
+      summary: Delete Playlist Song
+      consumes:
+        - application/x-www-form-urlencoded
+      operationId: Business.del_playlist_song
+      parameters:
+        - in: formData
+          name: playlist_id
+          type: integer
+          description: ID of the Playlist.
+        - in: formData
+          name: song_id
+          type: integer
+          description: ID of the Song.
+
+      responses:
+        200:
+          description: OK

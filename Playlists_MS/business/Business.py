@@ -185,6 +185,25 @@ def del_user_playlists():
     return 'Success', 200
 
 
+def del_playlist_song(playlist_id, song_id):
+    try:
+        payload = decode()
+        print payload
+    except jwt.InvalidTokenError:
+        return 'ERROR', 401
+
+    song = CRUD.read_one_playlist_song(playlist_id, song_id)
+
+    if song:
+        play = CRUD.read_playlist(playlist_id)
+        play = play.dump()
+        CRUD.update_playlist(playlist_id=playlist_id, size=play['size']-1)
+        CRUD.delete_something(song)
+        return '', 200
+    else:
+        return '', 400
+
+
 # starting connexion
 app = connexion.App(__name__)
 app.add_api('swagger.yaml')

@@ -82,6 +82,17 @@ def read_playlist_songs(playlist_id):
     return songs
 
 
+def read_one_playlist_song(playlist_id, song_id):
+    logging.debug('{CRUD} BEGIN function read_one_playlist_songs()')
+    logging.debug('{CRUD} Searching for id: %s', playlist_id)
+    query = session.query(PlaylistSongs).filter_by(playlist_id=playlist_id).filter_by(song_id=song_id)
+    logging.debug('{CRUD} END function read_one_playlist_song()')
+    if query.count() != 0:
+        return query[0]
+    else:
+        return None
+
+
 def read_playlist(id):
     logging.debug('{CRUD} BEGIN function read_playlist()')
     logging.debug('{CRUD} Searching for id: %s', id)
