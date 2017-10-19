@@ -4,7 +4,7 @@ services:
     # replace username/repo:tag with your name and image details
     image: fcribeiro/main_app
     expose:
-      - "80"
+      - "8080"
     links:
       - users_ms
       - songs_ms

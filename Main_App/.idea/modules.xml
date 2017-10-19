@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Main_App.iml" filepath="$PROJECT_DIR$/.idea/Main_App.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Spotify.iml" filepath="$PROJECT_DIR$/.idea/Spotify.iml" />
     </modules>
   </component>

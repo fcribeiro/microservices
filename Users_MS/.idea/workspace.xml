@@ -2,17 +2,137 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="416325b7-7a64-43bc-8723-9e09e6512c2a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Spotify/.idea/workspace.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/.idea/Spotify.iml" afterPath="$PROJECT_DIR$/../Main_App/.idea/Main_App.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/../Main_App/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/.idea/misc.xml" afterPath="$PROJECT_DIR$/../Main_App/.idea/misc.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/.idea/modules.xml" afterPath="$PROJECT_DIR$/../Main_App/.idea/modules.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../Main_App/.idea/vcs.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/Dockerfile" afterPath="$PROJECT_DIR$/../Main_App/Dockerfile" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/Business.py" afterPath="$PROJECT_DIR$/../Main_App/business/Business.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/__init__.py" afterPath="$PROJECT_DIR$/../Main_App/business/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/editAccount.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/editAccount.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/editPlayList.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/editPlayList.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/editSong.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/editSong.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/listPlayLists.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/listPlayLists.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/listPlayListsToAdd.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/listPlayListsToAdd.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/listPlaylistSongs.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/listPlaylistSongs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/listSearchedSongs.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/listSearchedSongs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/listSongs.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/listSongs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/js/register.js" afterPath="$PROJECT_DIR$/../Main_App/business/js/register.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/axios/axios.min.js" afterPath="$PROJECT_DIR$/../Main_App/business/static/axios/axios.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap-theme.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap-theme.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap-theme.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap-theme.min.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap.css" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/css/bootstrap.min.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/js/bootstrap.js" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/js/bootstrap.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/js/bootstrap.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/bootstrap/js/npm.js" afterPath="$PROJECT_DIR$/../Main_App/business/static/bootstrap/js/npm.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/createPlayList.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/createPlayList.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/../Main_App/business/static/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/editAccount.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/editAccount.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/editPlayList.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/editPlayList.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/editSong.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/editSong.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/home.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/home.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/listMySongs.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/listMySongs.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/listPlayListSongs.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/listPlayListSongs.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/listPlayLists.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/listPlayLists.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/listPlayListsToAdd.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/listPlayListsToAdd.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/listSearchedSongs.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/listSearchedSongs.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/login.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/login.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/login1.png" afterPath="$PROJECT_DIR$/../Main_App/business/static/login1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/monster.ico" afterPath="$PROJECT_DIR$/../Main_App/business/static/monster.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/music.ico" afterPath="$PROJECT_DIR$/../Main_App/business/static/music.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/register.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/register.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/searchSongs.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/searchSongs.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/static/uploadSong.html" afterPath="$PROJECT_DIR$/../Main_App/business/static/uploadSong.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/business/swagger.yaml" afterPath="$PROJECT_DIR$/../Main_App/business/swagger.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/__init__.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/__main__.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/__main__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/api.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/api.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/app.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/app.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/cli.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/cli.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/__init__.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/decorator.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/decorator.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/metrics.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/metrics.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/parameter.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/parameter.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/produces.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/produces.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/response.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/response.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/security.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/security.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/decorators/validation.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/decorators/validation.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/exceptions.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/exceptions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/handlers.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/handlers.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/mock.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/mock.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/operation.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/operation.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/problem.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/problem.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/resolver.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/resolver.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/utils.py" afterPath="$PROJECT_DIR$/../Main_App/connexion/utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/css/print.css" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/css/print.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/css/reset.css" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/css/reset.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/css/screen.css" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/css/screen.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/css/style.css" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/css/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/css/typography.css" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/css/typography.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/fonts/DroidSans-Bold.ttf" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/fonts/DroidSans-Bold.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/fonts/DroidSans.ttf" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/fonts/DroidSans.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/collapse.gif" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/collapse.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/expand.gif" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/expand.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/explorer_icons.png" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/explorer_icons.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/favicon-16x16.png" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/favicon-16x16.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/favicon-32x32.png" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/favicon-32x32.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/favicon.ico" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/favicon.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/logo_small.png" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/logo_small.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/pet_store_api.png" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/pet_store_api.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/throbber.gif" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/throbber.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/images/wordnik_api.png" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/images/wordnik_api.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/index.html" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/index.html.patch" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/index.html.patch" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/ca.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/ca.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/en.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/en.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/es.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/es.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/fr.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/fr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/geo.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/geo.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/it.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/it.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/ja.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/ja.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/ko-kr.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/ko-kr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/pl.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/pl.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/pt.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/pt.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/ru.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/ru.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/tr.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/tr.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/translator.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/translator.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lang/zh-cn.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lang/zh-cn.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/backbone-min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/backbone-min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/es5-shim.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/es5-shim.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/handlebars-4.0.5.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/handlebars-4.0.5.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack_extended.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/highlight.9.1.0.pack_extended.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/jquery-1.8.0.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/jquery-1.8.0.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/jquery.ba-bbq.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/jquery.ba-bbq.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/jquery.slideto.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/jquery.slideto.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/jquery.wiggle.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/jquery.wiggle.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/js-yaml.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/js-yaml.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/jsoneditor.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/jsoneditor.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/lodash.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/lodash.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/marked.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/marked.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/object-assign-pollyfill.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/object-assign-pollyfill.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/sanitize-html.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/sanitize-html.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/lib/swagger-oauth.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/lib/swagger-oauth.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/o2c.html" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/o2c.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/swagger-ui.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/swagger-ui.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/swagger-ui.min.js" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/swagger-ui.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/connexion/vendor/swagger-ui/update.sh" afterPath="$PROJECT_DIR$/../Main_App/connexion/vendor/swagger-ui/update.sh" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../Spotify/requirements.txt" afterPath="$PROJECT_DIR$/../Main_App/requirements.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Playlists_MS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Playlists_MS/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Playlists_MS/business/Business.py" afterPath="$PROJECT_DIR$/../Playlists_MS/business/Business.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Playlists_MS/database/CRUD.py" afterPath="$PROJECT_DIR$/../Playlists_MS/database/CRUD.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Send_Requests/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Send_Requests/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Songs_MS/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Songs_MS/database/CRUD.py" afterPath="$PROJECT_DIR$/../Songs_MS/database/CRUD.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Spotify/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Spotify/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Spotify/business/Business.py" afterPath="$PROJECT_DIR$/../Spotify/business/Business.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/Business.py" afterPath="$PROJECT_DIR$/business/Business.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/CRUD.py" afterPath="$PROJECT_DIR$/database/CRUD.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +149,7 @@
     <SUITE FILE_PATH="coverage/Spotify$teste.coverage" NAME="teste Coverage Results" MODIFIED="1491150803957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
     <SUITE FILE_PATH="coverage/Spotify$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1506465853104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
     <SUITE FILE_PATH="coverage/Songs_MS$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1507066815700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
-    <SUITE FILE_PATH="coverage/Users_MS$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1508422819514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
+    <SUITE FILE_PATH="coverage/Users_MS$Business__1_.coverage" NAME="Business (1) Coverage Results" MODIFIED="1508423603244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -757,7 +877,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26417372" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30299786" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30299786" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
