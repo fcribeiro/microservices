@@ -1,7 +1,6 @@
 version: "3"
 services:
   main_app:
-    # replace username/repo:tag with your name and image details
     image: fcribeiro/main_app
     expose:
       - "8080"
@@ -14,7 +13,6 @@ services:
       - SONGSADDRESS=songs_ms:5001
       - PLAYLISTSADDRESS=playlists_ms:5002
   users_ms:
-    # replace username/repo:tag with your name and image details
     image: fcribeiro/users_ms
     expose:
       - "5000"
@@ -23,7 +21,6 @@ services:
     environment:
       - DATABASEADDRESS=ms_db:3306
   songs_ms:
-    # replace username/repo:tag with your name and image details
     image: fcribeiro/songs_ms
     expose:
       - "5001"
@@ -32,7 +29,6 @@ services:
     environment:
       - DATABASEADDRESS=ms_db:3306
   playlists_ms:
-    # replace username/repo:tag with your name and image details
     image: fcribeiro/playlists_ms
     expose:
       - "5002"
@@ -41,7 +37,6 @@ services:
     environment:
       - DATABASEADDRESS=ms_db:3306
   ms_db:
-    # replace username/repo:tag with your name and image details
     image: mariadb
     expose:
       - "3306"
