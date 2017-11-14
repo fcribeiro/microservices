@@ -1,0 +1,20 @@
+version: "3"
+services:
+  users_ms:
+    image: jaimelive/users_ms
+    expose:
+      - "5000"
+    ports:
+      - "8000:5000"
+    links:
+      - ms_db
+    environment:
+      - DATABASEADDRESS=ms_db:3306
+  ms_db:
+    image: mariadb
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=ribeiro
+
+
