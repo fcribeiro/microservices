@@ -1,11 +1,21 @@
 version: "3"
 services:
+  main_app:
+    image: fcribeiro/main_app
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    links:
+      - users_ms
+    environment:
+      - USERSADDRESS=users_ms:5000
   users_ms:
     image: jaimelive/users_ms
     expose:
       - "5000"
     ports:
-      - "8000:5000"
+      - "8050:5000"
     links:
       - ms_db
     environment:
