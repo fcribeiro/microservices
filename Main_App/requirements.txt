@@ -25,3 +25,5 @@ swagger-spec-validator==2.1.0
 typing==3.6.2
 urllib3==1.22
 Werkzeug==0.12.2
+py-zipkin==0.7.0
+Flask-Zipkin==0.0.3

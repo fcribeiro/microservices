@@ -8,9 +8,26 @@ import json
 from connexion.decorators.decorator import ResponseContainer
 from flask import redirect, url_for, session
 
+from py_zipkin.zipkin import zipkin_span, create_http_headers_for_new_span, ZipkinAttrs
+import time
+
+
 
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
+
+def http_transport(encoded_span):
+    # The collector expects a thrift-encoded list of spans. Instead of
+    # decoding and re-encoding the already thrift-encoded message, we can just
+    # add header bytes that specify that what follows is a list of length 1.
+    body = '\x0c\x00\x00\x00\x01' + encoded_span
+    logging.info('{ZIPKIN} transporting')
+    requests.post(
+        'http://zipkin:9411/api/v1/spans',
+        data=body,
+        headers={'Content-Type': 'application/x-thrift'},
+    )
+
 
 users_mservice = "http://" + os.environ['USERSADDRESS']
 songs_mservice = "http://" + os.environ['SONGSADDRESS']
@@ -19,29 +36,37 @@ playlists_mservice = "http://" + os.environ['PLAYLISTSADDRESS']
 
 # POST Methods
 def post_user():
-    logging.debug('{Business} BEGIN function post_user()')
-    name = connexion.request.form['name']
-    email = connexion.request.form['email']
-    password = connexion.request.form['passwordForm']
-    logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
+    with zipkin_span(
+        service_name='main_app',
+        span_name='post_user',
+        transport_handler=http_transport,
+        port=8080,
+        sample_rate=100, #0.05, # Value between 0.0 and 100.0
+    ):
+        logging.debug('{Business} BEGIN function post_user()')
+        name = connexion.request.form['name']
+        email = connexion.request.form['email']
+        password = connexion.request.form['passwordForm']
+        logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
 
-    sha = hashlib.sha1()
-    sha.update(password)
+        sha = hashlib.sha1()
+        sha.update(password)
 
-    payload = {'name': name, 'email': email, 'password': sha.hexdigest()}
+        payload = {'name': name, 'email': email, 'password': sha.hexdigest()}
+        
+        headers = create_http_headers_for_new_span()
+        r = requests.post(users_mservice + "/createUser", data=payload, headers=headers)
 
-    r = requests.post(users_mservice + "/createUser", data=payload)
-
-    if r.status_code == requests.codes.ok:
-        response = json.loads(r.content).get('response')
-        if response == 'True':
-            logging.info('{Business} Cant add user!!')
+        if r.status_code == requests.codes.ok:
+            response = json.loads(r.content).get('response')
+            if response == 'True':
+                logging.info('{Business} Cant add user!!')
+            else:
+                logging.info('{Business} User added')
         else:
-            logging.info('{Business} User added')
-    else:
-        logging.info('{Business} Cant add user!!')
+            logging.info('{Business} Cant add user!!')
 
-    logging.debug('{Business} END function post_user()')
+        logging.debug('{Business} END function post_user()')
     return redirect(url_for('login'))
 
 
