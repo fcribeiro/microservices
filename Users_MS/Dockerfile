@@ -1,6 +1,12 @@
 # Use an official Python runtime as a parent image
 FROM python:2.7-alpine
 
+# Add dependencies for thrift
+RUN apk add --update \
+    python-dev \
+    build-base \
+  && rm -rf /var/cache/apk/*
+
 # Set the working directory to /app
 WORKDIR /app
 
@@ -11,7 +17,7 @@ ADD . /app/
 RUN pip install -r requirements.txt
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+EXPOSE 5000
 
 # Define environment variable
 ENV DATABASEADDRESS localhost:3306
