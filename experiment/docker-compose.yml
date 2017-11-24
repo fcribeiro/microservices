@@ -1,12 +1,14 @@
-version: "3"
+version: "2"
 services:
   main_app:
-    image: fcribeiro/main_app
+    image: jaimelive/main_app
     expose:
       - "8080"
     ports:
       - "8080:8080"
     links:
+      - users_ms
+    depends_on:
       - users_ms
     environment:
       - USERSADDRESS=users_ms:5000
@@ -14,9 +16,9 @@ services:
     image: jaimelive/users_ms
     expose:
       - "5000"
-    ports:
-      - "8050:5000"
     links:
+      - ms_db
+    depends_on:
       - ms_db
     environment:
       - DATABASEADDRESS=ms_db:3306
@@ -26,5 +28,27 @@ services:
       - "3306"
     environment:
       - MYSQL_ROOT_PASSWORD=ribeiro
+  storage:
+    image: openzipkin/zipkin-elasticsearch
+    expose:
+      - "9200"
+    # volumes_from:
+    #   - container:esdata
+  # Switch storage type to Elasticsearch
+  zipkin:
+    image: openzipkin/zipkin
+    expose:
+      - "9411"
+    ports:
+      - "8090:9411"
+    links:
+      - storage
+    depends_on:
+      - storage
+    environment:
+      - STORAGE_TYPE=elasticsearch
+      - ES_HOSTS=http://storage:9200
+
+
 
 
