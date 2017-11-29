@@ -10,11 +10,14 @@ RUN apk add --update \
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-ADD . /app/
+# Add requirement first to prevent rebuild of this layer when only code is changed
+ADD requirements.txt /app/
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
+
+# Copy the current directory contents into the container at /app
+ADD . /app/
 
 # Make port 80 available to the world outside this container
 EXPOSE 5000
