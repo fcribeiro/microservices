@@ -117,7 +117,7 @@ def authenticate(username, password):
         logging.debug('{Business} END function authenticate()')
         return user
 
-
+@zipkin_span(service_name='users_ms', span_name='identity')
 def identity(payload):
     user_id = payload['identity']
     user = CRUD.read_user(id=user_id)
@@ -126,8 +126,9 @@ def identity(payload):
 
 @jwt_required()
 def protected():
-
     # print current_identity.get_id()
+    logging.debug('{Business} BEGIN function >protected()')
+    logging.debug('{Business} END function >protected()')
     return '%s' % current_identity
 
 
