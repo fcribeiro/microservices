@@ -10,6 +10,7 @@ services:
       - users_ms_lb
     environment:
       - USERSADDRESS=users_ms_lb:80
+      - ZIPKINADDRESS=zipkin:9411
   main_app_lb:
     image: dockercloud/haproxy
     depends_on:
@@ -30,6 +31,7 @@ services:
       - ms_db
     environment:
       - DATABASEADDRESS=ms_db:3306
+      - ZIPKINADDRESS=zipkin:9411
   users_ms_lb:
     image: dockercloud/haproxy
     depends_on:

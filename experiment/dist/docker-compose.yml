@@ -10,6 +10,7 @@ services:
       - users_ms_lb
     environment:
       - USERSADDRESS=users_ms_lb:80
+      - ZIPKINADDRESS=192.168.1.28:9411
   main_app_lb:
     image: dockercloud/haproxy
     depends_on:
@@ -26,6 +27,7 @@ services:
       - "5000"
     environment:
       - DATABASEADDRESS=192.168.1.27:3306
+      - ZIPKINADDRESS=192.168.1.28:9411
   users_ms_lb:
     image: dockercloud/haproxy
     depends_on:
@@ -36,24 +38,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "8081:80"
-  storage:
-    image: openzipkin/zipkin-elasticsearch
-    expose:
-      - "9200"
-  zipkin:
-    image: openzipkin/zipkin
-    expose:
-      - "9411"
-    ports:
-      - "8090:9411"
-    links:
-      - storage
-    depends_on:
-      - storage
-    environment:
-      - STORAGE_TYPE=elasticsearch
-      - ES_HOSTS=http://storage:9200
-
 
 
 

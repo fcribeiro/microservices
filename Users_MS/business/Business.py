@@ -14,6 +14,7 @@ import time
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
+zipkin_address = "http://" + os.environ['ZIPKINADDRESS'] + "/api/v1/spans"
 
 def http_transport(encoded_span):
     # The collector expects a thrift-encoded list of spans. Instead of
@@ -22,7 +23,7 @@ def http_transport(encoded_span):
     body = '\x0c\x00\x00\x00\x01' + encoded_span
     logging.info('{ZIPKIN} transporting')
     requests.post(
-        'http://zipkin:9411/api/v1/spans',
+        zipkin_address,
         data=body,
         headers={'Content-Type': 'application/x-thrift'},
     )
