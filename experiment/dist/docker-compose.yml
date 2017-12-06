@@ -1,0 +1,59 @@
+version: "2"
+services:
+  main_app:
+    image: jaimelive/main_app
+    expose:
+      - "8080"
+    links:
+      - users_ms_lb
+    depends_on:
+      - users_ms_lb
+    environment:
+      - USERSADDRESS=users_ms_lb:80
+  main_app_lb:
+    image: dockercloud/haproxy
+    depends_on:
+      - main_app
+    links:
+      - main_app
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:80"
+  users_ms:
+    image: jaimelive/users_ms
+    expose:
+      - "5000"
+    environment:
+      - DATABASEADDRESS=192.168.1.27:3306
+  users_ms_lb:
+    image: dockercloud/haproxy
+    depends_on:
+      - users_ms
+    links:
+      - users_ms
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8081:80"
+  storage:
+    image: openzipkin/zipkin-elasticsearch
+    expose:
+      - "9200"
+  zipkin:
+    image: openzipkin/zipkin
+    expose:
+      - "9411"
+    ports:
+      - "8090:9411"
+    links:
+      - storage
+    depends_on:
+      - storage
+    environment:
+      - STORAGE_TYPE=elasticsearch
+      - ES_HOSTS=http://storage:9200
+
+
+
+
