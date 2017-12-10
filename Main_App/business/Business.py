@@ -10,6 +10,7 @@ from flask import redirect, url_for, session
 
 from py_zipkin.zipkin import zipkin_span, create_http_headers_for_new_span, ZipkinAttrs
 import time
+import random
 
 
 
@@ -36,38 +37,39 @@ def http_transport(encoded_span):
 
 # POST Methods
 def post_user():
-    with zipkin_span(
+    '''with zipkin_span(
         service_name='main_app',
         span_name='post_user',
         transport_handler=http_transport,
         port=8080,
         sample_rate=100, #0.05, # Value between 0.0 and 100.0
-    ):
-        logging.debug('{Business} BEGIN function post_user()')
-        name = connexion.request.form['name']
-        email = connexion.request.form['email']
-        password = connexion.request.form['passwordForm']
-        logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
+    ):'''
+    logging.debug('{Business} BEGIN function post_user()')
+    name = connexion.request.form['name']
+    email = connexion.request.form['email']
+    password = connexion.request.form['passwordForm']
+    logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
 
-        sha = hashlib.sha1()
-        sha.update(password)
+    sha = hashlib.sha1()
+    sha.update(password)
 
-        payload = {'name': name, 'email': email, 'password': sha.hexdigest()}
-        
-        headers = create_http_headers_for_new_span()
-        with zipkin_span(service_name='main_app', span_name='http_request_users_ms_createUser'):
-            r = requests.post(users_mservice + "/createUser", data=payload, headers=headers)
+    payload = {'name': name, 'email': email, 'password': sha.hexdigest()}
+    
+    headers = create_http_headers_for_new_span()
 
-        if r.status_code == requests.codes.ok:
-            response = json.loads(r.content).get('response')
-            if response == 'True':
-                logging.info('{Business} Cant add user!!')
-            else:
-                logging.info('{Business} User added')
-        else:
+    # with zipkin_span(service_name='main_app', span_name='http_request_users_ms_createUser'):
+    r = requests.post(users_mservice + "/createUser", data=payload, headers=headers)
+
+    if r.status_code == requests.codes.ok:
+        response = json.loads(r.content).get('response')
+        if response == 'True':
             logging.info('{Business} Cant add user!!')
+        else:
+            logging.info('{Business} User added')
+    else:
+        logging.info('{Business} Cant add user!!')
 
-        logging.debug('{Business} END function post_user()')
+    logging.debug('{Business} END function post_user()')
     return redirect(url_for('login'))
 
 
@@ -410,29 +412,31 @@ def delete_playlist():
 
 
 def check_login():
-    with zipkin_span(
+    '''with zipkin_span(
         service_name='main_app',
         span_name='check_login',
         transport_handler=http_transport,
         port=8080,
         sample_rate=100, #0.05, # Value between 0.0 and 100.0
-    ):
-        logging.debug('{Business} BEGIN function check_login()')
-        email = connexion.request.form['email']
-        password = connexion.request.form['password']
-        logging.debug('{Business} Parameters: %s, %s', email, password)
-        sha = hashlib.sha1()
-        sha.update(password)
+    ):'''
+    logging.debug('{Business} BEGIN function check_login()')
+    email = connexion.request.form['email']
+    password = connexion.request.form['password']
+    logging.debug('{Business} Parameters: %s, %s', email, password)
+    sha = hashlib.sha1()
+    sha.update(password)
 
-        payload = {"username": email, "password": sha.hexdigest()}
-        with zipkin_span(service_name='main_app', span_name='http_request_users_ms_auth'):
-            r = requests.post(users_mservice + "/auth", data=json.dumps(payload), headers={'Content-Type': 'application/json'})
-        if r.status_code == requests.codes.ok:
-            session['token'] = json.loads(r.content)['access_token']
-            logging.info('{Business} Login successful!!')
-            logging.debug('{Business} END function check_login()')
-            return redirect(url_for('home'))
-        logging.info('{Business} Login failed!!')
+    payload = {"username": email, "password": sha.hexdigest()}
+    
+    # with zipkin_span(service_name='main_app', span_name='http_request_users_ms_auth'):
+
+    r = requests.post(users_mservice + "/auth", data=json.dumps(payload), headers={'Content-Type': 'application/json'})
+    if r.status_code == requests.codes.ok:
+        session['token'] = json.loads(r.content)['access_token']
+        logging.info('{Business} Login successful!!')
+        logging.debug('{Business} END function check_login()')
+        return redirect(url_for('home'))
+    logging.info('{Business} Login failed!!')
     return redirect(url_for('login'))
 
 
@@ -448,11 +452,16 @@ def logout():
 def testLocal():
     logging.debug('{Business} BEGIN function testLocal()')
     logging.debug('{Business} END function testLocal()')
-    p = 0
-    for i in range(1, 1000000):
-        p = p + i
 
-    return {'response': p}
+    sleepTime = random.expovariate(20)
+    time.sleep(1)
+
+    payload = json.dumps({'slept': sleepTime})
+    return ResponseContainer(
+        mimetype="application/json",
+        data=payload,
+        status_code=200,
+    )
 
 
 def testRemote():

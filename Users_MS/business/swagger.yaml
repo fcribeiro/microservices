@@ -85,12 +85,3 @@ paths:
       responses:
         200:
           description: OK
-  /testLocal:
-  get:
-    tags: [TestLocal]
-    operationId: Business.testLocal
-    produces:
-      - text/html; charset=utf-8
-    responses:
-      200:
-        description: OK

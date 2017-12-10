@@ -1,7 +1,10 @@
-version: "2"
+version: "2.2"
 services:
   main_app:
     image: jaimelive/main_app
+    cpus: 0.5
+    cpu_percent: 25
+    mem_limit: 100m
     expose:
       - "8080"
     links:
@@ -23,6 +26,9 @@ services:
       - "8080:80"
   users_ms:
     image: jaimelive/users_ms
+    cpus: 0.5
+    cpu_percent: 25
+    mem_limit: 100m
     expose:
       - "5000"
     links:
@@ -40,8 +46,6 @@ services:
       - users_ms
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - "8081:80"
   ms_db:
     image: mariadb
     expose:

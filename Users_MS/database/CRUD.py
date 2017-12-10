@@ -62,7 +62,7 @@ def create_tables():
     logging.debug('{CRUD} END function create_tables()')
     logging.info('{CRUD} Tables created')
 
-@zipkin_span(service_name='users_ms', span_name='CRUD.read_user')
+#@zipkin_span(service_name='users_ms', span_name='CRUD.read_user')
 def read_user(email=None, id=None, password=None):
     logging.debug('{CRUD} BEGIN function read_user()')
     query = None
@@ -99,7 +99,7 @@ def read_user(email=None, id=None, password=None):
 
 
 # CREATE
-@zipkin_span(service_name='users_ms', span_name='CRUD.create_user')
+#@zipkin_span(service_name='users_ms', span_name='CRUD.create_user')
 def create_user(name, email, password):
     logging.debug('{CRUD} BEGIN function create_user()')
     logging.debug('{CRUD} Name: %s', name)
