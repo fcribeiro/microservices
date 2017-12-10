@@ -445,6 +445,20 @@ def logout():
     # logout_user()
     return redirect(url_for('login'))
 
+def testLocal():
+    logging.debug('{Business} BEGIN function testLocal()')
+    logging.debug('{Business} END function testLocal()')
+    p = 0
+    for i in range(1, 1000000):
+        p = p + i
+
+    return {'response': p}
+
+
+def testRemote():
+    logging.debug('{Business} BEGIN function testRemote()')
+    logging.debug('{Business} END function testRemote()')
+
 #____________________--------------________________________----------------
 #==========================================================================
 

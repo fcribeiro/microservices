@@ -130,7 +130,11 @@ def protected():
     # print current_identity.get_id()
     logging.debug('{Business} BEGIN function >protected()')
     logging.debug('{Business} END function >protected()')
-    return '%s' % current_identity
+    return '%s' % 
+
+def testLocal():
+    logging.debug('{Business} BEGIN function testLocal()')
+    logging.debug('{Business} END function testLocal()')
 
 
 # starting connexion
