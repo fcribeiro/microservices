@@ -26,7 +26,12 @@ def decode():
         'require_nbf': False
     }
 
-    encoded = request.headers.get('Authorization').split(' ')[1]
+    encoded = request.headers.get('Authorization')
+    if encoded is None:
+        print('No Authorization Header')
+    else:
+        encoded = encoded.split(' ')[1]
+
     payload = jwt.decode(encoded, secret, algorithms=algorithm, options=options)
 
     return payload
@@ -38,7 +43,7 @@ def post_playlist(name):
     try:
         payload = decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     CRUD.create_playlist(name, payload['identity'])
     # CRUD.add_song_playlist(2, 1)
@@ -54,7 +59,7 @@ def post_song_playlist(playlist_id, song_id):
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
     if CRUD.search_song_playlist(playlist_id, song_id):
         CRUD.add_song_playlist(playlist_id, song_id)
         playlist = CRUD.read_playlist(playlist_id)
@@ -68,7 +73,7 @@ def get_user_playlists(asc):
     try:
         payload = decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     playlists = CRUD.read_user_playlists(payload['identity'])
 
@@ -99,7 +104,7 @@ def get_playlist(playlist_id):
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     playlist = CRUD.read_playlist(playlist_id)
     print playlist
@@ -114,7 +119,7 @@ def get_playlist_songs(playlist_id):
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     playlist_songs = CRUD.read_playlist_songs(playlist_id)
 
@@ -130,7 +135,7 @@ def put_playlist(playlist_id, name):
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     CRUD.update_playlist(playlist_id=playlist_id, name=name)
 
@@ -146,7 +151,7 @@ def del_playlist(playlist_id):
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     playlist_songs = CRUD.read_playlist_songs(playlist_id)
 
@@ -169,7 +174,7 @@ def del_user_playlists():
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     user_playlists = CRUD.read_user_playlists(payload['identity'])
 
@@ -190,7 +195,7 @@ def del_playlist_song(playlist_id, song_id):
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     song = CRUD.read_one_playlist_song(playlist_id, song_id)
 
