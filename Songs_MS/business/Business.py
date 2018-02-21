@@ -26,7 +26,12 @@ def decode():
         'require_nbf': False
     }
 
-    encoded = request.headers.get('Authorization').split(' ')[1]
+    # encoded = request.headers.get('Authorization').split(' ')[1]
+    encoded = request.headers.get('Authorization')
+    if encoded is None:
+        print('No Authorization Header')
+    else:
+        encoded = encoded.split(' ')[1]
     payload = jwt.decode(encoded, secret, algorithms=algorithm, options=options)
 
     return payload
@@ -37,9 +42,9 @@ def get_user_songs():
 
     try:
         payload = decode()
-        print payload
+        # print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     songs = CRUD.read_user_songs(user_id=payload['identity'], search_all=0)
 
@@ -53,7 +58,7 @@ def get_playlist_songs():
     try:
         decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     songs = request.json
     final_songs = []
@@ -71,7 +76,7 @@ def get_song(song_id):
     try:
         decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     song = CRUD.read_song(song_id)
     logging.debug('{Business} END function get_song()')
@@ -85,7 +90,7 @@ def get_songs_criteria(title=None, artist=None):
     try:
         decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     logging.debug('{Business} Parameters: %s, %s', title, artist)
     if title == "":
@@ -104,7 +109,7 @@ def put_song(title=None, artist=None, album=None, release_year=None, path_song=N
     try:
         decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     if title == "":
         title = None
@@ -132,7 +137,7 @@ def post_song(title, artist, album, release_year, path_song):
     try:
         payload = decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     CRUD.create_song(title, artist, album, release_year, path_song, payload['identity'])
     logging.debug('{Business} END function post_song()')
@@ -144,7 +149,7 @@ def del_song(song_id):
     try:
         decode()
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     song = CRUD.read_song(song_id)
     CRUD.delete_song(song)
@@ -158,7 +163,7 @@ def del_user_songs(admin_id):
         payload = decode()
         print payload
     except jwt.InvalidTokenError:
-        return 'ERROR', 401
+        return 'ERROR in Authorization Header', 401
 
     print' ADMIN ID:'
     print admin_id
