@@ -1,4 +1,5 @@
 import logging
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
@@ -8,7 +9,7 @@ DATABASE = 'Playlists_MS'
 TABLE = 'playlists'
 USER = 'root'
 PASSWORD = 'ribeiro'
-HOST = 'localhost:3306'
+HOST = os.environ['DATABASEADDRESS']
 # TODO: Sensitive information ºº
 
 
