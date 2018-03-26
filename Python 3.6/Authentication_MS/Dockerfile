@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 EXPOSE 80
 
 # Define environment variable
-ENV DATABASEADDRESS localhost:3306
+ENV USERSADDRESS localhost:5000
 
 ENV PYTHONPATH /app/
 

@@ -3,8 +3,10 @@ import business.response_handling as RESP
 import requests
 import json
 import jwt
+import os
 
-USERS_MS = 'http://0.0.0.0:5000'
+# USERS_MS = 'http://0.0.0.0:5000'
+USERS_MS = "http://" + os.environ['USERSADDRESS']
 TOKEN_SECRET = 'secret'     # FIND WAY TO KEEP THIS SAFE!
 ALGORITHM = 'HS256'
 
