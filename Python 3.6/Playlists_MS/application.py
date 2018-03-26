@@ -1,6 +1,6 @@
 import connexion as connexion
 from business.playlists_controller import *
-from CRUD.ORM import db
+from CRUD.ORM import db, create_database
 
 
 # Logging configuration
@@ -18,4 +18,5 @@ def shutdown_session(exception=None):
 
 
 if __name__ == '__main__':
+    create_database()
     app.run(port=5002, debug=True)
