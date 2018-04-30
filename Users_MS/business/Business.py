@@ -49,10 +49,12 @@ def http_transport(encoded_span):
 def post_user(name, email, password):
     logging.debug('{Business} BEGIN function post_user()')
     logging.debug('{Business} Parameters: %s, %s, %s', name, email, password)
+    '''
     if user_exists(email):
         logging.debug('{Business} END function post_user()')
         logging.info('{Business} Cant add user!!')
         return {'response': 'True'}
+    '''
     CRUD.create_user(name, email, password)
     logging.debug('{Business} END function post_user()')
     logging.info('{Business} User added')
