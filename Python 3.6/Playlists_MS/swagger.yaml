@@ -1,0 +1,259 @@
+swagger: '2.0'
+info:
+  title: Playlists_MS
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      operationId: application.hello_world
+      summary: "Hello World!"
+      tags: [Playlists_MS]
+      responses:
+        200:
+          description: OK
+  /playlists:
+    post:
+      operationId: application.create_playlist
+      tags: [Playlists_MS]
+      summary: "Creates playlist with given parameters"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Playlist object to be created"
+        required: true
+        schema:
+          $ref: '#/definitions/Create_Playlist'
+      responses:
+        201:
+          description: "Created."
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error."
+    get:
+      operationId: application.get_user_playlists
+      tags: [Playlists_MS]
+      summary: "Gets all playlists from a user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "user_id"
+        type: "integer"
+        required: true
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error."
+  /playlists/{id}:
+    put:
+      operationId: application.update_playlist
+      tags: [Playlists_MS]
+      summary: "Updates playlist with given parameters"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+      - in: "body"
+        name: "body"
+        description: "Playlist object to be updated"
+        required: true
+        schema:
+          $ref: '#/definitions/Update_Playlist'
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        404:
+          description: "Not found."
+        500:
+          description: "Internal server error."
+    get:
+      operationId: application.get_playlist
+      tags: [Playlists_MS]
+      summary: "Retrieves a playlist"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        404:
+          description: "Not found."
+        500:
+          description: "Internal server error."
+    delete:
+      operationId: application.delete_playlist
+      tags: [Playlists_MS]
+      summary: "Deletes a playlist"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        404:
+          description: "Not found."
+        500:
+          description: "Internal server error."
+  /playlists/songs/{id}:
+    post:
+      operationId: application.add_song_to_playlist
+      tags: [Playlists_MS]
+      summary: "Adds a song into a playlist"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+      - in: "query"
+        name: "song_id"
+        type: "integer"
+        required: true
+      - in: "query"
+        name: "user_id"
+        type: "integer"
+        required: true
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        404:
+          description: "Not found."
+        500:
+          description: "Internal server error."
+    delete:
+        operationId: application.delete_song_from_playlist
+        tags: [Playlists_MS]
+        summary: "Removes a song from a playlist"
+        consumes:
+        - "application/json"
+        produces:
+        - "application/json"
+        parameters:
+        - in: "path"
+          name: "id"
+          type: "integer"
+          required: true
+        - in: "query"
+          name: "song_id"
+          type: "integer"
+          required: true
+        - in: "query"
+          name: "user_id"
+          type: "integer"
+          required: true
+        security:
+          - JWT: []
+        responses:
+          200:
+            description: "OK."
+          400:
+            description: "Bad request."
+          404:
+            description: "Not found."
+          500:
+            description: "Internal server error."
+    get:
+        operationId: application.get_playlist_songs
+        tags: [Playlists_MS]
+        summary: "Gets all songs from a playlist"
+        consumes:
+        - "application/json"
+        produces:
+        - "application/json"
+        parameters:
+        - in: "path"
+          name: "id"
+          type: "integer"
+          required: true
+        security:
+          - JWT: []
+        responses:
+          200:
+            description: "OK."
+          400:
+            description: "Bad request."
+          404:
+            description: "Not found."
+          500:
+            description: "Internal server error."
+
+definitions:
+  Create_Playlist:
+    type: "object"
+    required:
+    - "name"
+    - "user_id"
+    properties:
+      name:
+        type: "string"
+        example: "My Playlist"
+        description: "Playlist name"
+      user_id:
+        type: "integer"
+        example: 1
+        description: "User id"
+  Update_Playlist:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        example: "Awesome Playlist!!"
+        description: "Playlist name"
+
+securityDefinitions:
+  JWT:
+    type: apiKey
+    name: Authorization
+    in: header

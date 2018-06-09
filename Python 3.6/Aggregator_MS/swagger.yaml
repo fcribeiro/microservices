@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+  title: Aggregator_MS
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      operationId: application.hello_world
+      summary: "Hello World!"
+      tags: [Aggregator_MS]
+      responses:
+        200:
+          description: OK
+  /playlists/songs/{id}:
+    get:
+        operationId: application.get_playlist_songs_info
+        tags: [Aggregator_MS]
+        summary: "Gets all songs information from a playlist"
+        consumes:
+        - "application/json"
+        produces:
+        - "application/json"
+        parameters:
+        - in: "path"
+          name: "id"
+          type: "integer"
+          required: true
+        security:
+          - JWT: []
+        responses:
+          200:
+            description: "OK."
+          400:
+            description: "Bad request."
+          404:
+            description: "Not found."
+          500:
+            description: "Internal server error."
+
+securityDefinitions:
+  JWT:
+    type: apiKey
+    name: Authorization
+    in: header
+
+
+

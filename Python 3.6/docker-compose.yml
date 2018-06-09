@@ -1,0 +1,55 @@
+version: "3"
+services:
+  ms-db:
+    image: mariadb
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=ribeiro
+  users:
+    image: fcribeiro/users_ms_p3
+    expose:
+      - "5000"
+    links:
+      - ms-db
+    environment:
+      - DATABASEADDRESS=ms-db:3306
+  songs:
+    image: fcribeiro/songs_ms_p3
+    expose:
+      - "5001"
+    links:
+      - ms-db
+    environment:
+      - DATABASEADDRESS=ms-db:3306
+  playlists:
+    image: fcribeiro/playlists_ms_p3
+    expose:
+      - "5002"
+    links:
+      - ms-db
+      - songs
+    environment:
+      - DATABASEADDRESS=ms-db:3306
+      - SONGSADDRESS=songs:5001
+  auth:
+    image: fcribeiro/authentication_ms_p3
+    expose:
+      - "5003"
+    links:
+      - users
+    environment:
+      - USERSADDRESS=users:5000
+  aggr:
+    image: fcribeiro/aggregator_ms_p3
+    expose:
+      - "5004"
+    links:
+      - playlists
+      - songs
+    environment:
+      - USERSADDRESS=users:5000
+      - SONGSADDRESS=songs:5001
+      - PLAYLISTSADDRESS=playlists:5002
+      - AUTHADDRESS=auth:5003
+

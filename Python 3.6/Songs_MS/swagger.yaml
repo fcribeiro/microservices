@@ -1,0 +1,247 @@
+swagger: '2.0'
+info:
+  title: Songs_MS
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      operationId: application.hello_world
+      summary: "Hello World!"
+      tags: [Songs_MS]
+      responses:
+        200:
+          description: OK
+  /songs:
+    post:
+      operationId: application.create_song
+      tags: [Songs_MS]
+      summary: "Create song"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Song object to be created"
+        required: true
+        schema:
+          $ref: '#/definitions/Song'
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: "Created."
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error"
+    get:
+      operationId: application.read_song
+      tags: [Songs_MS]
+      summary: "Returns a song given an id"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "id"
+        type: "integer"
+        required: true
+        description: "Song id"
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+          schema:
+            $ref: '#/definitions/Song'
+        400:
+          description: "Bad request."
+        404:
+          description: "Not Found."
+        500:
+          description: "Internal server error."
+  /songs/criteria:
+    get:
+      operationId: application.read_songs_criteria
+      tags: [Songs_MS]
+      summary: "Returns a list of songs given an expression"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "expression"
+        type: "string"
+        required: true
+        description: "Expression used to search songs"
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+          schema:
+            $ref: '#/definitions/Song'
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error."
+  /songs/convert/{id}:
+    get:
+      operationId: application.convert_song
+      tags: [Songs_MS]
+      summary: "Converts a song from .mp3 to .wav"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+        description: "Song id"
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        404:
+          description: "Not found."
+        500:
+          description: "Internal server error."
+  /songs/{id}:
+    put:
+      operationId: application.update_song
+      tags: [Songs_MS]
+      summary: "Updates song with given parameters"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+      - in: "body"
+        name: "body"
+        description: "Song object to be updated"
+        required: true
+        schema:
+          $ref: '#/definitions/Update_Song'
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        404:
+          description: "Not found."
+        500:
+          description: "Internal server error."
+    delete:
+      operationId: application.delete_song
+      tags: [Songs_MS]
+      summary: "Deletes song"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        404:
+          description: "Not found."
+        500:
+          description: "Internal server error."
+
+definitions:
+  Song:
+    type: "object"
+    required:
+    - "title"
+    - "artist"
+    - "album"
+    - "release_year"
+    - "path"
+    - "user_id"
+    properties:
+      title:
+        type: "string"
+        example: "Smells Like Teen Spirit"
+        description: "Song title"
+      artist:
+        type: "string"
+        example: "Nirvana"
+        description: "Artist that performs the song"
+      album:
+        type: "string"
+        example: "Nevermind"
+        description: "Song album"
+      release_year:
+        type: "integer"
+        example: 1991
+        description: "The year when the song was released"
+      path:
+        type: "string"
+        example: "C://example/smells_like_teen_spirit_by_nirvana"
+        description: "Path to the song"
+      user_id:
+        type: "integer"
+        example: 1
+        description: "Id from the user that creates the song"
+  Update_Song:
+    type: "object"
+    required:
+    - "title"
+    - "artist"
+    - "album"
+    - "release_year"
+    - "path"
+    properties:
+      title:
+        type: "string"
+        example: "Smells Like Teen Spirit"
+        description: "Song title"
+      artist:
+        type: "string"
+        example: "Nirvana"
+        description: "Artist that performs the song"
+      album:
+        type: "string"
+        example: "Nevermind"
+        description: "Song album"
+      release_year:
+        type: "integer"
+        example: 1991
+        description: "The year when the song was released"
+      path:
+        type: "string"
+        example: "C://example/smells_like_teen_spirit_by_nirvana"
+        description: "Path to the song"
+
+securityDefinitions:
+  JWT:
+    type: apiKey
+    name: Authorization
+    in: header

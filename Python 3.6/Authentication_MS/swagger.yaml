@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  title: Authentication_MS
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      operationId: application.hello_world
+      summary: "Hello World!"
+      tags: [Authentication_MS]
+      responses:
+        200:
+          description: OK
+  /login:
+    post:
+      operationId: application.create_token
+      tags: [Authentication_MS]
+      summary: "Create token if credentials are correct"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Login credentials"
+        required: true
+        schema:
+          $ref: '#/definitions/Login_User'
+      responses:
+        200:
+          description: "OK."
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error."
+
+definitions:
+  Login_User:
+    type: "object"
+    required:
+    - "email"
+    - "password"
+    properties:
+      email:
+        type: "string"
+        example: "johndoe@email.com"
+        description: "Email"
+      password:
+        type: "string"
+        example: "123456"
+        description: "Password"
+
