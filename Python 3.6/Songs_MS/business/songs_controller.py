@@ -2,7 +2,6 @@ import logging
 import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 from business.auth import requires_auth
-from pydub import AudioSegment
 import socket
 import time
 import random
@@ -128,27 +127,6 @@ def convert_song(id):
     """ Converts a song from .mp3 to .wav"""
     logging.debug("{songs_controller} BEGIN function convert_song()")
 
-    """if id is '':
-        return RESP.response_400(message='The id parameter is empty!')
-
-    try:
-        song = CRUD.read_song_by_song_id(id)
-    except Exception:
-        return RESP.response_500(message='Database is down!')
-
-    if song is None:
-        return RESP.response_404(message='Song not found!')
-
-    try:
-        sound = AudioSegment.from_mp3(song.path)
-    except Exception:
-        return RESP.response_404(message='Song not found in given path!')
-
-    try:
-        new_path = song.path.replace(".mp3", ".wav")
-        sound.export(new_path, format="wav")
-    except Exception:
-        return RESP.response_500(message='Error converting song!')"""
     time.sleep(random.expovariate(3/2))
 
     return RESP.response_200(message='Song converted with success')
