@@ -151,14 +151,12 @@ paths:
         name: "id"
         type: "integer"
         required: true
-      - in: "query"
-        name: "song_id"
-        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "Objetc containing song and user id"
         required: true
-      - in: "query"
-        name: "user_id"
-        type: "integer"
-        required: true
+        schema:
+          $ref: '#/definitions/Song_Into_Playlist'
       security:
         - JWT: []
       responses:
@@ -251,6 +249,20 @@ definitions:
         type: "string"
         example: "Awesome Playlist!!"
         description: "Playlist name"
+  Song_Into_Playlist:
+    type: "object"
+    required:
+    - "song_id"
+    - "user_id"
+    properties:
+      song_id:
+        type: "integer"
+        example: 1
+        description: "Playlist id"
+      user_id:
+        type: "integer"
+        example: 1
+        description: "User id"
 
 securityDefinitions:
   JWT:

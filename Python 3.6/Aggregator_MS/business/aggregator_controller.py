@@ -8,10 +8,8 @@ from business.auth import requires_auth
 from flask import request
 import socket
 
-USERS_MS = "http://" + os.environ['USERSADDRESS']
 SONGS_MS = "http://" + os.environ['SONGSADDRESS']
 PLAYLISTS_MS = "http://" + os.environ['PLAYLISTSADDRESS']
-AUTH_MS = "http://" + os.environ['AUTHADDRESS']
 
 
 def hello_world():

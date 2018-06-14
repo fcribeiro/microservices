@@ -8,7 +8,7 @@ class Playlist_Song(db.Model):
     song_id = db.Column(db.Integer, nullable=False)
 
     def dump(self):
-        return {'song_id': self.song_id}
+        return {'id': self.id, 'playlist._id': self.playlist_id, 'song_id': self.song_id}
 
     def __repr__(self):
         return "<Playlist_Song('%s', '%s')" % (self.playlist_id, self.song_id)

@@ -137,11 +137,11 @@ def get_user_playlists(user_id):
 
 
 @requires_auth
-def add_song_to_playlist(id, song_id, user_id):
+def add_song_to_playlist(id, body):
     """ Adds a song into a playlist"""
     logging.debug("{users_controller} BEGIN function add_song_to_playlist()")
 
-    if id is '' or song_id is '' or user_id is '':
+    if id is '' or body['song_id'] is '' or body['user_id'] is '':
         return RESP.response_400(message='A given parameter is empty')
 
     try:
@@ -152,13 +152,13 @@ def add_song_to_playlist(id, song_id, user_id):
     if playlist is None:
         return RESP.response_404(message='Playlist not found!')
 
-    if playlist.user_id != user_id:
+    if playlist.user_id != body['user_id']:
         return RESP.response_400(message='This playlist belongs to another user')
 
     # Checks if song exists by sending a request into the Songs Microservice
     headers = {'Content-Type': 'application/json',
                'Authorization': request.headers['Authorization']}
-    param = {'id': song_id}
+    param = {'id': body['song_id']}
     r = requests.get(SONGS_MS + '/songs', params=param, headers=headers)
     if r.status_code == 404:
         return RESP.response_404(message='Song not found!')
@@ -166,7 +166,7 @@ def add_song_to_playlist(id, song_id, user_id):
         return RESP.response_500(message='Songs_MS is down!')
 
     try:
-        CRUD.create_song_in_playlist(id, song_id)
+        CRUD.create_song_in_playlist(id, body['song_id'])
         CRUD.commit()
     except Exception:
         CRUD.rollback()

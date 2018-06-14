@@ -13,7 +13,7 @@ class Song(db.Model):
     is_deleted = db.Column(db.Boolean, default=False)
 
     def dump(self):
-        return {'title': self.title, 'artist': self.artist, 'album': self.album, 'release_year': self.release_year, 'path': self.path, 'user_id': self.user_id}
+        return {'song_id': self.id, 'title': self.title, 'artist': self.artist, 'album': self.album, 'release_year': self.release_year, 'path': self.path, 'user_id': self.user_id}
 
     def __repr__(self):
         return "<Song('%s', '%s', '%s', '%s', '%s')>" % (self.title, self.artist, self.album, self.release_year, self.path)

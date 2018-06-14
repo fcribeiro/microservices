@@ -48,8 +48,6 @@ services:
       - playlists
       - songs
     environment:
-      - USERSADDRESS=users:5000
-      - SONGSADDRESS=songs:5001
       - PLAYLISTSADDRESS=playlists:5002
-      - AUTHADDRESS=auth:5003
+      - SONGSADDRESS=songs:5001
 
