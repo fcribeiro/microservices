@@ -3,6 +3,7 @@ from CRUD.ORM import db
 from sqlalchemy import or_
 from CRUD.entities.Song import Song
 from py_zipkin.zipkin import zipkin_span
+from business.emp_zipkin_decorator import emp_zipkin_decorator
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -10,12 +11,16 @@ from py_zipkin.zipkin import zipkin_span
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.commit', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def commit():
     logging.debug("{CRUD_operations} BEGIN function commit()")
     db.session.commit()
     logging.info("{CRUD_operations} Performed COMMIT to the database")
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.rollback', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def rollback():
     logging.debug("{CRUD_operations} BEGIN function rollback()")
     db.session.rollback()
@@ -27,7 +32,8 @@ def rollback():
 # ---------------------------------------------------------------------------------------------------------------------
 
 
-@zipkin_span(service_name='songs_ms', span_name='CRUD_operations.create_song')
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.create_song', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def create_song(title, artist, album, release_year, path, user_id):
     logging.debug('{CRUD_operations} BEGIN function create_song()')
     logging.debug('{CRUD_operations} Data received: title: %s, artist: %s, album: %s, release_year: %s, path: '
@@ -43,7 +49,8 @@ def create_song(title, artist, album, release_year, path, user_id):
 # ---------------------------------------------------------------------------------------------------------------------
 
 
-@zipkin_span(service_name='songs_ms', span_name='CRUD_operations.read_songs_by_user_id')
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.read_songs_by_user_id', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def read_songs_by_user_id(user_id):
     """ Returns a list of songs based of an user id"""
     logging.debug('{CRUD_operations} BEGIN function read_songs_by_user_id()')
@@ -53,7 +60,8 @@ def read_songs_by_user_id(user_id):
     return songs
 
 
-@zipkin_span(service_name='songs_ms', span_name='CRUD_operations.read_song_by_song_id')
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.read_song_by_song_id', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def read_song_by_song_id(song_id):
     """ Returns a song based on the song id"""
     logging.debug('{CRUD_operations} BEGIN function read_song_by_song_id()')
@@ -63,7 +71,8 @@ def read_song_by_song_id(song_id):
     return song
 
 
-@zipkin_span(service_name='songs_ms', span_name='CRUD_operations.read_songs_by_criteria')
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.read_songs_by_criteria', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def read_songs_by_criteria(expression):
     """ Returns all songs comparing the given expression into all attribute columns"""
     logging.debug('{CRUD_operations} BEGIN function read_songs_by_criteria()')
@@ -84,7 +93,8 @@ def read_songs_by_criteria(expression):
 # ---------------------------------------------------------------------------------------------------------------------
 
 
-@zipkin_span(service_name='songs_ms', span_name='CRUD_operations.update_song')
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.update_song', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def update_song(song, title, artist, album, release_year, path):
     logging.debug('{CRUD_operations} BEGIN function update_song()')
     logging.debug('{CRUD_operations} Data received: song: %s', song)
@@ -107,18 +117,11 @@ def update_song(song, title, artist, album, release_year, path):
 # ---------------------------------------------------------------------------------------------------------------------
 
 
-@zipkin_span(service_name='songs_ms', span_name='CRUD_operations.delete_song')
+@emp_zipkin_decorator(service_name='songs_ms', span_name='CRUD_operations.delete_song', port=5001,
+                      binary_annotations={'db.instance': 'Songs_MS', 'db.type': 'sqlalchemy'})
 def delete_song(song):
     """ Fake deletes a song. Just change a variable is_deleted to True"""
     logging.debug('{CRUD_operations} BEGIN function delete_song()')
     logging.debug('{CRUD_operations} Data received: song: %s', song)
     song.is_deleted = True
-    logging.debug('{CRUD_operations} END function delete_song()')
-
-
-@zipkin_span(service_name='songs_ms', span_name='CRUD_operations.test_song')
-def test_song():
-    """ Fake deletes a song. Just change a variable is_deleted to True"""
-    logging.debug('{CRUD_operations} BEGIN function delete_song()')
-    logging.debug('{CRUD_operations} Data received')
     logging.debug('{CRUD_operations} END function delete_song()')

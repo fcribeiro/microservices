@@ -6,13 +6,17 @@ import time
 import random
 from py_zipkin.zipkin import zipkin_span
 from business.emp_zipkin_decorator import emp_zipkin_decorator
+from py_zipkin.stack import ThreadLocalStack
 
 
 @emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.hello_world', port=5001,
-                      binary_annotations={'foo': 'bar'})
+                      binary_annotations={'foo': 'bar', 'test1': 'test2'})
 def hello_world():
-    with zipkin_span(service_name='songs_ms', span_name='before_hey_test'):
+    z_attrs = ThreadLocalStack().get()
+    print(z_attrs)
+    with zipkin_span(service_name='songs_ms', span_name='before_hey_test') as zipkin_context:
         hey_test(5)
+        zipkin_context.update_binary_annotations({'result': "YEEEEEE"})
     return RESP.response_200(message='Songs_MS working!')
 
 
@@ -23,6 +27,7 @@ def hey_test(id):
     return RESP.response_200(message='Songs_MS working!')
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.create_song', port=5001)
 @requires_auth
 def create_song(body):
     logging.debug("{songs_controller} BEGIN function create_song()")
@@ -46,6 +51,7 @@ def create_song(body):
     return RESP.response_201(message='Song created with success!')
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.read_song', port=5001)
 @requires_auth
 def read_song(id):
     """ Returns a song (if any) given an id"""
@@ -65,6 +71,7 @@ def read_song(id):
     return RESP.response_200(message=song.dump())
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.read_songs_criteria', port=5001)
 @requires_auth
 def read_songs_criteria(expression):
     """ Returns a list of songs given an expression"""
@@ -83,6 +90,7 @@ def read_songs_criteria(expression):
     return RESP.response_200(message=array)
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.update_song', port=5001)
 @requires_auth
 def update_song(id, body):
     """ Updates an active song matching a given id with given parameters such as title, artist, album, release year and
@@ -110,6 +118,7 @@ def update_song(id, body):
     return RESP.response_200(message='Song updated with success!')
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.delete_song', port=5001)
 @requires_auth
 def delete_song(id):
     """ Deletes an active song given an id"""
@@ -136,20 +145,12 @@ def delete_song(id):
     return RESP.response_200(message='Song deleted with success')
 
 
-# @requires_auth
-@zipkin_span(service_name='songs_ms', span_name='songs_controller.convert_song')
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.convert_song', port=5001)
+@requires_auth
 def convert_song(id):
     """ Converts a song from .mp3 to .wav"""
-    # with zipkin_span(service_name='songs_ms', span_name='convert_song'):
-    with zipkin_span(
-            service_name='songs_ms',
-            span_name='songs_controller.convert_song',
-            transport_handler=transport,
-            port=5001,
-            sample_rate=100,
-    ):
-        logging.debug("{songs_controller} BEGIN function convert_song()")
+    logging.debug("{songs_controller} BEGIN function convert_song()")
 
-        time.sleep(random.expovariate(3 / 2))
+    time.sleep(random.expovariate(3 / 2))
 
-        return RESP.response_200(message='Song converted with success')
+    return RESP.response_200(message='Song converted with success')
