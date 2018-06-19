@@ -2,7 +2,6 @@ import logging
 from CRUD.ORM import db
 from sqlalchemy import or_
 from CRUD.entities.Song import Song
-from py_zipkin.zipkin import zipkin_span
 from business.emp_zipkin_decorator import emp_zipkin_decorator
 
 

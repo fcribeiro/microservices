@@ -1,19 +1,23 @@
 import logging
 from CRUD.ORM import db
 from CRUD.entities.User import User
-
+from business.emp_zipkin_decorator import emp_zipkin_decorator
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------- BASE STUFF ----------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.commit', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def commit():
     logging.debug("{CRUD_operations} BEGIN function commit()")
     db.session.commit()
     logging.info("{CRUD_operations} Performed COMMIT to the database")
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.rollback', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def rollback():
     logging.debug("{CRUD_operations} BEGIN function rollback()")
     db.session.rollback()
@@ -25,6 +29,8 @@ def rollback():
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.create_user', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def create_user(name, email, password):
     logging.debug('{CRUD_operations} BEGIN function create_user()')
     logging.debug('{CRUD_operations} Data received: name: %s, email: %s, password: %s', name, email, password)
@@ -39,6 +45,8 @@ def create_user(name, email, password):
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.read_user_by_email', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def read_user_by_email(email):
     """ Checks for all users given an email"""
     logging.debug('{CRUD_operations} BEGIN function read_user_by_email()')
@@ -48,6 +56,8 @@ def read_user_by_email(email):
     return user
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.read_user_by_email', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def read_user_by_email_not_deleted(email):
     """ Checks for all users given an email"""
     logging.debug('{CRUD_operations} BEGIN function read_user_by_email_not_deleted()')
@@ -57,6 +67,8 @@ def read_user_by_email_not_deleted(email):
     return user
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.read_user_by_id', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def read_user_by_id(id):
     """ Checks for users that are not deleted given an id"""
     logging.debug('{CRUD_operations} BEGIN function read_user_by_id()')
@@ -71,6 +83,8 @@ def read_user_by_id(id):
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.update_user', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def update_user(user, name, email, password):
     logging.debug('{CRUD_operations} BEGIN function update_user()')
     logging.debug('{CRUD_operations} Data received: user: %s', user)
@@ -89,6 +103,8 @@ def update_user(user, name, email, password):
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='CRUD_operations.delete_user', port=5000,
+                      binary_annotations={'db.instance': 'Users_MS', 'db.type': 'sqlalchemy'})
 def delete_user(user):
     """ Fake deletes an user. Just change a variable is_deleted to True"""
     logging.debug('{CRUD_operations} BEGIN function delete_user()')

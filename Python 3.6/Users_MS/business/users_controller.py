@@ -1,15 +1,17 @@
 import logging
-import socket
 import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 import business.utils as UTILS
 from business.auth import requires_auth
+from business.emp_zipkin_decorator import emp_zipkin_decorator
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.hello_world', port=5000)
 def hello_world():
-    return RESP.response_200(message='Users_MS working! -> Host: ' + socket.gethostname())
+    return RESP.response_200(message='Users_MS working!')
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.create_user', port=5000)
 def create_user(body):
     """ Creates a new user object given a name, email and password"""
     logging.debug("{users_controller} BEGIN function create_user()")
@@ -36,6 +38,7 @@ def create_user(body):
     return RESP.response_201(message='User created with success!')
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.read_user', port=5000)
 @requires_auth
 def read_user(email):
     """ Returns an active user (if any) given an email"""
@@ -55,6 +58,7 @@ def read_user(email):
     return RESP.response_200(message=user.dump())
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.update_user', port=5000)
 @requires_auth
 def update_user(id, body):
     """ Updates an active user matching a given id with given parameters such as name, email and password. When a
@@ -90,6 +94,7 @@ def update_user(id, body):
     return RESP.response_200(message='User updated with success!')
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.delete_user', port=5000)
 @requires_auth
 def delete_user(id):
     """ Deletes an active user given an id"""
@@ -116,6 +121,7 @@ def delete_user(id):
     return RESP.response_200(message='User deleted with success')
 
 
+@emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.check_login', port=5000)
 def check_login(body):
     """ Checks the login parameters"""
     logging.debug("{users_controller} BEGIN function check_login()")
