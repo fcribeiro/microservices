@@ -15,6 +15,20 @@ paths:
       responses:
         200:
           description: OK
+  /hey/{id}:
+    get:
+      operationId: application.hey_test
+      summary: "Hello World!"
+      tags: [Songs_MS]
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        required: true
+        description: "Song id"
+      responses:
+        200:
+          description: OK
   /songs:
     post:
       operationId: application.create_song

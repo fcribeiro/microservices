@@ -1,7 +1,7 @@
 import connexion as connexion
 from business.songs_controller import *
 from CRUD.ORM import db
-
+from py_zipkin.zipkin import zipkin_span
 
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')

@@ -2,24 +2,38 @@ import logging
 import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 from business.auth import requires_auth
-import socket
 import time
 import random
+from py_zipkin.zipkin import zipkin_span
+from business.emp_zipkin_decorator import emp_zipkin_decorator
 
 
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.hello_world', port=5001,
+                      binary_annotations={'foo': 'bar'})
 def hello_world():
-    return RESP.response_200(message='Songs_MS working! -> Host: ' + socket.gethostname())
+    with zipkin_span(service_name='songs_ms', span_name='before_hey_test'):
+        hey_test(5)
+    return RESP.response_200(message='Songs_MS working!')
+
+
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.hey_test', port=5001,
+                      binary_annotations={'foo': 'bar'})
+def hey_test(id):
+    print("HEYYYYYYYYYYY")
+    return RESP.response_200(message='Songs_MS working!')
 
 
 @requires_auth
 def create_song(body):
     logging.debug("{songs_controller} BEGIN function create_song()")
 
-    if body['title'] is '' or body['artist'] is '' or body['album'] is '' or body['release_year'] is '' or body['path'] is '' or body['user_id'] is '':
+    if body['title'] is '' or body['artist'] is '' or body['album'] is '' or body['release_year'] is '' or body[
+        'path'] is '' or body['user_id'] is '':
         return RESP.response_400(message='A given parameter is empty!')
 
     try:
-        song = CRUD.create_song(body['title'], body['artist'], body['album'], body['release_year'], body['path'], body['user_id'])
+        song = CRUD.create_song(body['title'], body['artist'], body['album'], body['release_year'], body['path'],
+                                body['user_id'])
         CRUD.commit()
     except Exception:
         CRUD.rollback()
@@ -122,11 +136,20 @@ def delete_song(id):
     return RESP.response_200(message='Song deleted with success')
 
 
-@requires_auth
+# @requires_auth
+@zipkin_span(service_name='songs_ms', span_name='songs_controller.convert_song')
 def convert_song(id):
     """ Converts a song from .mp3 to .wav"""
-    logging.debug("{songs_controller} BEGIN function convert_song()")
+    # with zipkin_span(service_name='songs_ms', span_name='convert_song'):
+    with zipkin_span(
+            service_name='songs_ms',
+            span_name='songs_controller.convert_song',
+            transport_handler=transport,
+            port=5001,
+            sample_rate=100,
+    ):
+        logging.debug("{songs_controller} BEGIN function convert_song()")
 
-    time.sleep(random.expovariate(3/2))
+        time.sleep(random.expovariate(3 / 2))
 
-    return RESP.response_200(message='Song converted with success')
+        return RESP.response_200(message='Song converted with success')
