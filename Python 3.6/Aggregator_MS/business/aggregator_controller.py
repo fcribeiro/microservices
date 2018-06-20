@@ -6,16 +6,21 @@ import os
 import json
 from business.auth import requires_auth
 from flask import request
-import socket
+from py_zipkin.zipkin import zipkin_span
+from business.emp_zipkin_decorator import emp_zipkin_decorator
+
 
 SONGS_MS = "http://" + os.environ['SONGSADDRESS']
 PLAYLISTS_MS = "http://" + os.environ['PLAYLISTSADDRESS']
 
 
+@emp_zipkin_decorator(service_name='aggregator_ms', span_name='aggregator_controller.hello_world', port=5004)
 def hello_world():
-    return RESP.response_200(message='Aggregator_MS working! -> Host: ' + socket.gethostname())
+    return RESP.response_200(message='Aggregator_MS working!')
 
 
+@emp_zipkin_decorator(service_name='aggregator_ms', span_name='aggregator_controller.get_playlist_songs_info',
+                      port=5004)
 @requires_auth
 def get_playlist_songs_info(id):
     """ Retrieves all playlist songs' information"""
@@ -31,7 +36,11 @@ def get_playlist_songs_info(id):
     base_url = PLAYLISTS_MS + '/playlists/songs'
     url = '/'.join((base_url, str(id)))
 
-    r = requests.get(url, headers=headers)
+    with zipkin_span(service_name='aggregator_ms', span_name='get_playlists_songs') as zipkin_context:
+        r = requests.get(url, headers=headers)
+        zipkin_context.update_binary_annotations({'http.method': 'GET', 'http.url': url,
+                                                  'http.status_code': r.status_code})
+
     if r.status_code == 400:
         return RESP.response_400()
     if r.status_code == 404:
@@ -53,12 +62,18 @@ def get_playlist_songs_info(id):
     return RESP.response_200(message=pool_outputs)
 
 
+@emp_zipkin_decorator(service_name='aggregator_ms', span_name='aggregator_controller.get_song', port=5004)
 def get_song(id):
     """ Retrives a song given an id"""
     headers = {'Content-Type': 'application/json',
                'Authorization': request.headers['Authorization']}
     param = {'id': id}
-    r = requests.get(SONGS_MS + '/songs', params=param, headers=headers)
+
+    with zipkin_span(service_name='aggregator_ms', span_name='get_song') as zipkin_context:
+        r = requests.get(SONGS_MS + '/songs', params=param, headers=headers)
+        zipkin_context.update_binary_annotations({'http.method': 'GET', 'http.url': SONGS_MS + '/songs',
+                                                  'http.status_code': r.status_code})
+
     if r.status_code == 404:
         return RESP.response_404(message='Song not found!')
     if r.status_code == 500:
