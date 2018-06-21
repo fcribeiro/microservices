@@ -29,6 +29,7 @@ def create_token(body):
     payload = {'email': body['email'], 'password': body['password']}
 
     logging.debug("{authentication_controller} %s", USERS_MS)
+
     with zipkin_span(service_name='authentication_ms', span_name='create_token') as zipkin_context:
         headers = {}
         headers.update(create_http_headers_for_new_span())

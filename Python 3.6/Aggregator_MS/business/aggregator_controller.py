@@ -30,13 +30,14 @@ def get_playlist_songs_info(id):
     if id is '':
         return RESP.response_400(message='A given parameter is empty')
 
+    base_url = PLAYLISTS_MS + '/playlists/songs'
+    url = '/'.join((base_url, str(id)))
+
     # Checks if song exists by sending a request into the Songs Microservice
+
     headers = {'Content-Type': 'application/json',
                'Authorization': request.headers['Authorization']}
     headers.update(create_http_headers_for_new_span())
-
-    base_url = PLAYLISTS_MS + '/playlists/songs'
-    url = '/'.join((base_url, str(id)))
 
     with zipkin_span(service_name='aggregator_ms', span_name='get_playlists_songs') as zipkin_context:
         r = requests.get(url, headers=headers)

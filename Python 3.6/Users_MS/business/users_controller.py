@@ -1,9 +1,14 @@
 import logging
+
+from py_zipkin.stack import ThreadLocalStack
+
 import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 import business.utils as UTILS
 from business.auth import requires_auth
+from flask import request
 from business.emp_zipkin_decorator import emp_zipkin_decorator
+from py_zipkin.zipkin import zipkin_span, ZipkinAttrs
 
 
 @emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.hello_world', port=5000)
