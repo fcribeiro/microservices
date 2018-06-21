@@ -7,6 +7,7 @@ import json
 from business.auth import requires_auth
 from flask import request
 from py_zipkin.zipkin import zipkin_span
+from py_zipkin.zipkin import create_http_headers_for_new_span
 from business.emp_zipkin_decorator import emp_zipkin_decorator
 
 
@@ -32,6 +33,7 @@ def get_playlist_songs_info(id):
     # Checks if song exists by sending a request into the Songs Microservice
     headers = {'Content-Type': 'application/json',
                'Authorization': request.headers['Authorization']}
+    headers.update(create_http_headers_for_new_span())
 
     base_url = PLAYLISTS_MS + '/playlists/songs'
     url = '/'.join((base_url, str(id)))
@@ -67,6 +69,7 @@ def get_song(id):
     """ Retrives a song given an id"""
     headers = {'Content-Type': 'application/json',
                'Authorization': request.headers['Authorization']}
+    headers.update(create_http_headers_for_new_span())
     param = {'id': id}
 
     with zipkin_span(service_name='aggregator_ms', span_name='get_song') as zipkin_context:

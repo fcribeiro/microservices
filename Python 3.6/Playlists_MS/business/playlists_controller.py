@@ -6,6 +6,7 @@ import business.response_handling as RESP
 from flask import request
 from business.auth import requires_auth
 from py_zipkin.zipkin import zipkin_span
+from py_zipkin.zipkin import create_http_headers_for_new_span
 from business.emp_zipkin_decorator import emp_zipkin_decorator
 
 
@@ -167,6 +168,7 @@ def add_song_to_playlist(id, body):
     # Checks if song exists by sending a request into the Songs Microservice
     headers = {'Content-Type': 'application/json',
                'Authorization': request.headers['Authorization']}
+    headers.update(create_http_headers_for_new_span())
     param = {'id': body['song_id']}
 
     with zipkin_span(service_name='playlists_ms', span_name='check_song') as zipkin_context:
