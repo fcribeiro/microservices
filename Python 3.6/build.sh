@@ -3,7 +3,7 @@
 # Delete images
 docker rmi fcribeiro/aggregator_ms_p3
 docker rmi fcribeiro/authentication_ms_p3
-docker rmi fcribeiro/playlists_p3
+docker rmi fcribeiro/playlists_ms_p3
 docker rmi fcribeiro/songs_ms_p3
 docker rmi fcribeiro/users_ms_p3
 

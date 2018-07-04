@@ -2,7 +2,7 @@ import logging
 from CRUD.ORM import db
 from CRUD.entities.Playlist import Playlist
 from CRUD.entities.Playlist_Song import Playlist_Song
-from business.emp_zipkin_decorator import emp_zipkin_decorator
+from tracing.emp_zipkin_decorator import emp_zipkin_decorator
 
 
 # ---------------------------------------------------------------------------------------------------------------------

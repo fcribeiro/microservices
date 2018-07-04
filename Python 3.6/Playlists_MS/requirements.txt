@@ -12,6 +12,7 @@ inflection==0.3.1
 itsdangerous==0.24
 Jinja2==2.10
 jsonschema==2.6.0
+kafka-python==1.4.3
 MarkupSafe==1.0
 ply==3.11
 py-zipkin==0.12.0

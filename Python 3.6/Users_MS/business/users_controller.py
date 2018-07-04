@@ -3,7 +3,7 @@ import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 import business.utils as UTILS
 from business.auth import requires_auth
-from business.emp_zipkin_decorator import emp_zipkin_decorator
+from tracing.emp_zipkin_decorator import emp_zipkin_decorator
 
 
 @emp_zipkin_decorator(service_name='users_ms', span_name='users_controller.hello_world', port=5000)

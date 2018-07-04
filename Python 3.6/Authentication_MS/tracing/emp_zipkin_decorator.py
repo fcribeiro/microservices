@@ -1,11 +1,11 @@
 from py_zipkin.util import generate_random_64bit_string
 from py_zipkin.zipkin import zipkin_span, ZipkinAttrs
 from py_zipkin.stack import ThreadLocalStack
-from business.htt_transport import HttpTransport
+from tracing.kafka_transport import KafkaTransport
 from flask import request
 
 
-def emp_zipkin_decorator(service_name, span_name, port, binary_annotations=None, transport_handler=HttpTransport(),
+def emp_zipkin_decorator(service_name, span_name, port, binary_annotations=None, transport_handler=KafkaTransport(),
                          sample_rate=100, zipkin_attrs=None, max_span_batch_size=None, annotations=None,
                          add_logging_annotation=False, report_root_timestamp=False, use_128bit_trace_id=False,
                          host=None, context_stack=None, firehose_handler=None):

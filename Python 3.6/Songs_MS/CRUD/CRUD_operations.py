@@ -2,7 +2,7 @@ import logging
 from CRUD.ORM import db
 from sqlalchemy import or_
 from CRUD.entities.Song import Song
-from business.emp_zipkin_decorator import emp_zipkin_decorator
+from tracing.emp_zipkin_decorator import emp_zipkin_decorator
 
 
 # ---------------------------------------------------------------------------------------------------------------------

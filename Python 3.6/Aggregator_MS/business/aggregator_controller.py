@@ -8,7 +8,7 @@ from business.auth import requires_auth
 from flask import request
 from py_zipkin.zipkin import zipkin_span
 from py_zipkin.zipkin import create_http_headers_for_new_span
-from business.emp_zipkin_decorator import emp_zipkin_decorator
+from tracing.emp_zipkin_decorator import emp_zipkin_decorator
 
 
 SONGS_MS = "http://" + os.environ['SONGSADDRESS']

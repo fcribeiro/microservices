@@ -5,7 +5,7 @@ from business.auth import requires_auth
 import time
 import random
 from py_zipkin.zipkin import zipkin_span
-from business.emp_zipkin_decorator import emp_zipkin_decorator
+from tracing.emp_zipkin_decorator import emp_zipkin_decorator
 from py_zipkin.stack import ThreadLocalStack
 
 

@@ -1,7 +1,7 @@
 import logging
 from CRUD.ORM import db
 from CRUD.entities.User import User
-from business.emp_zipkin_decorator import emp_zipkin_decorator
+from tracing.emp_zipkin_decorator import emp_zipkin_decorator
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------- BASE STUFF ----------------------------------------------------

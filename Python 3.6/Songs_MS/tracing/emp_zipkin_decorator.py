@@ -1,7 +1,7 @@
 from py_zipkin.util import generate_random_64bit_string
 from py_zipkin.zipkin import zipkin_span, ZipkinAttrs
 from py_zipkin.stack import ThreadLocalStack
-from business.kafka_transport import KafkaTransport
+from tracing.kafka_transport import KafkaTransport
 from flask import request
 
 
