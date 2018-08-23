@@ -9,21 +9,8 @@ from tracing.emp_zipkin_decorator import emp_zipkin_decorator
 from py_zipkin.stack import ThreadLocalStack
 
 
-@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.hello_world', port=5001,
-                      binary_annotations={'foo': 'bar', 'test1': 'test2'})
+@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.hello_world', port=5001)
 def hello_world():
-    z_attrs = ThreadLocalStack().get()
-    print(z_attrs)
-    with zipkin_span(service_name='songs_ms', span_name='before_hey_test') as zipkin_context:
-        hey_test(5)
-        zipkin_context.update_binary_annotations({'result': "YEEEEEE"})
-    return RESP.response_200(message='Songs_MS working!')
-
-
-@emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.hey_test', port=5001,
-                      binary_annotations={'foo': 'bar'})
-def hey_test(id):
-    print("HEYYYYYYYYYYY")
     return RESP.response_200(message='Songs_MS working!')
 
 
