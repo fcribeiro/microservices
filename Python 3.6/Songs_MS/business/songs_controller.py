@@ -11,6 +11,19 @@ from py_zipkin.stack import ThreadLocalStack
 
 @emp_zipkin_decorator(service_name='songs_ms', span_name='songs_controller.hello_world', port=5001)
 def hello_world():
+    # try:
+    #     song = CRUD.create_song("titulo", "artista", "album", "2000", "/test",
+    #                             "1")
+    #     CRUD.commit()
+    # except Exception:
+    #     CRUD.rollback()
+    #     return RESP.response_500(message='Database is down!')
+    # 
+    # if song is None:
+    #     return RESP.response_500(message='Error adding song into database!')
+    #
+    # time.sleep(random.expovariate(3))
+    # return RESP.response_201(message='Song created with success!')
     return RESP.response_200(message='Songs_MS working!')
 
 

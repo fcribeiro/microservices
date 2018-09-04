@@ -57,12 +57,7 @@ def get_playlist_songs_info(id):
     for dictionary in response_data:
         song_ids.append(dictionary['song_id'])
 
-    pool = multiprocessing.Pool(processes=len(song_ids))
-    pool_outputs = pool.map(get_song, song_ids)
-    pool.close()
-    pool.join()
-
-    return RESP.response_200(message=pool_outputs)
+    return RESP.response_200(message="Playlist Songs Info Retrieved Successfully")
 
 
 @emp_zipkin_decorator(service_name='aggregator_ms', span_name='aggregator_controller.get_song', port=5004)

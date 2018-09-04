@@ -1,5 +1,5 @@
 from kafka import SimpleProducer, KafkaClient
-
+import os
 from py_zipkin.transport import BaseTransportHandler
 
 
@@ -10,6 +10,6 @@ class KafkaTransport(BaseTransportHandler):
         return 1000012
 
     def send(self, message):
-        kafka_client = KafkaClient('{}:{}'.format('10.11.243.15', 9092))
+        kafka_client = KafkaClient('{}:{}'.format(os.environ['KAFKAADDRESS'], 9092))
         producer = SimpleProducer(kafka_client)
         producer.send_messages('zipkin', message)
