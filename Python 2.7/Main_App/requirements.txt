@@ -10,7 +10,7 @@ functools32==3.2.3.post2
 idna==2.6
 inflection==0.3.1
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 jsonschema==2.6.0
 MarkupSafe==1.0
 pathlib==1.0.1
