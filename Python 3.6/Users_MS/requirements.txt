@@ -18,7 +18,7 @@ ply==3.11
 py-zipkin==0.12.0
 PyJWT==1.6.0
 PyMySQL==0.8.0
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.4
 six==1.11.0
 SQLAlchemy==1.2.5
