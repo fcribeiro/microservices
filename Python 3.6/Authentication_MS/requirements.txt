@@ -20,5 +20,5 @@ requests==2.18.4
 six==1.11.0
 swagger-spec-validator==2.1.0
 thriftpy==0.3.9
-urllib3==1.22
+urllib3==1.26.5
 Werkzeug==0.14.1
